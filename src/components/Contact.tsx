@@ -1,9 +1,11 @@
 import { Grid, Typography, useTheme } from '@mui/material'
 import PhoneIcon from '@mui/icons-material/Phone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import useTranslation from '../hooks/useTranslation';
 
 function Contact() {
     const theme = useTheme()
+    const { t } = useTranslation()
 
     const linkStyles = {
         color: 'inherit',
@@ -15,7 +17,7 @@ function Contact() {
 
     return (
         <div>
-            <Typography variant="h6" gutterBottom>Contact</Typography>
+            <Typography variant="h6" gutterBottom>{t('contact')}</Typography>
             <Grid container gap={2}>
                 <Grid item>
                     <a href="tel:+48784456947" style={linkStyles}>

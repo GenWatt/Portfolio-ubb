@@ -4,9 +4,11 @@
   font-weight: 400;
   font-synthesis: none;
 
-  background-color: rgb(47, 47, 47);
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  overflow-x: hidden;
 }

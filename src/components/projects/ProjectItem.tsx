@@ -1,24 +1,21 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Repository } from '../../types';
 import { useTheme } from '@mui/material/styles';
 import Carousel from 'react-material-ui-carousel';
-import { Alert, Badge, Box, Button, Chip, Grid, Tooltip } from '@mui/material';
+import { Box, Button, Chip, Grid, Tooltip } from '@mui/material';
 import useFormat from '../../hooks/useFormat';
-
+import { GitHub } from '@mui/icons-material';
+import { useSnackbar } from 'notistack';
+import useTranslation from '../../hooks/useTranslation';
 
 export interface ProjectItemProps {
     repo: Repository
@@ -26,16 +23,26 @@ export interface ProjectItemProps {
 
 export default function ProjectItem({ repo }: ProjectItemProps) {
     const theme = useTheme()
+    const snakbar = useSnackbar()
     const { formatDate } = useFormat()
+    const { t } = useTranslation()
+
+    const share = () => {
+        navigator.clipboard.writeText(repo.html_url)
+        snakbar.enqueueSnackbar(t('repositoryLinkCopiedToClipboard'), { variant: 'success' })
+    }
 
     return (
         <Grid item xs={12} md={6}>
             <Card>
-                <Tooltip title={`See user on github ${repo.owner.login}`}>
+                <Tooltip title={<Box>
+                    <Typography component={'span'} variant='subtitle2'>{t('seeUserOnGithub')}</Typography>
+                    <Typography component={'strong'} color={theme.palette.primary.main} variant='body2'>{' ' + repo.owner.login}</Typography>
+                </Box>}>
                     <a href={repo.owner.html_url} target='blank'>
                         <CardHeader
                             avatar={(
-                                <Avatar sx={{ bgcolor: theme.palette.primary.main }} src={repo.owner.avatar_url}>
+                                <Avatar sx={{ bgcolor: theme.palette.primary.main, marginLeft: 1 }} src={repo.owner.avatar_url}>
                                     {repo.owner.login[0]}
                                 </Avatar>
                             )}
@@ -46,21 +53,21 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                 {repo.project.images.length ? <Carousel>
                     {repo.project.images.map((image) => (
                         <CardMedia
+                            key={image}
                             component="img"
                             height="194"
                             image={image}
-                            alt="Paella dish"
+                            alt="app screenshot"
                         />
                     ))}
                 </Carousel> : null}
 
-                <Box sx={{ backgroundColor: theme.palette.primary.light, padding: theme.spacing(1), margin: theme.spacing(1), borderRadius: theme.spacing(.1) }}>
-                    <Typography variant='subtitle2'>Created at: {formatDate(repo.created_at)}</Typography>
-                    <Typography variant='subtitle2'>Last commit: {formatDate(repo.updated_at)}</Typography>
+                <Box sx={{ backgroundColor: theme.palette.primary.dark, padding: theme.spacing(1), margin: theme.spacing(1), borderRadius: theme.spacing(.1), color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit' }}>
+                    <Typography variant='subtitle2'>{t('createdAt')}: {formatDate(repo.created_at)}</Typography>
+                    <Typography variant='subtitle2'>{t('lastCommit')}: {formatDate(repo.updated_at)}</Typography>
                 </Box>
 
-                <Tooltip title="See repository on github">
-
+                <Tooltip title={t('seeRepositoryOnGithub')}>
                     <CardContent>
                         <a href={repo.html_url} target='blank'>
                             <Typography variant="h5" color="text.primary">
@@ -73,26 +80,24 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
 
                         <Box marginTop={2} gap={1} display={'flex'}>
                             {repo.project.tags.map((tag) => (
-                                <Chip label={tag} />
+                                <Chip key={tag} label={tag} />
                             ))}
                         </Box>
                     </CardContent>
-
                 </Tooltip>
 
                 <CardActions>
                     <a href={repo.html_url} target='blank'>
                         <Button variant='contained'>
-                            See on github
+                            <GitHub sx={{ marginRight: 1 }} /> {t('seeOnGithub')}
                         </Button>
                     </a>
                     <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
+                        <FavoriteIcon color='error' />
+                        <Typography color={theme.palette.error.main}>({repo.stargazers_count})</Typography>
                     </IconButton>
 
-                    <Typography>({repo.stargazers_count})</Typography>
-
-                    <IconButton aria-label="share">
+                    <IconButton aria-label="share" onClick={share}>
                         <ShareIcon />
                     </IconButton>
                 </CardActions>

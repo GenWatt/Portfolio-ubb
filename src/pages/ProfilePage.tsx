@@ -1,10 +1,11 @@
-
-import { Avatar, Button, Grid, Typography, useTheme } from '@mui/material'
-import React from 'react'
+import { Avatar, Grid, Typography, useTheme } from '@mui/material'
 import Contact from '../components/Contact'
+import useTranslation from '../hooks/useTranslation'
 
-function Profile() {
+function ProfilePage() {
     const theme = useTheme()
+    const { t } = useTranslation()
+
     return (
         <Grid container gap={3}>
             <Avatar sx={{ width: theme.spacing(12), height: theme.spacing(12) }}
@@ -12,14 +13,14 @@ function Profile() {
                 src="https://mui.com/static/images/avatar/1.jpg" />
             <Grid item>
                 <Typography variant="h4">Adrian Raszka</Typography>
-                <Typography variant="h6">Software Developer</Typography>
+                <Typography variant="h6">{t('softwareDdeveloper')}</Typography>
             </Grid>
             <Typography>
-                I am a software developer with a passion for creating software solutions. I have experience in a wide range of technologies and am always looking to learn more.
+                {t('profileDescription')}
             </Typography>
             <Contact />
         </Grid>
     )
 }
 
-export default Profile
+export default ProfilePage

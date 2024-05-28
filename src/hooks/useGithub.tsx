@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { Project, Repository } from '../types'
+import { Owner, Project, Repository } from '../types'
 
-const baseUrl = "https://api.github.com/repos"
+const baseUrl = "https://api.github.com"
 
 const axiosInstance = axios.create({
     baseURL: baseUrl
@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 function useGithub() {
     async function getRepo(project: Project) {
         try {
-            const response = await axiosInstance.get<Repository>(`/${project.username}/${project.repoName}`)
+            const response = await axiosInstance.get<Repository>(`/repos/${project.username}/${project.repoName}`)
 
             response.data.project = project
             return response.data
@@ -25,7 +25,22 @@ function useGithub() {
         return repositories.filter(repository => repository !== undefined) as Repository[]
     }
 
-    return { getRepo, getRepos }
+    async function getOwner(username: string) {
+        try {
+            const response = await axiosInstance.get(`/users/${username}`)
+            return response.data
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async function getOwners(usernames: string[]) {
+        const promises = usernames.map(username => getOwner(username))
+        const owners = await Promise.all(promises)
+        return owners.filter(owner => owner !== undefined) as Owner[]
+    }
+
+    return { getRepo, getRepos, getOwner, getOwners }
 }
 
 export default useGithub

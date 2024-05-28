@@ -1,12 +1,15 @@
 import { RouteObject } from "react-router-dom";
-import Profile from "../pages/Profile";
+import ProfilePage from "../pages/ProfilePage";
 import ContactPage from "../pages/ContactPage";
 import ProjectsPage from "../pages/ProjectsPage";
+import EducationPage from "../pages/EducationPage";
+import ResumePage from "../pages/ResumePage";
+import TechStackPage from "../pages/TechStackPage";
 
 export const routes: RouteObject[] = [
     {
         path: '/profile',
-        element: <Profile />,
+        element: <ProfilePage />,
         // children: [
         //     { path: 'about', element: <About /> },
         //     { path: 'dashboard', element: <Dashboard /> },
@@ -24,5 +27,17 @@ export const routes: RouteObject[] = [
     {
         path: '/projects',
         element: <ProjectsPage />,
+    },
+    {
+        path: '/education',
+        element: <EducationPage />
+    },
+    {
+        path: '/resume',
+        element: <ResumePage />
+    },
+    {
+        path: '/stack',
+        element: <TechStackPage />
     }
 ]
