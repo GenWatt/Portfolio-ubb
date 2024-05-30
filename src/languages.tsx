@@ -2,7 +2,8 @@ export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy
     | 'profileDescription' | 'myAccounts' | 'bluePink' | 'lightTheme' | 'author' | 'seeOnGithub' | 'createdAt' | 'lastCommit'
     | 'seeRepositoryOnGithub' | 'seeUserOnGithub' | 'langCode' | 'langName' | 'projects' | 'myProjects'
     | 'repositoryLinkCopiedToClipboard' | 'langDirection' | 'softwareDdeveloper' | 'openDrawer' | 'closeDrawer' | 'technicalSchool'
-    | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO';
+    | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO' | 'education' | 'resumeLoadingError'
+    ;
 
 export type LanguageDictionary = {
     [key in TranslationKeys]: string;
@@ -44,6 +45,8 @@ export const dictionary: DictionaryType = {
         techStack: 'Technologie',
         resume: 'CV',
         langISO: 'pl-PL',
+        education: 'Edukacja',
+        resumeLoadingError: 'Wystąpił błąd podczas ładowania CV',
     },
     us: {
         langCode: 'us',
@@ -76,6 +79,8 @@ export const dictionary: DictionaryType = {
         techStack: 'Technologies',
         resume: 'Resume',
         langISO: 'en-US',
+        education: 'Education',
+        resumeLoadingError: 'An error occurred while loading the resume',
     },
     sp: {
         langCode: 'sp',
@@ -108,6 +113,8 @@ export const dictionary: DictionaryType = {
         techStack: 'Tecnologías',
         resume: 'CV',
         langISO: 'es-ES',
+        education: 'Educación',
+        resumeLoadingError: 'Se produjo un error al cargar el CV',
     },
     sa: {
         langCode: 'sa',
@@ -140,5 +147,7 @@ export const dictionary: DictionaryType = {
         techStack: 'التكنولوجيا',
         resume: 'السيرة الذاتية',
         langISO: 'ar-SA',
+        education: 'التعليم',
+        resumeLoadingError: 'حدث خطأ أثناء تحميل السيرة الذاتية',
     },
 }

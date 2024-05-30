@@ -8,7 +8,7 @@ function EducationPage() {
 
     return (
         <Grid container spacing={3}>
-            <Grid item>
+            <Grid item xs={12}>
                 <Typography variant='h4'>{t('technicalSchool')}</Typography>
             </Grid>
             <Grid item>

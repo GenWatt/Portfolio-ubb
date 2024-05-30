@@ -14,15 +14,19 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.18",
-    "@react-pdf/renderer": "^3.4.4",
+    "@react-three/drei": "^9.106.0",
+    "@react-three/fiber": "^8.16.6",
+    "@types/three": "^0.164.1",
     "axios": "^1.7.2",
     "notistack": "^3.0.1",
+    "pdfjs-dist": "^4.3.136",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-material-ui-carousel": "^3.4.2",
-    "react-pdf": "^8.0.2",
+    "react-pdf": "^9.0.0",
     "react-router-dom": "^6.23.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "three": "^0.164.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
