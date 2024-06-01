@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 // @ts-ignore
 import laptopModelUrl from '/mac-draco.glb'
 import { useGLTF } from '@react-three/drei'
@@ -10,9 +10,10 @@ export interface LaptopModelProps {
   groupProps: JSX.IntrinsicElements['group']
   children?: React.ReactNode
   isLoading: boolean
+  scale: number
 }
 
-function LaptopModel({ groupProps, children, isLoading }: LaptopModelProps) {
+function LaptopModel({ groupProps, children, isLoading, scale }: LaptopModelProps) {
   const group = useRef<THREE.Group | null>(null)
   const { nodes, materials } = useGLTF(laptopModelUrl)
 
@@ -32,15 +33,14 @@ function LaptopModel({ groupProps, children, isLoading }: LaptopModelProps) {
     }
   }, [isLoading]);
 
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime()
+  useFrame(() => {
+    const targetY = 0
 
     if (group.current === null) return
-    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.cos(t / 2) / 20 + 0.25, 0.1)
-    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, Math.sin(t / 4) / 20, 0.1)
-    group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, Math.sin(t / 8) / 20, 0.1)
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, (-2 + Math.sin(t / 2)) / 2, 0.1)
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, targetY, 0.1)
   })
+
+  const htmlPosition: [number, number, number] = [0.55 * scale, 0.05, -0.07];
 
   return (
     <group ref={group} {...groupProps} dispose={null}>
@@ -49,7 +49,7 @@ function LaptopModel({ groupProps, children, isLoading }: LaptopModelProps) {
           <mesh material={materials.aluminium} geometry={nodes['Cube008'].geometry} />
           <mesh material={materials['matte.001']} geometry={nodes['Cube008_1'].geometry} />
           <mesh geometry={nodes['Cube008_2'].geometry}>
-            <Html ref={wrapper} className="content" rotation-x={-Math.PI / 2} position={[0, 0.05, -0.07]} transform occlude>
+            <Html ref={wrapper} className="content" rotation-x={-Math.PI / 2} position={htmlPosition} transform>
               <div className='wrapper'>
                 {children}
               </div>

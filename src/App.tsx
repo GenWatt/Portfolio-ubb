@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { SelectChangeEvent } from '@mui/material'
+import { SelectChangeEvent, Theme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
 
 import SideNav from './components/SideNav';
@@ -25,6 +25,11 @@ function App() {
   const [currentThemeName, setCurrentThemeName] = useState(themeName)
   const [theme, setTheme] = useState(getThemeByName(themeName));
 
+  function changeCssVariables(theme: Theme) {
+    document.documentElement.style.setProperty('--scrollbar-thumb-color', theme.palette.primary.main);
+    document.documentElement.style.setProperty('--scrollbar-track-color', theme.palette.background.default);
+  }
+
   const handleThemeChange = (event: SelectChangeEvent) => {
     const value = event.target.value
 
@@ -33,6 +38,7 @@ function App() {
         setTheme(theme.theme)
         setCurrentThemeName(value)
         setLocalStorage('theme', value)
+        changeCssVariables(theme.theme)
       }
     })
   }
@@ -53,6 +59,7 @@ function App() {
     if (location.pathname === '/') {
       navigate('/profile')
     }
+    changeCssVariables(theme)
   }, [location]);
 
   useEffect(() => {

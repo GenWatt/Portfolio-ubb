@@ -1,32 +1,28 @@
-import { Document, Page } from 'react-pdf'
 import ResumeUS from '../assets/pdfs/CV_US.pdf'
 import ResumePL from '../assets/pdfs/CV_PL.pdf'
 
-import { Fragment, Suspense, useEffect, useState } from 'react';
-import { Grid, IconButton, Theme, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { useState } from 'react';
+import { Grid, IconButton, Theme, Tooltip, useMediaQuery } from '@mui/material';
 import { useLanguage } from '../context/LanguageContext';
 import 'react-pdf/dist/Page/TextLayer.css';
 import LinearProgressWithLabel from '../components/LinearProgressWithLabel';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import useTranslation from '../hooks/useTranslation';
-import { Canvas, useThree } from '@react-three/fiber';
 import { useSnackbar } from 'notistack';
-import { ContactShadows, Environment, OrbitControls } from '@react-three/drei';
-import LaptopModel from '../components/3D/LaptopModel';
-import { div } from 'three/examples/jsm/nodes/Nodes.js';
 import ResumeMobile from '../components/resume/ResumeMobile';
 import ResumeDevice from '../components/resume/ResumeDevice';
+import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 
 function ResumePage() {
     const { language } = useLanguage()
     const [numPages, setNumPages] = useState<null | number>(null);
     const [loaded, setLoaded] = useState(0)
     const [total, setTotal] = useState(0)
+    const [showModel, setShowModel] = useState(false)
     const { t } = useTranslation()
     const snakbar = useSnackbar()
     const [isResumeLoading, setIsResumeLoading] = useState(true)
-    const theme = useTheme()
 
     const progress = total === 0 ? 0 : Math.round(loaded / total * 100)
 
@@ -66,7 +62,7 @@ function ResumePage() {
         window.open(ResumePL)
     }
 
-    const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+    const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
     return (
         <Grid container>
@@ -83,9 +79,14 @@ function ResumePage() {
                         <FileDownloadIcon />
                     </IconButton>
                 </Tooltip>
+                <Tooltip title={t('showModelIn3D')}>
+                    <IconButton onClick={() => setShowModel(!showModel)} color='primary' size='large'>
+                        <ThreeDRotationIcon />
+                    </IconButton>
+                </Tooltip>
             </Grid>
 
-            {!isSmallScreen ? <ResumeDevice
+            {!isSmallScreen && showModel ? <ResumeDevice
                 resume={resume}
                 numPages={numPages}
                 isResumeLoading={isResumeLoading}

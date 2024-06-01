@@ -14,7 +14,7 @@ export interface ResumeDeviceProps {
     onLoadError: (error: Error) => void
 }
 
-function ResumeMobile({ resume, numPages, isResumeLoading, onDocumentLoadSuccess, onLoadStart, onLoadProgress, onLoadError }: ResumeDeviceProps) {
+function ResumeMobile({ resume, numPages, onDocumentLoadSuccess, onLoadStart, onLoadProgress, onLoadError }: ResumeDeviceProps) {
     const [scale, setScale] = useState(1)
     const containerRef = useRef<HTMLDivElement>(null)
     const theme = useTheme()
@@ -51,7 +51,7 @@ function ResumeMobile({ resume, numPages, isResumeLoading, onDocumentLoadSuccess
     return (
         <div ref={containerRef}>
             <Document file={resume} onLoadSuccess={onDocumentLoadSuccess} onLoadStart={onLoadStart} onLoadProgress={onLoadProgress} onLoadError={onLoadError}>
-                {Array.from(new Array(numPages), (el, index) => (
+                {Array.from(new Array(numPages), (_, index) => (
                     <Fragment key={index}>
                         <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} renderTextLayer={false} scale={scale} />
                         <Typography variant='caption' align='center'>{index + 1} / {numPages}</Typography>

@@ -1,10 +1,35 @@
-import { Box, Card, CardHeader, CardMedia, Grid, Typography, useTheme } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 import useTranslation from "../hooks/useTranslation"
+import EducationList from "../components/education/EducationList"
 import UBB from '../assets/images/ubb.jpg'
+import zseeim from '../assets/images/zseeim.jpg'
+
+
+export interface EducationData {
+    schoolName: string
+    specialization: string
+    start: string
+    end: string
+    image?: string
+}
+
 
 function EducationPage() {
     const { t } = useTranslation()
-    const theme = useTheme()
+
+    const educationData: EducationData[] = [{
+        schoolName: t('technicalSchool'),
+        specialization: t('mechatronics'),
+        start: t('technicalSchoolStart'),
+        end: t('technicalSchoolEnd'),
+        image: zseeim
+    }, {
+        schoolName: t('university'),
+        specialization: t('softwareDdeveloper'),
+        start: t('universityStart'),
+        end: t('universityEnd'),
+        image: UBB
+    }]
 
     return (
         <Grid container spacing={3}>
@@ -12,31 +37,7 @@ function EducationPage() {
                 <Typography variant='h4'>{t('technicalSchool')}</Typography>
             </Grid>
             <Grid item>
-                <Card>
-                    <CardHeader title={t('university')} />
-
-                    <Box display={'flex'} justifyContent={'center'}>
-                        <img style={{ borderRadius: 5 }} width={100} height={100} src={UBB} />
-                    </Box>
-
-                    <Box sx={{ padding: 2 }}>
-                        <Box>
-                            <Typography variant="subtitle2" component={'span'}>{t('universitySpecialization')}: </Typography>
-                            <Typography variant="subtitle2" color={theme.palette.primary.main} component={'span'}>{t('softwareDdeveloper')}</Typography>
-                        </Box>
-
-                        <Box>
-                            <Typography variant="subtitle2" component={'span'}>{t('universityStart')}: </Typography>
-                            <Typography variant="subtitle2" color={theme.palette.primary.main} component={'span'}>{t('universityStartData')}</Typography>
-                        </Box>
-
-                        <Box>
-                            <Typography variant="subtitle2" component={'span'}>{t('universityEnd')}: </Typography>
-                            <Typography variant="subtitle2" color={theme.palette.primary.main} component={'span'}>{t('universityEndData')}</Typography>
-                        </Box>
-                    </Box>
-
-                </Card>
+                <EducationList educationList={educationData} />
             </Grid>
         </Grid>
     )

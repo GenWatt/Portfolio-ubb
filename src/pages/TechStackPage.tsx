@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid, Typography, useTheme } from '@mui/material'
+import { Grid } from '@mui/material'
 import JS from '../assets/images/js.png'
 import REACT from '../assets/images/react.png'
 import VUE from '../assets/images/vue.png'
@@ -9,42 +9,32 @@ import UNITY from '../assets/images/unity.png'
 import PYTHON from '../assets/images/python.jpg'
 import CSHARP from '../assets/images/csharp.jpg'
 import DOTNET from '../assets/images/.Net.png'
+import TechStackCanvas from '../components/3D/techStack/TechStackCanvas'
 
-const techStack = [
-    { name: 'JavaScript', description: 'JavaScript description...', image: JS },
-    { name: 'React', description: 'React description...', image: REACT },
-    { name: 'Vue', description: 'Vue description...', image: VUE },
-    { name: 'Node', description: 'Node description...', image: NODE },
-    { name: 'MongoDB', description: 'MongoDB description...', image: MONGODB },
-    { name: 'SQL', description: 'SQL description...', image: SQL },
-    { name: 'C#', description: 'C# description...', image: CSHARP },
-    { name: '.NET', description: '.NET description...', image: DOTNET },
-    { name: 'Python Tkinter', description: 'Python Tkinter description...', image: PYTHON },
-    { name: 'Unity', description: 'Unity description...', image: UNITY },
+export interface ITechStackList {
+    name: string
+    description: string
+    image: string
+    stars: number
+}
+
+const techStack: ITechStackList[] = [
+    { name: 'JavaScript', description: 'A high-level, interpreted programming language that is a core technology of the World Wide Web, alongside HTML and CSS.', image: JS, stars: 5 },
+    { name: 'React', description: 'A JavaScript library for building user interfaces, maintained by Facebook and a community of individual developers and companies.', image: REACT, stars: 4 },
+    { name: 'Vue', description: 'A progressive JavaScript framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable.', image: VUE, stars: 3 },
+    { name: 'Node', description: 'An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.', image: NODE, stars: 4 },
+    { name: 'MongoDB', description: 'A source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.', image: MONGODB, stars: 4 },
+    { name: 'SQL', description: 'A standard language for managing data held in a relational database management system, or for stream processing in a relational data stream management system.', image: SQL, stars: 5 },
+    { name: 'C#', description: 'A general-purpose, multi-paradigm programming language encompassing static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines.', image: CSHARP, stars: 4 },
+    { name: '.NET', description: 'A free, cross-platform, open-source developer platform for building many different types of applications. With .NET, you can use multiple languages, editors, and libraries to build for web, mobile, desktop, games, and IoT.', image: DOTNET, stars: 5 },
+    { name: 'Python Tkinter', description: 'Tkinter is Python\'s de-facto standard GUI (Graphical User Interface) package. It is a thin object-oriented layer on top of Tcl/Tk.', image: PYTHON, stars: 3 },
+    { name: 'Unity', description: 'A cross-platform game engine developed by Unity Technologies, first announced and released in June 2005 at Apple Inc.\'s Worldwide Developers Conference as a Mac OS X-exclusive game engine.', image: UNITY, stars: 4 },
 ];
 
 function TechStackPage() {
-    const theme = useTheme()
     return (
-        <Grid container spacing={2}>
-            {techStack.map((tech, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
-                    <Card>
-                        <CardContent sx={{ display: 'flex', gap: 2 }}>
-                            <img src={tech.image} alt={tech.name} style={{ width: 50, height: 50 }} />
-
-                            <div>
-                                <Typography variant="h5" component="div">
-                                    {tech.name}
-                                </Typography>
-                                <Typography variant="body2" color={theme.palette.secondary.main}>
-                                    {tech.description}
-                                </Typography>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            ))}
+        <Grid container width={'90vw'} height={1450}>
+            <TechStackCanvas techStack={techStack} />
         </Grid>
     );
 }

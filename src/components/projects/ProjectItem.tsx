@@ -31,6 +31,13 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
         navigator.clipboard.writeText(repo.html_url)
         snakbar.enqueueSnackbar(t('repositoryLinkCopiedToClipboard'), { variant: 'success' })
     }
+    const styles: React.CSSProperties = {
+        backgroundColor: theme.palette.primary.dark,
+        padding: theme.spacing(1),
+        margin: theme.spacing(1),
+        borderRadius: theme.spacing(.1),
+        color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit'
+    };
 
     return (
         <Grid item xs={12} md={6}>
@@ -62,7 +69,7 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                     ))}
                 </Carousel> : null}
 
-                <Box sx={{ backgroundColor: theme.palette.primary.dark, padding: theme.spacing(1), margin: theme.spacing(1), borderRadius: theme.spacing(.1), color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit' }}>
+                <Box style={styles}>
                     <Typography variant='subtitle2'>{t('createdAt')}: {formatDate(repo.created_at)}</Typography>
                     <Typography variant='subtitle2'>{t('lastCommit')}: {formatDate(repo.updated_at)}</Typography>
                 </Box>

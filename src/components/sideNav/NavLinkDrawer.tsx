@@ -15,7 +15,7 @@ function NavLinkDrawer({ route, isMobile, open, handleDrawerClose }: NavLinkProp
     const loaction = useLocation()
     const theme = useTheme()
     const { t } = useTranslation()
-    const activeColor = (path: string) => loaction.pathname === path ? theme.palette.primary.main : theme.palette.primary.dark;
+    const activeColor = (path: string) => loaction.pathname === path ? theme.palette.primary.light : theme.palette.primary.dark;
 
     return (
         <NavLink to={path} key={text} style={{ textDecoration: 'none', color: activeColor(path) }}>
@@ -25,6 +25,7 @@ function NavLinkDrawer({ route, isMobile, open, handleDrawerClose }: NavLinkProp
                         minHeight: 48,
                         justifyContent: open ? 'initial' : 'center',
                         px: 2.5,
+                        backgroundColor: loaction.pathname === path ? theme.palette.primary.dark : 'transparent'
                     }}
                     onClick={isMobile ? handleDrawerClose : undefined}
                 >
@@ -33,7 +34,7 @@ function NavLinkDrawer({ route, isMobile, open, handleDrawerClose }: NavLinkProp
                             minWidth: 0,
                             mr: open ? 3 : 'auto',
                             justifyContent: 'center',
-                            color: activeColor(path)
+                            color: activeColor(path),
                         }}
                     >
                         {icon}
@@ -45,6 +46,7 @@ function NavLinkDrawer({ route, isMobile, open, handleDrawerClose }: NavLinkProp
                             minHeight: 48,
                             justifyContent: open ? 'initial' : 'center',
                             px: 2.5,
+                            backgroundColor: loaction.pathname === path ? theme.palette.primary.dark : 'transparent'
                         }}
                         onClick={isMobile ? handleDrawerClose : undefined}
                     >

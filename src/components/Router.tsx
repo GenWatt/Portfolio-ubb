@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Routes, Route, useLocation, NavLink } from 'react-router-dom'
+
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
 import { routes } from '../routes/routes';
 

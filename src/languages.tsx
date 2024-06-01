@@ -3,7 +3,7 @@ export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy
     | 'seeRepositoryOnGithub' | 'seeUserOnGithub' | 'langCode' | 'langName' | 'projects' | 'myProjects'
     | 'repositoryLinkCopiedToClipboard' | 'langDirection' | 'softwareDdeveloper' | 'openDrawer' | 'closeDrawer' | 'technicalSchool'
     | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO' | 'education' | 'resumeLoadingError'
-    ;
+    | 'showModelIn3D' | 'universitySpecialization' | 'universityStart' | 'universityEnd' | 'mechatronics' | 'technicalSchoolStart' | 'technicalSchoolEnd';
 
 export type LanguageDictionary = {
     [key in TranslationKeys]: string;
@@ -47,6 +47,13 @@ export const dictionary: DictionaryType = {
         langISO: 'pl-PL',
         education: 'Edukacja',
         resumeLoadingError: 'Wystąpił błąd podczas ładowania CV',
+        showModelIn3D: 'Pokaż model w 3D',
+        universitySpecialization: 'Specjalizacja',
+        universityStart: 'Rozpoczęcie',
+        universityEnd: 'Zakończenie',
+        mechatronics: 'Mechatronika',
+        technicalSchoolStart: 'Początek technikum',
+        technicalSchoolEnd: 'Koniec technikum',
     },
     us: {
         langCode: 'us',
@@ -81,6 +88,13 @@ export const dictionary: DictionaryType = {
         langISO: 'en-US',
         education: 'Education',
         resumeLoadingError: 'An error occurred while loading the resume',
+        showModelIn3D: 'Show model in 3D',
+        universitySpecialization: 'Specialization',
+        universityEnd: 'End',
+        universityStart: 'Start',
+        mechatronics: 'Mechatronics',
+        technicalSchoolStart: 'Technical school start',
+        technicalSchoolEnd: 'Technical school end',
     },
     sp: {
         langCode: 'sp',
@@ -115,6 +129,13 @@ export const dictionary: DictionaryType = {
         langISO: 'es-ES',
         education: 'Educación',
         resumeLoadingError: 'Se produjo un error al cargar el CV',
+        showModelIn3D: 'Mostrar modelo en 3D',
+        universitySpecialization: 'Especialización',
+        universityStart: 'Inicio',
+        universityEnd: 'Fin',
+        mechatronics: 'Mecatrónica',
+        technicalSchoolStart: 'Inicio de la escuela técnica',
+        technicalSchoolEnd: 'Fin de la escuela técnica',
     },
     sa: {
         langCode: 'sa',
@@ -149,5 +170,12 @@ export const dictionary: DictionaryType = {
         langISO: 'ar-SA',
         education: 'التعليم',
         resumeLoadingError: 'حدث خطأ أثناء تحميل السيرة الذاتية',
+        showModelIn3D: 'عرض النموذج ثلاثي الأبعاد',
+        universitySpecialization: 'تخصص',
+        universityStart: 'بداية',
+        universityEnd: 'نهاية',
+        mechatronics: 'الميكاترونيات',
+        technicalSchoolStart: 'بداية المدرسة التقنية',
+        technicalSchoolEnd: 'نهاية المدرسة التقنية',
     },
 }

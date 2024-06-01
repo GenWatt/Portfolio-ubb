@@ -2,6 +2,7 @@ import { Box, Select, MenuItem, useTheme, SelectChangeEvent, Theme, BoxProps } f
 import { TranslationKeys } from '../../languages'
 import { useLanguage } from '../../context/LanguageContext'
 import useTranslation from '../../hooks/useTranslation';
+import FontSizeInput from '../FontSizeInput';
 
 
 export interface UserPreferencesProps extends BoxProps {
@@ -40,6 +41,7 @@ function UserPreferences({ currentTheme, handleThemeChange, themes, ...boxProps 
                     </MenuItem>
                 ))}
             </Select>
+            <FontSizeInput />
         </Box>
     )
 }
