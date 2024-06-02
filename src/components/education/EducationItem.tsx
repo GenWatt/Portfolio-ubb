@@ -1,4 +1,4 @@
-import { Card, CardHeader, Box, Typography, useTheme, Grid } from '@mui/material'
+import { Card, CardHeader, Typography, useTheme, Grid } from '@mui/material'
 import useTranslation from '../../hooks/useTranslation'
 import { EducationData } from '../../pages/EducationPage'
 
@@ -15,26 +15,26 @@ function EducationItem({ education }: EducationItemProps) {
             <Card>
                 <CardHeader title={education.schoolName} />
 
-                <Box display={'flex'} justifyContent={'center'}>
+                <Grid display={'flex'} justifyContent={'center'}>
                     <img style={{ borderRadius: 5 }} width={theme.spacing(20)} height={theme.spacing(20)} src={education.image} />
-                </Box>
+                </Grid>
 
-                <Box sx={{ padding: 2 }}>
-                    <Box>
+                <Grid sx={{ padding: 2 }}>
+                    <Grid>
                         <Typography variant="subtitle2" component={'span'}>{t('universitySpecialization')}: </Typography>
                         <Typography variant="subtitle2" color={theme.palette.primary.main} component={'span'}>{education.specialization}</Typography>
-                    </Box>
+                    </Grid>
 
-                    <Box>
+                    <Grid>
                         <Typography variant="subtitle2" component={'span'}>{t('universityStart')}: </Typography>
                         <Typography variant="subtitle2" color={theme.palette.primary.main} component={'span'}>{education.start}</Typography>
-                    </Box>
+                    </Grid>
 
-                    <Box>
+                    <Grid>
                         <Typography variant="subtitle2" component={'span'}>{t('universityEnd')}: </Typography>
                         <Typography variant="subtitle2" color={theme.palette.primary.main} component={'span'}>{education.end}</Typography>
-                    </Box>
-                </Box>
+                    </Grid>
+                </Grid>
 
             </Card>
         </Grid>

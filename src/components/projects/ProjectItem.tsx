@@ -11,7 +11,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import { Repository } from '../../types';
 import { useTheme } from '@mui/material/styles';
 import Carousel from 'react-material-ui-carousel';
-import { Box, Button, Chip, Grid, Tooltip } from '@mui/material';
+import { Button, Chip, Grid, Tooltip } from '@mui/material';
 import useFormat from '../../hooks/useFormat';
 import { GitHub } from '@mui/icons-material';
 import { useSnackbar } from 'notistack';
@@ -31,21 +31,26 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
         navigator.clipboard.writeText(repo.html_url)
         snakbar.enqueueSnackbar(t('repositoryLinkCopiedToClipboard'), { variant: 'success' })
     }
-    const styles: React.CSSProperties = {
+
+    const styles = {
         backgroundColor: theme.palette.primary.dark,
         padding: theme.spacing(1),
         margin: theme.spacing(1),
         borderRadius: theme.spacing(.1),
         color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit'
-    };
+    }
+
+    const styles2 = {
+        marginTop: 2, gap: 1, display: 'flex'
+    }
 
     return (
         <Grid item xs={12} md={6}>
             <Card>
-                <Tooltip title={<Box>
+                <Tooltip title={<div>
                     <Typography component={'span'} variant='subtitle2'>{t('seeUserOnGithub')}</Typography>
                     <Typography component={'strong'} color={theme.palette.primary.main} variant='body2'>{' ' + repo.owner.login}</Typography>
-                </Box>}>
+                </div>}>
                     <a href={repo.owner.html_url} target='blank'>
                         <CardHeader
                             avatar={(
@@ -69,10 +74,10 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                     ))}
                 </Carousel> : null}
 
-                <Box style={styles}>
+                <div style={{ ...styles }}>
                     <Typography variant='subtitle2'>{t('createdAt')}: {formatDate(repo.created_at)}</Typography>
                     <Typography variant='subtitle2'>{t('lastCommit')}: {formatDate(repo.updated_at)}</Typography>
-                </Box>
+                </div>
 
                 <Tooltip title={t('seeRepositoryOnGithub')}>
                     <CardContent>
@@ -85,11 +90,11 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                             </Typography>
                         </a>
 
-                        <Box marginTop={2} gap={1} display={'flex'}>
+                        <div style={{ ...styles2 }}>
                             {repo.project.tags.map((tag) => (
                                 <Chip key={tag} label={tag} />
                             ))}
-                        </Box>
+                        </div>
                     </CardContent>
                 </Tooltip>
 

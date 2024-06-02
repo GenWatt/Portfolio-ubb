@@ -1,5 +1,5 @@
 import TextIncreaseIcon from '@mui/icons-material/TextIncrease';
-import { Box, Divider, Grid, IconButton, useTheme } from '@mui/material'
+import { Divider, Grid, IconButton, useTheme } from '@mui/material'
 import TextDecreaseIcon from '@mui/icons-material/TextDecrease';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useEffect, useState } from 'react';
@@ -43,7 +43,7 @@ function FontSizeInput() {
 
     return (
         <Grid container alignItems={'center'}>
-            <Box sx={{ display: 'flex', backgroundColor: theme.palette.background.default, borderRadius: theme.spacing(.4), gap: .5 }}>
+            <Grid sx={{ display: 'flex', backgroundColor: theme.palette.background.default, borderRadius: theme.spacing(.4), gap: .5 }}>
                 <IconButton onClick={increaseFontSize}>
                     <TextIncreaseIcon />
                 </IconButton>
@@ -51,7 +51,7 @@ function FontSizeInput() {
                 <IconButton onClick={decreaseFontSize}>
                     <TextDecreaseIcon />
                 </IconButton>
-            </Box>
+            </Grid>
         </Grid>
     )
 }

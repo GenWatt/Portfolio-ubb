@@ -49,7 +49,7 @@ function ResumeMobile({ resume, numPages, onDocumentLoadSuccess, onLoadStart, on
     }, [])
 
     return (
-        <div ref={containerRef}>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }} ref={containerRef}>
             <Document file={resume} onLoadSuccess={onDocumentLoadSuccess} onLoadStart={onLoadStart} onLoadProgress={onLoadProgress} onLoadError={onLoadError}>
                 {Array.from(new Array(numPages), (_, index) => (
                     <Fragment key={index}>

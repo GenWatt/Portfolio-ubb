@@ -1,16 +1,16 @@
-import { Box, Grid, LinearProgress, LinearProgressProps, Typography } from "@mui/material";
+import { Grid, LinearProgress, LinearProgressProps, Typography } from "@mui/material";
 
 export default function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
     return (
         <Grid item xs={12} display={'flex'}>
-            <Box display={'flex'} width={'100%'} alignItems={'center'} gap={1}>
+            <Grid display={'flex'} width={'100%'} alignItems={'center'} gap={1}>
                 <LinearProgress style={{ width: '100%' }} variant="determinate" {...props} />
-                <Box>
+                <Grid>
                     <Typography variant="body2" color="text.secondary">{`${Math.round(
                         props.value,
                     )}%`}</Typography>
-                </Box>
-            </Box>
+                </Grid>
+            </Grid>
         </Grid>
     );
 }

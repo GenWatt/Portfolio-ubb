@@ -7,7 +7,7 @@ function Router() {
     const location = useLocation();
 
     return (
-        <>
+        <div style={{ overflowX: 'hidden' }}>
             <SwitchTransition>
                 <CSSTransition
                     key={location.pathname}
@@ -21,7 +21,7 @@ function Router() {
                     </Routes>
                 </CSSTransition>
             </SwitchTransition>
-        </>
+        </div>
     )
 }
 

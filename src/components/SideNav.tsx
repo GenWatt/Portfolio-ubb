@@ -171,7 +171,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
     }, [])
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box component='div' sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open} dir={language.langDirection}>
                 <Toolbar sx={{ width: '100%' }}>

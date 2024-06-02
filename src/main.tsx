@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 
 import { SnackbarProvider } from 'notistack'
-import { LanguageProvider } from './context/LanguageContext.tsx'
+import { LanguageProvider } from './context/LanguageContext'
 import { pdfjs } from 'react-pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
