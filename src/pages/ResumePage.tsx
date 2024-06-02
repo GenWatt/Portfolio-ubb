@@ -2,7 +2,7 @@ import ResumeUS from '../assets/pdfs/CV_US.pdf'
 import ResumePL from '../assets/pdfs/CV_PL.pdf'
 
 import { useState } from 'react';
-import { Grid, IconButton, Theme, Tooltip, useMediaQuery } from '@mui/material';
+import { Grid, IconButton, Theme, ToggleButton, ToggleButtonGroup, Tooltip, useMediaQuery } from '@mui/material';
 import { useLanguage } from '../context/LanguageContext';
 import 'react-pdf/dist/Page/TextLayer.css';
 import LinearProgressWithLabel from '../components/LinearProgressWithLabel';
@@ -20,9 +20,12 @@ function ResumePage() {
     const [loaded, setLoaded] = useState(0)
     const [total, setTotal] = useState(0)
     const [showModel, setShowModel] = useState(false)
+    const [isResumeLoading, setIsResumeLoading] = useState(true)
+    const [mode, setMode] = useState('2D')
+
     const { t } = useTranslation()
     const snakbar = useSnackbar()
-    const [isResumeLoading, setIsResumeLoading] = useState(true)
+
 
     const progress = total === 0 ? 0 : Math.round(loaded / total * 100)
 
@@ -62,6 +65,11 @@ function ResumePage() {
         window.open(ResumePL)
     }
 
+    function handleChange(_: React.MouseEvent<HTMLElement>, value: string) {
+        setShowModel(value === '3D')
+        setMode(value)
+    }
+
     const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
     return (
@@ -79,11 +87,17 @@ function ResumePage() {
                         <FileDownloadIcon />
                     </IconButton>
                 </Tooltip>
-                <Tooltip title={t('showModelIn3D')}>
-                    <IconButton onClick={() => setShowModel(!showModel)} color='primary' size='large'>
-                        <ThreeDRotationIcon />
-                    </IconButton>
-                </Tooltip>
+                <ToggleButtonGroup color="primary"
+                    value={mode}
+                    exclusive
+                    onChange={handleChange}
+                    aria-label="Platform">
+                    <Tooltip title={t('showModelIn3D')}>
+                        <ToggleButton value="3D" color='primary' size='large'>
+                            <ThreeDRotationIcon />
+                        </ToggleButton>
+                    </Tooltip>
+                </ToggleButtonGroup>
             </Grid>
 
             {!isSmallScreen && showModel ? <ResumeDevice

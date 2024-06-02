@@ -15,10 +15,14 @@ function ProfilePage() {
                 <Typography variant="h4">Adrian Raszka</Typography>
                 <Typography variant="h6">{t('softwareDdeveloper')}</Typography>
             </Grid>
-            <Typography>
-                {t('profileDescription')}
-            </Typography>
-            <Contact />
+            <Grid item xs={12}>
+                <Typography>
+                    {t('profileDescription')}
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Contact />
+            </Grid>
         </Grid>
     )
 }

@@ -42,10 +42,16 @@ html::-webkit-scrollbar-track {
   border-radius: 3px;
   overflow-y: auto;
   background-color: black;
+  margin-top: 28px;
+  margin-left: -30px;
 }
 
 .content::-webkit-scrollbar {
   width: 5px;
+}
+
+.content::-webkit-scrollbar:horizontal {
+  height: 5px;
 }
 
 .content::-webkit-scrollbar-thumb {

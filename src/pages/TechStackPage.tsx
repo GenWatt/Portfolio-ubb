@@ -33,7 +33,7 @@ const techStack: ITechStackList[] = [
 
 function TechStackPage() {
     return (
-        <Grid container width={'90vw'} height={1450}>
+        <Grid container height={1450}>
             <TechStackCanvas techStack={techStack} />
         </Grid>
     );

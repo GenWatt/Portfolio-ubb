@@ -3,7 +3,7 @@ import useTranslation from "../hooks/useTranslation"
 import EducationList from "../components/education/EducationList"
 import UBB from '../assets/images/ubb.jpg'
 import zseeim from '../assets/images/zseeim.jpg'
-
+import EducationCanvas from "../components/3D/education/EducationCanvas"
 
 export interface EducationData {
     schoolName: string
@@ -38,6 +38,10 @@ function EducationPage() {
             </Grid>
             <Grid item>
                 <EducationList educationList={educationData} />
+            </Grid>
+
+            <Grid item xs={12} height={600}>
+                <EducationCanvas />
             </Grid>
         </Grid>
     )

@@ -1,6 +1,6 @@
 import { Document, Page } from 'react-pdf'
 
-import { Fragment, Suspense, useEffect, useState, } from 'react';
+import { Fragment, Suspense } from 'react';
 import { Typography } from '@mui/material';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { Canvas } from '@react-three/fiber';
@@ -18,38 +18,15 @@ export interface ResumeDeviceProps {
 }
 
 function ResumeDevice({ resume, numPages, isResumeLoading, onDocumentLoadSuccess, onLoadStart, onLoadProgress, onLoadError }: ResumeDeviceProps) {
-    const [scale, setScale] = useState(2)
-
-    function setModelSacle() {
-        if (window.innerWidth > 1200) {
-            setScale(0.7)
-        } else if (window.innerWidth > 800) {
-            setScale(0.5)
-        } else {
-            setScale(0.2)
-        }
-    }
-
-    function handleResize() {
-        setModelSacle()
-    }
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize)
-        handleResize()
-
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [])
+    const scale = 1
 
     return (
         <div style={{ width: '100%', height: '100vh' }}>
-            <Canvas camera={{ position: [0, 0, 6], near: 0.1, far: 1000, fov: 70 }}>
+            <Canvas camera={{ position: [0, 0, 15], near: 0.1, far: 1000, fov: 70 }}>
                 <pointLight position={[10, 10, 10]} intensity={1.5} />
                 <Suspense fallback={null}>
                     <group position={[0, 0, 0]}>
-                        <LaptopModel isLoading={isResumeLoading} groupProps={{ position: [0, 10, 0], scale: scale, rotation: [.3, 0, 0] }} scale={scale}>
+                        <LaptopModel isLoading={isResumeLoading} groupProps={{ position: [0, 10, 0], scale: scale, rotation: [.3, 0, 0] }}>
                             <Document file={resume} onLoadSuccess={onDocumentLoadSuccess} onLoadStart={onLoadStart} onLoadProgress={onLoadProgress} onLoadError={onLoadError}>
                                 {Array.from(new Array(numPages), (_, index) => (
                                     <Fragment key={index}>
