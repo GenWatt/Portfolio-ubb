@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Box, Button, FormControl, FormHelperText, Grid, IconButton, Input, InputLabel, Modal, Popover, SelectChangeEvent, TextField, TextareaAutosize, Theme, Typography } from '@mui/material'
+import { Box, Button, FormControl, FormHelperText, Grid, IconButton, Input, InputLabel, Modal, SelectChangeEvent, TextField, Theme, Typography } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
 
 import SideNav from './components/SideNav';

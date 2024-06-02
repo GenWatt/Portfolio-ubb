@@ -16,57 +16,39 @@ export default function SchoolModel() {
         <group ref={model} dispose={null}>
             <group rotation={[-Math.PI / 2, 0, 0]} scale={.1}>
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_2.geometry}
+                    geometry={(nodes.Object_2 as THREE.Mesh).geometry}
                     material={materials.lambert21SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_3.geometry}
+                    geometry={(nodes.Object_3 as THREE.Mesh).geometry}
                     material={materials.lambert25SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_4.geometry}
+                    geometry={(nodes.Object_4 as THREE.Mesh).geometry}
                     material={materials.lambert35SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_5.geometry}
+                    geometry={(nodes.Object_5 as THREE.Mesh).geometry}
                     material={materials.lambert38SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_6.geometry}
+                    geometry={(nodes.Object_6 as THREE.Mesh).geometry}
                     material={materials.lambert42SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_7.geometry}
+                    geometry={(nodes.Object_7 as THREE.Mesh).geometry}
                     material={materials.lambert44SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_8.geometry}
+                    geometry={(nodes.Object_8 as THREE.Mesh).geometry}
                     material={materials.lambert47SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_9.geometry}
+                    geometry={(nodes.Object_9 as THREE.Mesh).geometry}
                     material={materials.lambert48SG}
                 />
                 <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_10.geometry}
+                    geometry={(nodes.Object_10 as THREE.Mesh).geometry}
                     material={materials.lambert51SG}
                 />
             </group>
