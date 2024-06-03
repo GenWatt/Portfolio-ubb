@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://GenWatt.github.io/Portfolio-ubb",
+  "homepage": "https://GenWatt.github.io/Portfolio-ubb/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

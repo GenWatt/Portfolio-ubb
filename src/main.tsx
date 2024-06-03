@@ -12,11 +12,14 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+const isProduction = import.meta.env.MODE === 'production'
+const basename = isProduction ? '/Portfolio-ubb/' : '/'
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
   <SnackbarProvider maxSnack={5}>
     <LanguageProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <App />
       </BrowserRouter>
     </LanguageProvider>
