@@ -27,12 +27,16 @@ const projects: Project[] = [
 
 const usernames = ['GenWatt', 'GenWattStudent']
 
+const MAX_TIME_LOADING = 100
+
 function ProjectsPage() {
     const { getRepos, getOwners } = useGithub()
     const { t } = useTranslation()
 
     const [isRepoLoading, setIsRepoLoading] = useState(false)
     const [isUserLoading, setIsUserLoading] = useState(true)
+
+    const [isLoadingTooLong, setIsLoadingTooLong] = useState(false)
 
     const [repos, setRepos] = useState<Repository[]>([])
     const [users, setUsers] = useState<Owner[]>([])
@@ -56,8 +60,14 @@ function ProjectsPage() {
     }
 
     async function init() {
+        const time0 = performance.now()
         await getUsers()
         await getRepositores()
+        const time1 = performance.now()
+        console.log('Time loading', time1 - time0)
+        if (time1 - time0 > MAX_TIME_LOADING) {
+            setIsLoadingTooLong(true)
+        }
     }
 
     useEffect(() => {
@@ -66,6 +76,7 @@ function ProjectsPage() {
 
     return (
         <Grid container>
+            {isLoadingTooLong && <Typography gutterBottom color={'error'}>{t('loadingIsTakingTooLong') + " "} {MAX_TIME_LOADING}ms</Typography>}
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Typography variant='h4'>{t('myAccounts')}</Typography>

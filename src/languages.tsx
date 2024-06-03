@@ -3,7 +3,8 @@ export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy
     | 'seeRepositoryOnGithub' | 'seeUserOnGithub' | 'langCode' | 'langName' | 'projects' | 'myProjects'
     | 'repositoryLinkCopiedToClipboard' | 'langDirection' | 'softwareDdeveloper' | 'openDrawer' | 'closeDrawer' | 'technicalSchool'
     | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO' | 'education' | 'resumeLoadingError'
-    | 'showModelIn3D' | 'universitySpecialization' | 'universityStart' | 'universityEnd' | 'mechatronics' | 'technicalSchoolStart' | 'technicalSchoolEnd';
+    | 'showModelIn3D' | 'universitySpecialization' | 'universityStart' | 'universityEnd' | 'mechatronics' | 'technicalSchoolStart'
+    | 'technicalSchoolEnd' | 'loadingIsTakingTooLong';
 
 export type LanguageDictionary = {
     [key in TranslationKeys]: string;
@@ -54,6 +55,7 @@ export const dictionary: DictionaryType = {
         mechatronics: 'Mechatronika',
         technicalSchoolStart: 'Początek technikum',
         technicalSchoolEnd: 'Koniec technikum',
+        loadingIsTakingTooLong: 'Ładowanie trwa powyżej',
     },
     us: {
         langCode: 'us',
@@ -95,6 +97,7 @@ export const dictionary: DictionaryType = {
         mechatronics: 'Mechatronics',
         technicalSchoolStart: 'Technical school start',
         technicalSchoolEnd: 'Technical school end',
+        loadingIsTakingTooLong: 'Loading is taking above',
     },
     sp: {
         langCode: 'sp',
@@ -136,6 +139,7 @@ export const dictionary: DictionaryType = {
         mechatronics: 'Mecatrónica',
         technicalSchoolStart: 'Inicio de la escuela técnica',
         technicalSchoolEnd: 'Fin de la escuela técnica',
+        loadingIsTakingTooLong: 'La carga está tomando más de',
     },
     sa: {
         langCode: 'sa',
@@ -177,5 +181,6 @@ export const dictionary: DictionaryType = {
         mechatronics: 'الميكاترونيات',
         technicalSchoolStart: 'بداية المدرسة التقنية',
         technicalSchoolEnd: 'نهاية المدرسة التقنية',
+        loadingIsTakingTooLong: 'التحميل يستغرق أكثر من',
     },
 }
