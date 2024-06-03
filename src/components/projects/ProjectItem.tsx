@@ -45,7 +45,7 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
     }
 
     return (
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} lg={3}>
             <Card>
                 <Tooltip title={<div>
                     <Typography component={'span'} variant='subtitle2'>{t('seeUserOnGithub')}</Typography>

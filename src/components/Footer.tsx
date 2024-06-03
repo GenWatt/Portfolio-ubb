@@ -5,9 +5,9 @@ import useTranslation from '../hooks/useTranslation';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
     padding: theme.spacing(1, 0, 0, 0),
-    // position: 'fixed',
-    // left: 0,
-    // bottom: 0,
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
     width: '100%',
     backgroundColor: theme.palette.background.default,
     borderColor: theme.palette.divider,

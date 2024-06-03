@@ -215,7 +215,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
                 </List>
             </Drawer>
             {isMobileOpen && <Backdrop open={open} onClick={handleDrawerClose} />}
-            <Box component="main" sx={{ flexGrow: 1, p: 2, pointerEvents: isMobileOpen ? 'none' : 'auto' }}>
+            <Box component="main" sx={{ flexGrow: 1, pointerEvents: isMobileOpen ? 'none' : 'auto', paddingBottom: 5 }}>
                 <DrawerHeader />
                 <Router />
                 <Footer />
