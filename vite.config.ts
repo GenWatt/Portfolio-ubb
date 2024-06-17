@@ -9,7 +9,6 @@ export default ({ mode }: ConfigEnv) => {
   return defineConfig({
     plugins: [react()],
     assetsInclude: ['**/*.glb', '**/*.gltf'],
-    // @ts-ignore
     base: mode === 'production' ? '/Portfolio-ubb/' : '/',
   })
 }

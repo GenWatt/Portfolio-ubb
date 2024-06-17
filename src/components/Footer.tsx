@@ -21,7 +21,7 @@ function Footer() {
     const theme = useTheme()
 
     return (
-        <StyledFooter>
+        <StyledFooter id="Footer">
             <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
                 <Typography component={'span'} variant="body2">
                     &copy; {year} {t('createdBy')}

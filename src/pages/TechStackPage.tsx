@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { FormControl, Grid, Input, InputLabel, Slider, Typography } from '@mui/material'
 import JS from '../assets/images/js.png'
 import REACT from '../assets/images/react.png'
 import VUE from '../assets/images/vue.png'
@@ -10,6 +10,8 @@ import PYTHON from '../assets/images/python.jpg'
 import CSHARP from '../assets/images/csharp.jpg'
 import DOTNET from '../assets/images/.Net.png'
 import TechStackCanvas from '../components/3D/techStack/TechStackCanvas'
+import useHelper from '../hooks/useHelper'
+import { useLayoutEffect, useRef, useState } from 'react'
 
 export interface ITechStackList {
     name: string
@@ -32,9 +34,34 @@ const techStack: ITechStackList[] = [
 ];
 
 function TechStackPage() {
+    const { getViewHeight } = useHelper();
+    const [viewHeight, setViewHeight] = useState(0);
+    const [speed, setSpeed] = useState(0.001);
+    const sliderRef = useRef<HTMLDivElement>(null);
+
+    const handleResize = () => {
+        setViewHeight(getViewHeight() - sliderRef.current!.clientHeight);
+    }
+
+    useLayoutEffect(() => {
+        setViewHeight(getViewHeight() - sliderRef.current!.clientHeight);
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [getViewHeight]);
+
     return (
-        <Grid container height={1450}>
-            <TechStackCanvas techStack={techStack} />
+        <Grid container>
+            <Grid ref={sliderRef} item xs={12} sm={1}>
+                <span>Speed ({speed})</span>
+                <Slider value={speed} onChange={(e, newValue) => setSpeed(newValue as number)} min={0.0001} max={0.002} step={0.0001} />
+            </Grid>
+            <Grid container height={viewHeight}>
+                <TechStackCanvas techStack={techStack} speed={speed} />
+            </Grid>
         </Grid>
     );
 }

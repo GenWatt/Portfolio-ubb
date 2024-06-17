@@ -63,7 +63,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
+    padding: theme.spacing(1, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
@@ -173,8 +173,8 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
     return (
         <Box component='div' sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open} dir={language.langDirection}>
-                <Toolbar sx={{ width: '100%' }}>
+            <AppBar id='AppBar' position="fixed" open={open} dir={language.langDirection}>
+                <Toolbar sx={{ width: '100%', p: 1 }}>
                     <Tooltip title={t('openDrawer')} placement='right'>
                         <IconButton
                             color="inherit"
@@ -206,7 +206,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
                     </Tooltip>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                <List sx={{ padding: 0 }}>
                     {navRoutes.map((route) => (
                         <NavLinkDrawer route={route} key={route.text} isMobile={isMobile} handleDrawerClose={handleDrawerClose} open={open} />
                     ))}

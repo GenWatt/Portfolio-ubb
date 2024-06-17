@@ -6,15 +6,16 @@ import TechStackList from './TechStackList'
 
 export interface TechStackListProps {
     techStack: ITechStackList[]
+    speed: number
 }
 
-function TechStackCanvas({ techStack }: TechStackListProps) {
+function TechStackCanvas({ techStack, speed }: TechStackListProps) {
     return (
         <Canvas>
             <ambientLight intensity={1} />
             <Environment preset="studio" background />
             <OrbitControls />
-            <TechStackList techStack={techStack} />
+            <TechStackList techStack={techStack} speed={speed} />
         </Canvas>
     )
 }
