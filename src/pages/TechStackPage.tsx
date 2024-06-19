@@ -1,4 +1,4 @@
-import { FormControl, Grid, Input, InputLabel, Slider, Typography } from '@mui/material'
+import { Grid, Slider } from '@mui/material'
 import JS from '../assets/images/js.png'
 import REACT from '../assets/images/react.png'
 import VUE from '../assets/images/vue.png'
@@ -33,18 +33,29 @@ const techStack: ITechStackList[] = [
     { name: 'Unity', description: 'A cross-platform game engine developed by Unity Technologies, first announced and released in June 2005 at Apple Inc.\'s Worldwide Developers Conference as a Mac OS X-exclusive game engine.', image: UNITY, stars: 4 },
 ];
 
+const MIN_SPEED = 0.0001;
+const MAX_SPEED = 0.01;
+const STEP_SPEED = 0.0001;
+
 function TechStackPage() {
-    const { getViewHeight } = useHelper();
+    const { getViewHeight, getViewWidth } = useHelper();
     const [viewHeight, setViewHeight] = useState(0);
+    const [viewWidth, setViewWidth] = useState(0);
     const [speed, setSpeed] = useState(0.001);
     const sliderRef = useRef<HTMLDivElement>(null);
 
     const handleResize = () => {
         setViewHeight(getViewHeight() - sliderRef.current!.clientHeight);
+        setViewWidth(getViewWidth());
+    }
+
+    const handleValueChange = (_1: Event, value: number | number[], _2: number) => {
+        const newValue = Array.isArray(value) ? value[0] : value;
+        setSpeed(newValue);
     }
 
     useLayoutEffect(() => {
-        setViewHeight(getViewHeight() - sliderRef.current!.clientHeight);
+        handleResize();
 
         window.addEventListener('resize', handleResize);
 
@@ -57,10 +68,17 @@ function TechStackPage() {
         <Grid container>
             <Grid ref={sliderRef} item xs={12} sm={1}>
                 <span>Speed ({speed})</span>
-                <Slider value={speed} onChange={(e, newValue) => setSpeed(newValue as number)} min={0.0001} max={0.002} step={0.0001} />
+                <Slider
+                    value={speed}
+                    onChange={handleValueChange}
+                    min={MIN_SPEED}
+                    max={MAX_SPEED}
+                    step={STEP_SPEED} />
             </Grid>
             <Grid container height={viewHeight}>
-                <TechStackCanvas techStack={techStack} speed={speed} />
+                <div style={{ width: viewWidth, height: viewHeight }}>
+                    <TechStackCanvas techStack={techStack} speed={speed} />
+                </div>
             </Grid>
         </Grid>
     );

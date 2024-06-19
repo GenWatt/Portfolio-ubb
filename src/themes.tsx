@@ -17,7 +17,7 @@ export const darkThemeBluePink = createTheme({
         },
         text: {
             primary: '#e8eaf6',
-            secondary: '#90caf9',
+            // secondary: '#90caf9',
         },
     },
     components: {
@@ -32,6 +32,14 @@ export const darkThemeBluePink = createTheme({
                 },
             },
         },
+        MuiModal: {
+            styleOverrides: {
+                root: {
+                    backdropFilter: 'blur(10px)',
+                    zIndex: 9999999,
+                },
+            }
+        }
     },
 })
 
@@ -52,7 +60,7 @@ export const darkThemeGreenPurple = createTheme({
         },
         text: {
             primary: '#e8eaf6',
-            secondary: '#90caf9',
+            // secondary: '#90caf9',
         },
     },
     components: {
@@ -67,9 +75,16 @@ export const darkThemeGreenPurple = createTheme({
                 },
             },
         },
+        MuiModal: {
+            styleOverrides: {
+                root: {
+                    backdropFilter: 'blur(2px)',
+                    zIndex: 9999999,
+                },
+            }
+        }
     },
 })
-
 
 export const lightTheme = createTheme({
     palette: {
@@ -105,5 +120,13 @@ export const lightTheme = createTheme({
                 },
             },
         },
+        MuiModal: {
+            styleOverrides: {
+                root: {
+                    backdropFilter: 'blur(10px)',
+                    zIndex: 9999999,
+                },
+            }
+        }
     },
 })

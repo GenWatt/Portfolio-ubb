@@ -11,7 +11,16 @@ function useHelper() {
         return window.innerHeight - appBarHeight - footerHeight - mainPaddingY
     }
 
-    return { getViewHeight }
+    function getViewWidth() {
+        const drawerEl = document.getElementById('Drawer')
+        const mainEl = document.getElementsByTagName('main')[0]
+        const drawerWidth = drawerEl ? drawerEl.clientWidth : 0
+        const mainPaddingX = mainEl ? parseInt(window.getComputedStyle(mainEl).paddingLeft) + parseInt(window.getComputedStyle(mainEl).paddingRight) : 0
+
+        return window.innerWidth - drawerWidth - mainPaddingX - 1
+    }
+
+    return { getViewHeight, getViewWidth }
 }
 
 export default useHelper

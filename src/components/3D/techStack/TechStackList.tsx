@@ -15,13 +15,21 @@ function TechStackList({ techStack, speed = 0.001 }: TechStackListProps) {
     const [hovered, setHovered] = useState(false);
     const { camera } = useThree();
 
-    useEffect(() => {
+    const handleRadius = () => {
         const screenWidth = window.innerWidth;
         const itemWidth = 280;
         const padding = 50;
         const maxRadius = 600;
         const calculatedRadius = Math.min(Math.max(screenWidth / 2, itemWidth + padding), maxRadius);
         setRadius(calculatedRadius);
+    }
+
+    useEffect(() => {
+        handleRadius();
+        window.addEventListener('resize', handleRadius);
+        return () => {
+            window.removeEventListener('resize', handleRadius);
+        }
     }, []);
 
     const positions: Array<[number, number, number]> = techStack.map((_, i) => {
@@ -40,7 +48,7 @@ function TechStackList({ techStack, speed = 0.001 }: TechStackListProps) {
     });
 
     useEffect(() => {
-        camera.position.set(0, -4, 2);  // Adjust as necessary
+        camera.position.set(0, -4, 2);
     }, [camera]);
 
     return (

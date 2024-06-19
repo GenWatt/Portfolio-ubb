@@ -15,22 +15,26 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@hookform/resolvers": "^3.6.0",
     "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.19",
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.6",
     "@types/three": "^0.164.1",
     "axios": "^1.7.2",
+    "emailjs-com": "^3.2.0",
     "notistack": "^3.0.1",
     "pdfjs-dist": "^4.3.136",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.52.0",
     "react-material-ui-carousel": "^3.4.2",
     "react-pdf": "^9.0.0",
     "react-router-dom": "^6.23.1",
     "react-transition-group": "^4.4.5",
     "react-use-measure": "^2.1.1",
-    "three": "^0.164.1"
+    "three": "^0.164.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.13.0",

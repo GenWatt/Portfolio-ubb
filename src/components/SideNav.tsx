@@ -197,7 +197,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
                     </Grid>
                 </Toolbar>
             </AppBar>
-            <Drawer dir={language.langDirection} variant="permanent" open={open} anchor={language.langDirection === 'rtl' ? 'right' : 'left'}>
+            <Drawer id="Drawer" dir={language.langDirection} variant="permanent" open={open} anchor={language.langDirection === 'rtl' ? 'right' : 'left'}>
                 <DrawerHeader>
                     <Tooltip title={t('closeDrawer')} placement='right'>
                         <IconButton onClick={handleDrawerClose}>

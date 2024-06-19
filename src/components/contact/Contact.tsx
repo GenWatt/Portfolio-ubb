@@ -1,7 +1,7 @@
 import { Grid, Typography, useTheme } from '@mui/material'
 import PhoneIcon from '@mui/icons-material/Phone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import useTranslation from '../hooks/useTranslation';
+import useTranslation from '../../hooks/useTranslation';
 import EmailIcon from '@mui/icons-material/Email';
 
 function Contact() {

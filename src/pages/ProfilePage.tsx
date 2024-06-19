@@ -1,5 +1,5 @@
 import { Avatar, Grid, Typography, useTheme } from '@mui/material'
-import Contact from '../components/Contact'
+import Contact from '../components/contact/Contact'
 import useTranslation from '../hooks/useTranslation'
 
 function ProfilePage() {
