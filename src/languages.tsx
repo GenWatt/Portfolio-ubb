@@ -4,11 +4,18 @@ export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy
     | 'repositoryLinkCopiedToClipboard' | 'langDirection' | 'softwareDdeveloper' | 'openDrawer' | 'closeDrawer' | 'technicalSchool'
     | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO' | 'education' | 'resumeLoadingError'
     | 'showModelIn3D' | 'universitySpecialization' | 'universityStart' | 'universityEnd' | 'mechatronics' | 'technicalSchoolStart'
-    | 'technicalSchoolEnd' | 'loadingIsTakingTooLong';
+    | 'technicalSchoolEnd' | 'loadingIsTakingTooLong' | 'now' | 'technicalSchoolDescription' | 'universityDescription';
+
+export type OptionalTranslationKeys = 'authorName';
+
+export type RequiredTranslationKeys = Exclude<TranslationKeys, OptionalTranslationKeys>;
 
 export type LanguageDictionary = {
-    [key in TranslationKeys]: string;
-};
+    [key in RequiredTranslationKeys]: string;
+} & {
+        [key in OptionalTranslationKeys]?: string;
+    };
+
 
 export type DictionaryType = {
     [key: string]: LanguageDictionary;
@@ -56,6 +63,9 @@ export const dictionary: DictionaryType = {
         technicalSchoolStart: 'Początek technikum',
         technicalSchoolEnd: 'Koniec technikum',
         loadingIsTakingTooLong: 'Ładowanie trwa powyżej',
+        now: 'teraz',
+        technicalSchoolDescription: "Jako absolwent technikum o specjalizacji Mechatronika zdobyłem wszechstronną wiedzę i praktyczne umiejętności z zakresu elektroniki, elektryki oraz programowania sterowników PLC. Program nauczania zapewnił solidne podstawy w tych obszarach, kładąc nacisk na szkolenie praktyczne i zastosowania w rzeczywistości. Edukacja ta wyposażyła mnie w umiejętność rozumienia i rozwiązywania złożonych problemów technicznych, projektowania i programowania sterowników PLC oraz efektywnego działania w dziedzinie mechatroniki.",
+        universityDescription: "W trakcie studiów na Uniwersytecie zdobyłem obszerną wiedzę i praktyczne doświadczenie w różnych językach programowania i technologiach. Opanowałem C++ i C#, a także zapoznałem się z technologiami .Net, takimi jak ASP.NET i WPF. Ponadto zgłębiłem programowanie PLC, co dodatkowo poszerzyło moje umiejętności techniczne. Ponadto nauczyłem się tworzyć strony internetowe za pomocą React oraz zarządzać bazami danych SQL. To wszechstronne wykształcenie wyposażyło mnie w różnorodny zestaw umiejętności, umożliwiając mi radzenie sobie z złożonymi wyzwaniami związanymi z rozwojem oprogramowania oraz efektywne działanie w dziedzinie informatyki."
     },
     us: {
         langCode: 'us',
@@ -98,6 +108,10 @@ export const dictionary: DictionaryType = {
         technicalSchoolStart: 'Technical school start',
         technicalSchoolEnd: 'Technical school end',
         loadingIsTakingTooLong: 'Loading is taking above',
+        authorName: 'Adrian Raszka',
+        now: 'now',
+        technicalSchoolDescription: "As a graduate of a technical school specializing in Mechatronics, I have gained comprehensive knowledge and practical skills in electronics, electricity, and Programmable Logic Controller (PLC) programming. The curriculum provided a strong foundation in these areas, emphasizing hands-on training and real-world applications. This education has equipped me with the ability to understand and solve complex technical problems, design and program PLC controllers, and contribute effectively in the field of Mechatronics.",
+        universityDescription: "During my studies at the University, I gained extensive knowledge and practical experience in various programming languages and technologies. I mastered C++ and C#, and got acquainted with .Net technologies such as ASP.NET and WPF. I also delved into PLC programming, which further broadened my technical skills. In addition, I learned how to create web pages using React and manage SQL databases. This comprehensive education has equipped me with a diverse set of skills, enabling me to tackle complex software development challenges and contribute effectively in the field of computer science."
     },
     sp: {
         langCode: 'sp',
@@ -140,6 +154,9 @@ export const dictionary: DictionaryType = {
         technicalSchoolStart: 'Inicio de la escuela técnica',
         technicalSchoolEnd: 'Fin de la escuela técnica',
         loadingIsTakingTooLong: 'La carga está tomando más de',
+        now: 'ahora',
+        technicalSchoolDescription: "Como graduado de una escuela técnica especializada en Mecatrónica, he adquirido conocimientos y habilidades prácticas en electrónica, electricidad y programación de controladores lógicos programables (PLC). El plan de estudios proporcionó una sólida base en estas áreas, enfatizando la capacitación práctica y las aplicaciones del mundo real. Esta educación me ha dotado de la capacidad de comprender y resolver problemas técnicos complejos, diseñar y programar controladores PLC y contribuir eficazmente en el campo de la Mecatrónica.",
+        universityDescription: "Durante mis estudios en la Universidad, adquirí amplios conocimientos y experiencia práctica en varios lenguajes de programación y tecnologías. Dominé C++ y C#, y me familiaricé con tecnologías .Net como ASP.NET y WPF. También profundicé en la programación de PLC, lo que amplió aún más mis habilidades técnicas. Además, aprendí a crear páginas web con React y a gestionar bases de datos SQL. Esta educación integral me ha dotado de un conjunto diverso de habilidades, lo que me permite abordar desafíos complejos de desarrollo de software y contribuir eficazmente en el campo de la informática."
     },
     sa: {
         langCode: 'sa',
@@ -182,5 +199,8 @@ export const dictionary: DictionaryType = {
         technicalSchoolStart: 'بداية المدرسة التقنية',
         technicalSchoolEnd: 'نهاية المدرسة التقنية',
         loadingIsTakingTooLong: 'التحميل يستغرق أكثر من',
+        now: 'الآن',
+        technicalSchoolDescription: "كخريج من المدرسة التقنية المتخصصة في الميكاترونيك، اكتسبت معرفة شاملة ومهارات عملية في الإلكترونيات والكهرباء وبرمجة المتحكمات المنطقية القابلة للبرمجة (PLC). قدم المنهج الدراسي أساسًا قويًا في هذه المجالات، مع التركيز على التدريب العملي والتطبيقات العملية. هذا التعليم قد زودني بالقدرة على فهم وحل المشاكل التقنية المعقدة، وتصميم وبرمجة متحكمات PLC، والمساهمة بفعالية في مجال الميكاترونيك.",
+        universityDescription: "خلال دراستي في الجامعة، اكتسبت معرفة وخبرة عملية واسعة في لغات البرمجة والتقنيات المختلفة. تقنمت في C++ و C#، وتعرفت على تقنيات .Net مثل ASP.NET و WPF. كما تعمقت في برمجة PLC، مما زاد من مهاراتي التقنية. بالإضافة إلى ذلك، تعلمت كيفية إنشاء صفحات ويب باستخدام React وإدارة قواعد بيانات SQL. هذا التعليم الشامل قد زودني بمجموعة متنوعة من المهارات، مما يمكنني من التعامل مع تحديات تطوير البرمجيات المعقدة والمساهمة بفعالية في مجال علوم الكمبيوتر."
     },
 }

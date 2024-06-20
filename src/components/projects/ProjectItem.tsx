@@ -11,7 +11,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import { Repository } from '../../types';
 import { useTheme } from '@mui/material/styles';
 import Carousel from 'react-material-ui-carousel';
-import { Button, Chip, Grid, Tooltip } from '@mui/material';
+import { Box, Button, Chip, Grid, Tooltip } from '@mui/material';
 import useFormat from '../../hooks/useFormat';
 import { GitHub } from '@mui/icons-material';
 import { useSnackbar } from 'notistack';
@@ -40,12 +40,8 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
         color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit'
     }
 
-    const styles2 = {
-        marginTop: 2, gap: 1, display: 'flex'
-    }
-
     return (
-        <Grid item xs={12} md={6} lg={3}>
+        <Grid item xs={12} md={6} lg={4}>
             <Card>
                 <Tooltip title={<div>
                     <Typography component={'span'} variant='subtitle2'>{t('seeUserOnGithub')}</Typography>
@@ -54,11 +50,12 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                     <a href={repo.owner.html_url} target='blank'>
                         <CardHeader
                             avatar={(
-                                <Avatar sx={{ bgcolor: theme.palette.primary.main, marginLeft: 1 }} src={repo.owner.avatar_url}>
+                                <Avatar sx={{ bgcolor: theme.palette.primary.main }} src={repo.owner.avatar_url}>
                                     {repo.owner.login[0]}
                                 </Avatar>
                             )}
                             title={repo.owner.login}
+                            sx={{ px: 1 }}
                         />
                     </a>
                 </Tooltip>
@@ -80,7 +77,7 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                 </div>
 
                 <Tooltip title={t('seeRepositoryOnGithub')}>
-                    <CardContent>
+                    <CardContent sx={{ p: 1 }}>
                         <a href={repo.html_url} target='blank'>
                             <Typography variant="h5" color="text.primary">
                                 {repo.name}
@@ -90,11 +87,13 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                             </Typography>
                         </a>
 
-                        <div style={{ ...styles2 }}>
+                        <Grid container spacing={1} pt={1}>
                             {repo.project.tags.map((tag) => (
-                                <Chip key={tag} label={tag} />
+                                <Grid item key={tag}>
+                                    <Chip label={tag} />
+                                </Grid>
                             ))}
-                        </div>
+                        </Grid>
                     </CardContent>
                 </Tooltip>
 
@@ -104,10 +103,11 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                             <GitHub sx={{ marginRight: 1 }} /> {t('seeOnGithub')}
                         </Button>
                     </a>
-                    <IconButton aria-label="add to favorites">
+
+                    <Box component={'div'} display={'flex'} gap={.5}>
                         <FavoriteIcon color='error' />
                         <Typography color={theme.palette.error.main}>({repo.stargazers_count})</Typography>
-                    </IconButton>
+                    </Box>
 
                     <IconButton aria-label="share" onClick={share}>
                         <ShareIcon />

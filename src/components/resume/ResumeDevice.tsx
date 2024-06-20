@@ -26,7 +26,7 @@ function ResumeDevice({ resume, numPages, isResumeLoading, onDocumentLoadSuccess
                 <pointLight position={[10, 10, 10]} intensity={1.5} />
                 <Suspense fallback={null}>
                     <group position={[0, 0, 0]}>
-                        <LaptopModel isLoading={isResumeLoading} groupProps={{ position: [0, 10, 0], scale: scale, rotation: [.3, 0, 0] }}>
+                        <LaptopModel isLoading={isResumeLoading} groupProps={{ position: [0, 10, 0], scale, rotation: [.3, 0, 0] }}>
                             <Document file={resume} onLoadSuccess={onDocumentLoadSuccess} onLoadStart={onLoadStart} onLoadProgress={onLoadProgress} onLoadError={onLoadError}>
                                 {Array.from(new Array(numPages), (_, index) => (
                                     <Fragment key={index}>

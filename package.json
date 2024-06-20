@@ -31,6 +31,7 @@
     "react-material-ui-carousel": "^3.4.2",
     "react-pdf": "^9.0.0",
     "react-router-dom": "^6.23.1",
+    "react-spring": "^9.7.3",
     "react-transition-group": "^4.4.5",
     "react-use-measure": "^2.1.1",
     "three": "^0.164.1",

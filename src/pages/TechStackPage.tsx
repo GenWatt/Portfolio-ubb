@@ -66,7 +66,7 @@ function TechStackPage() {
 
     return (
         <Grid container>
-            <Grid ref={sliderRef} item xs={12} sm={1}>
+            <Grid ref={sliderRef} item xs={12} sm={4}>
                 <span>Speed ({speed})</span>
                 <Slider
                     value={speed}

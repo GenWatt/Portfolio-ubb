@@ -30,7 +30,7 @@ function App() {
 
   function changeCssVariables(theme: Theme) {
     document.documentElement.style.setProperty('--scrollbar-thumb-color', theme.palette.primary.main);
-    document.documentElement.style.setProperty('--scrollbar-track-color', theme.palette.background.default);
+    document.documentElement.style.setProperty('--scrollbar-track-color', theme.palette.background.paper);
   }
 
   const handleThemeChange = (event: SelectChangeEvent) => {

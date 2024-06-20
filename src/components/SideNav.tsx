@@ -59,13 +59,19 @@ const closedMixin = (theme: Theme): CSSObject => ({
     },
 });
 
-const DrawerHeader = styled('div')(({ theme }) => ({
+interface DrawerHeaderProps {
+    paddingTop?: string;
+}
+
+const DrawerHeader = styled('div')<DrawerHeaderProps>(({ paddingTop }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: theme.spacing(2, 1),
+    paddingTop
+    // padding: theme.spacing(2, 1),
+
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+    // ...theme.mixins.toolbar,
 }));
 
 interface AppBarProps extends MuiAppBarProps {
@@ -130,6 +136,8 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
     const [open, setOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const [paddintTop, setPaddingTop] = useState(0);
+    const [paddintTop2, setPaddingTop2] = useState(0);
 
     const handleDrawerOpen = () => setOpen(true);
     const handleDrawerClose = () => setOpen(false);
@@ -146,6 +154,14 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
     }
 
     const handleResize = () => {
+        const appBarEl = document.getElementById('AppBar');
+        const closeButton = document.getElementById('CloseButton');
+        const closeButtonHeight = closeButton ? closeButton.clientHeight : 0;
+        const appBarHeight = appBarEl ? appBarEl.clientHeight : 0;
+
+        setPaddingTop(appBarHeight - closeButtonHeight);
+        setPaddingTop2(appBarHeight);
+
         if (window.innerWidth < theme.breakpoints.values.sm) {
             setIsMobile(true);
         } else {
@@ -184,7 +200,6 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
                             sx={{
                                 [language.langDirection === 'rtl' ? 'marginLeft' : 'marginRight']: 5,
                                 ...(open && { display: 'none' }),
-                                // minHeight: 72
                             }}
                         >
                             <MenuIcon />
@@ -199,9 +214,9 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
                 </Toolbar>
             </AppBar>
             <Drawer id="Drawer" dir={language.langDirection} variant="permanent" open={open} anchor={language.langDirection === 'rtl' ? 'right' : 'left'}>
-                <DrawerHeader>
+                <DrawerHeader paddingTop={`${paddintTop}px`}>
                     <Tooltip title={t('closeDrawer')} placement='right'>
-                        <IconButton onClick={handleDrawerClose}>
+                        <IconButton id="CloseButton" onClick={handleDrawerClose}>
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
                     </Tooltip>
@@ -217,7 +232,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
             </Drawer>
             {isMobileOpen && <Backdrop open={open} onClick={handleDrawerClose} />}
             <Box component="main" sx={{ flexGrow: 1, pointerEvents: isMobileOpen ? 'none' : 'auto', paddingBottom: 5, p: 2 }}>
-                <DrawerHeader />
+                <DrawerHeader paddingTop={`${paddintTop2}px`} />
                 <Router />
                 <Footer />
             </Box>

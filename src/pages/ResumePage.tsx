@@ -26,7 +26,6 @@ function ResumePage() {
     const { t } = useTranslation()
     const snakbar = useSnackbar()
 
-
     const progress = total === 0 ? 0 : Math.round(loaded / total * 100)
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
@@ -74,7 +73,7 @@ function ResumePage() {
 
     return (
         <Grid container>
-            <LinearProgressWithLabel value={progress} />
+            {loaded !== total && <LinearProgressWithLabel value={progress} />}
             <Grid container>
                 <Tooltip title={t('seeInNewTabResume')}>
                     <IconButton onClick={seeInNewTab} color='primary' size='large'>

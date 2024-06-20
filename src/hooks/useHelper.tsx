@@ -1,5 +1,9 @@
+import { useTheme } from "@mui/material"
 
 function useHelper() {
+    const theme = useTheme()
+    const isMobile = window.innerWidth < theme.breakpoints.values.sm
+
     function getViewHeight() {
         const appBarEl = document.getElementById('AppBar')
         const footerEl = document.getElementById('Footer')
@@ -14,7 +18,7 @@ function useHelper() {
     function getViewWidth() {
         const drawerEl = document.getElementById('Drawer')
         const mainEl = document.getElementsByTagName('main')[0]
-        const drawerWidth = drawerEl ? drawerEl.clientWidth : 0
+        const drawerWidth = drawerEl && !isMobile ? drawerEl.clientWidth : 0
         const mainPaddingX = mainEl ? parseInt(window.getComputedStyle(mainEl).paddingLeft) + parseInt(window.getComputedStyle(mainEl).paddingRight) : 0
 
         return window.innerWidth - drawerWidth - mainPaddingX - 1

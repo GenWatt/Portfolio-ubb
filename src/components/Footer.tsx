@@ -4,7 +4,7 @@ import { Container, Typography, useTheme } from "@mui/material";
 import useTranslation from '../hooks/useTranslation';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
-    padding: theme.spacing(1, 0, 0, 0),
+    padding: theme.spacing(0.5, 0, 0.5, 0),
     position: 'fixed',
     left: 0,
     bottom: 0,

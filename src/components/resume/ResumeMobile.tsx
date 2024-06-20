@@ -54,7 +54,7 @@ function ResumeMobile({ resume, numPages, onDocumentLoadSuccess, onLoadStart, on
                 {Array.from(new Array(numPages), (_, index) => (
                     <Fragment key={index}>
                         <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} renderTextLayer={false} scale={scale} />
-                        <Typography variant='caption' align='center'>{index + 1} / {numPages}</Typography>
+                        <Typography color={theme.palette.primary.main} variant='caption' align='center'>{index + 1} / {numPages}</Typography>
                     </Fragment>
                 ))}
             </Document>

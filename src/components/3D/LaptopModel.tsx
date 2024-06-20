@@ -15,7 +15,6 @@ export interface LaptopModelProps {
 function LaptopModel({ groupProps, children, isLoading }: LaptopModelProps) {
   const group = useRef<THREE.Group | null>(null)
   const { nodes, materials } = useGLTF(laptopModelUrl)
-
   const wrapper = useRef<HTMLDivElement>(null)
 
   const handleScroll = () => {
@@ -39,7 +38,7 @@ function LaptopModel({ groupProps, children, isLoading }: LaptopModelProps) {
     group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, targetY, 0.1)
   })
 
-  const htmlPosition: [number, number, number] = [0.55, 0.1, -0.5];
+  const htmlPosition: [number, number, number] = [0, 0.05, 0];
 
   return (
     <group ref={group} {...groupProps} dispose={null}>
