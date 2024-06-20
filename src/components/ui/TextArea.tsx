@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { TextField, FormHelperText, TextFieldProps, Typography } from '@mui/material';
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { TextField, FormHelperText, TextFieldProps, Typography, useTheme } from '@mui/material';
+import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import { MAX_MESSAGE_LENGTH } from '../../constance';
 
 export type TextAreaProps = TextFieldProps & {
     register: UseFormRegisterReturn;
-    errors?: any;
+    formError: FieldError | undefined;
 };
 
-function TextArea({ register, errors, onChange, value, ...props }: TextAreaProps) {
+function TextArea({ register, formError, onChange, value, ...props }: TextAreaProps) {
     const [textCount, setTextCount] = useState(0);
+    const theme = useTheme();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTextCount(event.target.value.length);
@@ -27,9 +28,9 @@ function TextArea({ register, errors, onChange, value, ...props }: TextAreaProps
                 onChange={handleChange}
                 value={value}
             />
-            <Typography variant='body2' mt={1}>{textCount}/{MAX_MESSAGE_LENGTH}</Typography>
-            {errors && errors.message && (
-                <FormHelperText error>{errors.message}</FormHelperText>
+            <Typography color={theme.palette.primary.main} variant='body2' mt={1}>{textCount}/{MAX_MESSAGE_LENGTH}</Typography>
+            {formError && (
+                <FormHelperText sx={{ m: 0 }} error>{formError.message}</FormHelperText>
             )}
         </>
     );

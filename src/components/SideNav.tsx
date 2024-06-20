@@ -63,7 +63,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: theme.spacing(1, 1),
+    padding: theme.spacing(2, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
@@ -175,21 +175,21 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
             <CssBaseline />
             <AppBar id='AppBar' position="fixed" open={open} dir={language.langDirection}>
                 <Toolbar sx={{ width: '100%', p: 1 }}>
-                    {/* <Tooltip title={t('openDrawer')} placement='right'> */}
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{
-                            [language.langDirection === 'rtl' ? 'marginLeft' : 'marginRight']: 5,
-                            ...(open && { display: 'none' }),
-                            minHeight: 72
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    {/* </Tooltip> */}
+                    <Tooltip title={t('openDrawer')} placement='right'>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            sx={{
+                                [language.langDirection === 'rtl' ? 'marginLeft' : 'marginRight']: 5,
+                                ...(open && { display: 'none' }),
+                                // minHeight: 72
+                            }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Tooltip>
                     <Grid container alignItems={'center'} justifyContent={'space-between'}>
                         <Typography color={theme.palette.mode === 'light' ? theme.palette.text.secondary : theme.palette.primary.main} variant="h5" noWrap component="div">
                             {activeText(location.pathname)}

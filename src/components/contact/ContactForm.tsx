@@ -61,10 +61,10 @@ function ContactForm({ loading = false, handleSubmit, handleChange }: ContactFor
                     onChange={handleFormChange}
                     value={form.from_email}
                 />
-                {errors.from_email && <FormHelperText>{errors.from_email.message}</FormHelperText>}
+                {errors.from_email && <FormHelperText sx={{ mx: 0 }}>{errors.from_email.message}</FormHelperText>}
             </FormControl>
             <FormControl error={!!errors.message}>
-                <TextArea register={{ ...register("message") }} errors={errors} label="Message" onChange={handleFormChange} value={form.message} />
+                <TextArea register={{ ...register("message") }} formError={errors.message} label="Message" onChange={handleFormChange} value={form.message} />
             </FormControl>
             <Button disabled={loading} type="submit" variant="contained" color="primary">
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
