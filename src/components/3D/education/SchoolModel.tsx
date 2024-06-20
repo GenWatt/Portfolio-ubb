@@ -2,9 +2,11 @@ import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three';
 import { useRef } from 'react';
+// @ts-ignore
+import schoolModel from '/school_building.glb'
 
 export default function SchoolModel() {
-    const { nodes, materials } = useGLTF('/school_building.glb')
+    const { nodes, materials } = useGLTF(schoolModel)
     const model = useRef<THREE.Group | null>(null)
 
     useFrame(() => {

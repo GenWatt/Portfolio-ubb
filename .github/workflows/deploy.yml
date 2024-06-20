@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
-
+env:
+  VITE_TEMPLATE_ID: ${{ secrets.VITE_TEMPLATE_ID }}
+  VITE_SERVICE_ID: ${{ secrets.VITE_SERVICE_ID }}
+  VITE_USER_ID: ${{ secrets.VITE_USER_ID }}
+  
 jobs:
   build:
     name: Build
