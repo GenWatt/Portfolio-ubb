@@ -176,6 +176,14 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
     }, [isMobile, open])
 
     useEffect(() => {
+        const timer = setTimeout(() => {
+            handleResize();
+        }, theme.transitions.duration.enteringScreen);
+
+        return () => clearTimeout(timer);
+    }, [open])
+
+    useEffect(() => {
         window.addEventListener('resize', handleResize);
         handleResize();
 
