@@ -4,20 +4,25 @@ import { useLanguage } from '../../context/LanguageContext'
 import useTranslation from '../../hooks/useTranslation';
 import FontSizeInput from '../FontSizeInput';
 
-
 export interface UserPreferencesProps extends GridProps {
     currentTheme: string;
     handleThemeChange: (event: SelectChangeEvent) => void;
     themes: { label: string, name: string, theme: Theme }[];
+    onLanguageChange?: (event: SelectChangeEvent) => void;
+    onFontSizeChange?: (size: number) => void;
 }
 
-function UserPreferences({ currentTheme, handleThemeChange, themes, ...boxProps }: UserPreferencesProps) {
+function UserPreferences({ currentTheme, handleThemeChange, themes, onLanguageChange, onFontSizeChange, ...boxProps }: UserPreferencesProps) {
     const theme = useTheme()
     const { language, getSupportedLanguages, changeLanguage } = useLanguage()
     const { t } = useTranslation()
 
     const handleLanguageChange = (event: SelectChangeEvent) => {
         changeLanguage(event.target.value as string);
+
+        if (onLanguageChange) {
+            onLanguageChange(event)
+        }
     }
 
     return (
@@ -41,7 +46,7 @@ function UserPreferences({ currentTheme, handleThemeChange, themes, ...boxProps 
                     </MenuItem>
                 ))}
             </Select>
-            <FontSizeInput />
+            <FontSizeInput onFontSizeChange={onFontSizeChange} />
         </Grid>
     )
 }

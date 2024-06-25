@@ -215,7 +215,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
                         <Typography color={theme.palette.mode === 'light' ? theme.palette.text.secondary : theme.palette.primary.main} variant="h5" noWrap component="div">
                             {activeText(location.pathname)}
                         </Typography>
-                        {!isMobile && <UserPreferences currentTheme={currentTheme} handleThemeChange={handleThemeChange} themes={themes} />}
+                        {!isMobile && <UserPreferences onFontSizeChange={handleResize} currentTheme={currentTheme} handleThemeChange={handleThemeChange} themes={themes} />}
                     </Grid>
                 </Toolbar>
             </AppBar>

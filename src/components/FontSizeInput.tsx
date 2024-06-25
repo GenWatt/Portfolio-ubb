@@ -8,7 +8,11 @@ const MAX_FONT_SIZE = 24
 const MIN_FONT_SIZE = 10
 const STEP = 1
 
-function FontSizeInput() {
+export interface FontSizeInputProps {
+    onFontSizeChange?: (size: number) => void
+}
+
+function FontSizeInput({ onFontSizeChange }: FontSizeInputProps) {
     const theme = useTheme()
     const [currentFontSize, setCurrentFontSize] = useState(16)
     const { setLocalStorage, getLocalStorage } = useLocalStorage()
@@ -23,6 +27,10 @@ function FontSizeInput() {
         document.documentElement.style.fontSize = `${size}px`
         setCurrentFontSize(size)
         setLocalStorage('fontSize', size.toString())
+
+        if (onFontSizeChange) {
+            onFontSizeChange(size)
+        }
     }
 
     const increaseFontSize = () => {
