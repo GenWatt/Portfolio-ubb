@@ -81,7 +81,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <SideNav handleThemeChange={handleThemeChange} currentTheme={currentThemeName} themes={themes} />
-        <Box component='div' position={'fixed'} right={15} bottom={45} bgcolor={theme.palette.primary.main} borderRadius={1}>
+        <Box component='div' position={'fixed'} right={10} bottom={65} bgcolor={theme.palette.primary.main} borderRadius={1}>
           <IconButton onClick={handleClick}>
             <Mail />
           </IconButton>

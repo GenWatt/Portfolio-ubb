@@ -61,17 +61,15 @@ const closedMixin = (theme: Theme): CSSObject => ({
 
 interface DrawerHeaderProps {
     paddingTop?: string;
+    paddingBottom?: string;
 }
 
-const DrawerHeader = styled('div')<DrawerHeaderProps>(({ paddingTop }) => ({
+const DrawerHeader = styled('div')<DrawerHeaderProps>(({ paddingTop, paddingBottom }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingTop
-    // padding: theme.spacing(2, 1),
-
-    // necessary for content to be below app bar
-    // ...theme.mixins.toolbar,
+    paddingBottom,
+    paddingTop,
 }));
 
 interface AppBarProps extends MuiAppBarProps {
@@ -214,7 +212,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes }: Sid
                 </Toolbar>
             </AppBar>
             <Drawer id="Drawer" dir={language.langDirection} variant="permanent" open={open} anchor={language.langDirection === 'rtl' ? 'right' : 'left'}>
-                <DrawerHeader paddingTop={`${paddintTop}px`}>
+                <DrawerHeader paddingTop={`${paddintTop / 2}px`} paddingBottom={`${paddintTop / 2}px`}>
                     <Tooltip title={t('closeDrawer')} placement='right'>
                         <IconButton id="CloseButton" onClick={handleDrawerClose}>
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}

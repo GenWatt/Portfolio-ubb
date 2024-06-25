@@ -35,7 +35,7 @@ function ModalContact({ anchorEl, handleClose }: ModalContactProps) {
                 bgcolor: 'background.paper',
                 boxShadow: 24,
                 p: 2,
-                minWidth: 400,
+                minWidth: 260,
                 borderRadius: 1,
                 overflowY: 'auto',
                 maxHeight: '90vh',

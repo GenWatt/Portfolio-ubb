@@ -4,6 +4,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { Grid, ListItemAvatar, useTheme } from '@mui/material';
 import { Owner } from '../../types';
 import GithubUserSkeleton from './GithubUserSkeleton';
+import { animated, useTrail } from 'react-spring';
 
 export interface GithubUsersProps {
     users: Owner[]
@@ -12,24 +13,32 @@ export interface GithubUsersProps {
 
 function GithubUsers({ users, isLoading }: GithubUsersProps) {
     const theme = useTheme()
+    const trail = useTrail(users.length, {
+        from: { opacity: 0, transform: 'translate(0px,-20px)' },
+        to: { opacity: 1, transform: 'translate(0px,0px)' },
+        config: { duration: 300 },
+        delay: 500
+    });
+
+    const AnimatedGrid = animated(Grid)
 
     return (
         <Grid item xs={12}>
             <Grid container flexWrap='wrap' spacing={2}>
                 {isLoading && new Array(3).fill(0).map((_, index) => (<GithubUserSkeleton key={index} />))}
-                {!isLoading && users.map(user => (
-                    <Grid item xs={12} md={12} lg={3} key={user.id}>
-                        <ListItem sx={{ p: 0 }} key={user.id}>
-                            <a href={user.html_url} target='blank' style={{ width: '100%', background: theme.palette.primary.dark, color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit' }}>
+                {!isLoading && trail.map((animation, index) => (
+                    <AnimatedGrid item xs={12} md={12} lg={3} key={users[index].id} style={animation}>
+                        <ListItem sx={{ p: 0 }} key={users[index].id}>
+                            <a href={users[index].html_url} target='blank' style={{ width: '100%', background: theme.palette.primary.dark, color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemAvatar>
-                                        <img src={user.avatar_url} alt={user.login} style={{ width: 50, height: 50 }} />
+                                        <img src={users[index].avatar_url} alt={users[index].login} style={{ width: 50, height: 50 }} />
                                     </ListItemAvatar>
-                                    <ListItemText primary={user.login} />
+                                    <ListItemText primary={users[index].login} />
                                 </ListItemButton>
                             </a>
                         </ListItem>
-                    </Grid>
+                    </AnimatedGrid>
                 ))}
             </Grid>
         </Grid >

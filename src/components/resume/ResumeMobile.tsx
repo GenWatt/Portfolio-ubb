@@ -1,7 +1,7 @@
 import { Document, Page } from 'react-pdf'
 
-import { Fragment, useEffect, useRef, useState, } from 'react';
-import { Typography, useTheme } from '@mui/material';
+import { Fragment, useRef, useState, } from 'react';
+import { Grid, Typography, useTheme } from '@mui/material';
 import 'react-pdf/dist/Page/TextLayer.css';
 
 export interface ResumeDeviceProps {
@@ -15,42 +15,109 @@ export interface ResumeDeviceProps {
 }
 
 function ResumeMobile({ resume, numPages, onDocumentLoadSuccess, onLoadStart, onLoadProgress, onLoadError }: ResumeDeviceProps) {
-    const [scale, setScale] = useState(1)
+    const [scale, _] = useState(1)
     const containerRef = useRef<HTMLDivElement>(null)
     const theme = useTheme()
 
-    function setPageSacle() {
-        const windowWidth = window.innerWidth - Number(theme.spacing(2).replace('px', '')) * 3;
-        const windowHeight = window.innerHeight - 150;
-        const aspectRatio = windowWidth / windowHeight;
-        const pageOriginalAspectRatio = 600 / 800;
+    const handleOnDocumentLoadSuccess = (numPages: { numPages: number }) => {
+        if (onDocumentLoadSuccess) onDocumentLoadSuccess(numPages)
 
-        let scale;
-        if (aspectRatio > pageOriginalAspectRatio) {
-            scale = windowHeight / 800;
-        } else {
-            scale = windowWidth / 600;
-        }
-
-        setScale(scale);
+        onRenderSuccess()
     }
 
-    function handleResize() {
-        setPageSacle()
+    const animateCanvasPixels = (canvas: HTMLCanvasElement) => {
+        const ctx = canvas.getContext('2d');
+        const { width, height } = canvas;
+        const gridWidth = 15;
+        const gridHeight = 15;
+        const cellWidth = Math.floor(width / gridWidth);
+        const cellHeight = Math.floor(height / gridHeight);
+
+        const offscreenCanvas = document.createElement('canvas');
+        const offscreenCtx = offscreenCanvas.getContext('2d');
+        offscreenCanvas.width = width;
+        offscreenCanvas.height = height;
+
+        if (!ctx || !offscreenCtx) {
+            console.error('Failed to get 2D context');
+            return;
+        }
+
+        ctx.imageSmoothingEnabled = false;
+        offscreenCtx.drawImage(canvas, 0, 0);
+
+        const animateCell = (cellX: number, cellY: number) => {
+            const cellImageData = offscreenCtx.getImageData(cellX * cellWidth, cellY * cellHeight, cellWidth, cellHeight);
+
+            let currentPosX = Math.random() * width * 2 - width;
+            let currentPosY = Math.random() * height * 2 - height;
+            // Random initial velocity
+            let velocityX = (Math.random() - 0.5) * 10;
+            let velocityY = (Math.random() - 0.5) * 10;
+            let randomness = 1.0;
+            let angle = 0;
+
+            const animateStep = () => {
+                const modulationX = Math.cos(angle) * randomness * 2;
+                const modulationY = Math.sin(angle) * randomness * 2;
+
+                const stepX = (cellX * cellWidth - currentPosX + modulationX) * 0.1;
+                const stepY = (cellY * cellHeight - currentPosY + modulationY) * 0.1;
+
+                currentPosX += stepX;
+                currentPosY += stepY;
+
+                velocityX *= 0.95;
+                velocityY *= 0.95;
+
+                ctx.putImageData(cellImageData, Math.round(currentPosX), Math.round(currentPosY));
+
+                randomness = Math.max(0, randomness - 0.02);
+
+                angle += 0.1;
+                requestAnimationFrame(animateStep);
+            };
+
+            requestAnimationFrame(animateStep);
+        };
+
+        for (let x = 0; x < gridWidth; x++) {
+            for (let y = 0; y < gridHeight; y++) {
+                animateCell(x, y);
+            }
+        }
+    };
+
+    function getCanvases() {
+        return Array.from(containerRef.current?.querySelectorAll('canvas') || []);
     }
 
-    useEffect(() => {
-        window.addEventListener('resize', handleResize)
-        handleResize()
+    const waitUntilCanvasesRender = (): Promise<HTMLCanvasElement[]> => {
+        return new Promise((resolve) => {
+            const checkInterval = 100;
+            const interval = setInterval(() => {
+                const canvases = getCanvases();
+                if (canvases.length > 0) {
+                    clearInterval(interval);
+                    resolve(canvases);
+                }
+            }, checkInterval);
+        });
+    }
 
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [])
+    const onRenderSuccess = async () => {
+        const canvases = await waitUntilCanvasesRender();
+
+        if (canvases.length === 0) return;
+
+        canvases.forEach((canvas) => {
+            animateCanvasPixels(canvas);
+        });
+    };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: theme.spacing(1) }} ref={containerRef}>
-            <Document file={resume} onLoadSuccess={onDocumentLoadSuccess} onLoadStart={onLoadStart} onLoadProgress={onLoadProgress} onLoadError={onLoadError}>
+        <Grid container justifyContent={'center'} pt={1} ref={containerRef}>
+            <Document file={resume} onLoadSuccess={handleOnDocumentLoadSuccess} onLoadStart={onLoadStart} onLoadProgress={onLoadProgress} onLoadError={onLoadError}>
                 {Array.from(new Array(numPages), (_, index) => (
                     <Fragment key={index}>
                         <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} renderTextLayer={false} scale={scale} />
@@ -58,7 +125,7 @@ function ResumeMobile({ resume, numPages, onDocumentLoadSuccess, onLoadStart, on
                     </Fragment>
                 ))}
             </Document>
-        </div>
+        </Grid>
     )
 }
 

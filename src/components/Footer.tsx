@@ -23,11 +23,11 @@ function Footer() {
     return (
         <StyledFooter id="Footer">
             <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
-                <Typography component={'span'} variant="body2">
+                <Typography component={'span'} variant="caption">
                     &copy; {year} {t('createdBy')}
                 </Typography>
                 <a href='https://www.linkedin.com/in/adrian-raszka-front-end/' target='blank'>
-                    <Typography component="strong" color={theme.palette.primary.main} variant="body2">
+                    <Typography component="strong" color={theme.palette.primary.main} variant="caption">
                         {' ' + t('author')}
                     </Typography>
                 </a>

@@ -8,6 +8,7 @@ import ConfirmEmailImage from '../assets/images/adrianAuthClient/Confirm email.p
 import ProjectItemSkeleton from '../components/projects/ProjectItemSkeleton'
 import GithubUsers from '../components/githubUsers/GithubUsers'
 import useTranslation from '../hooks/useTranslation'
+import { animated, useTrail } from 'react-spring'
 
 const projects: Project[] = [
     {
@@ -30,6 +31,12 @@ const MAX_TIME_LOADING = 100
 function ProjectsPage() {
     const { getRepos, getOwners } = useGithub()
     const { t } = useTranslation()
+    const trail = useTrail(projects.length, {
+        from: { opacity: 0, transform: 'translate(0px,-60px)' },
+        to: { opacity: 1, transform: 'translate(0px,0px)' },
+        config: { duration: 300 },
+        delay: 500
+    });
 
     const [isLoading, setIsLoading] = useState(true)
     const [isLoadingTooLong, setIsLoadingTooLong] = useState(false)
@@ -70,6 +77,8 @@ function ProjectsPage() {
         init()
     }, [])
 
+    const AnimatedGrid = animated(Grid)
+
     return (
         <Grid container>
             {isLoadingTooLong && <Typography gutterBottom color={'error'}>{t('loadingIsTakingTooLong') + " "} {MAX_TIME_LOADING}ms</Typography>}
@@ -85,12 +94,12 @@ function ProjectsPage() {
                     <Typography variant='h4'>{t('myProjects')}</Typography>
                 </Grid>
 
-                {isLoading && new Array(7).fill(0).map((_, index) => (
-                    <ProjectItemSkeleton key={index} />
-                ))}
+                {isLoading && (new Array(7).fill(0).map((_, index) => (<ProjectItemSkeleton key={index} />)))}
 
-                {!isLoading && repos.map(repo => (
-                    <ProjectItem key={repo.id} repo={repo} />
+                {!isLoading && trail.map((animation, index) => (
+                    <AnimatedGrid item xs={12} sm={6} md={4} lg={3} key={index} style={animation}>
+                        <ProjectItem key={repos[index].id} repo={repos[index]} />
+                    </AnimatedGrid>
                 ))}
             </Grid>
         </Grid>
