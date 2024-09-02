@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import * as THREE from 'three'
 
 function CameraController() {
-    const { camera, gl } = useThree()
+    const { camera } = useThree()
     const [cameraPosition, setCameraPosition] = useState([0, 10, 100])
 
-    useFrame((state) => {
+    useFrame((_) => {
         camera.position.lerp(new THREE.Vector3(...cameraPosition), 0.1)
         camera.rotation.x = 0.5
         // camera.lookAt(0, 0, 0)
