@@ -26,6 +26,7 @@ import { useEffect, useState } from 'react';
 import SchoolIcon from '@mui/icons-material/School';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import JavascriptIcon from '@mui/icons-material/Javascript';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 const navRoutes = [
     { text: 'Profile', path: '/profile', icon: <Person2Icon /> },
@@ -33,7 +34,8 @@ const navRoutes = [
     { text: 'Projects', path: '/projects', icon: <HandymanIcon /> },
     { text: 'Education', path: '/education', icon: <SchoolIcon /> },
     { text: 'Resume', path: '/resume', icon: <PictureAsPdfIcon /> },
-    { text: 'TechStack', path: '/stack', icon: <JavascriptIcon /> }
+    { text: 'TechStack', path: '/stack', icon: <JavascriptIcon /> },
+    { text: 'Game', path: '/game', icon: <SportsEsportsIcon />, inProgress: true },
 ]
 
 const drawerWidth = 240;

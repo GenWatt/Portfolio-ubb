@@ -62,7 +62,7 @@ function TechStackPage() {
         return () => {
             window.removeEventListener('resize', handleResize)
         }
-    }, [getViewHeight]);
+    }, []);
 
     return (
         <Grid container>

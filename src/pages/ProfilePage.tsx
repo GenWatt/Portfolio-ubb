@@ -4,6 +4,7 @@ import useTranslation from '../hooks/useTranslation'
 import adrianek from '../assets/images/adrianek.jpg'
 import ProfileCanvas from '../components/3D/profile/ProfileCanvas'
 import AnimatedText from '../components/ui/AnimatedText'
+import AbblityBadges from '../components/AbblityBadges'
 
 function ProfilePage() {
     const theme = useTheme()
@@ -20,6 +21,9 @@ function ProfilePage() {
             </Grid>
             <Grid item xs={12} sx={{ backgroundColor: theme.palette.secondary.dark, p: 1, borderRadius: 1 }}>
                 <AnimatedText text={t('profileDescription')} />
+            </Grid>
+            <Grid item xs={12}>
+                <AbblityBadges />
             </Grid>
             <Grid item xs={12}>
                 <Contact />

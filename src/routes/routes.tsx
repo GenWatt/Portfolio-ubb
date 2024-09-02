@@ -5,24 +5,15 @@ import ProjectsPage from "../pages/ProjectsPage";
 import EducationPage from "../pages/EducationPage";
 import ResumePage from "../pages/ResumePage";
 import TechStackPage from "../pages/TechStackPage";
+import GamePage from "../pages/GamePage";
 
 export const routes: RouteObject[] = [
     {
         path: '/profile',
         element: <ProfilePage />,
-        // children: [
-        //     { path: 'about', element: <About /> },
-        //     { path: 'dashboard', element: <Dashboard /> },
-        //     { path: 'profile', element: <Profile /> }
-        // ]
     }, {
         path: '/contact',
         element: <ContactPage />,
-        // children: [
-        //     { path: 'about', element: <About /> },
-        //     { path: 'dashboard', element: <Dashboard /> },
-        //     { path: 'profile', element: <Profile /> }
-        // ]
     },
     {
         path: '/projects',
@@ -39,5 +30,9 @@ export const routes: RouteObject[] = [
     {
         path: '/stack',
         element: <TechStackPage />
+    },
+    {
+        path: 'game',
+        element: <GamePage />
     }
 ]
