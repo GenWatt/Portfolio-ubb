@@ -1,12 +1,14 @@
-
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
-import { routes } from '../routes/routes';
-import { useLayoutEffect, useState } from 'react';
+import { notShowOnMobile, routes } from '../routes/routes';
+import { Suspense, useEffect, useLayoutEffect, useState } from 'react';
+import useHelper from '../hooks/useHelper';
 
 function Router() {
     const location = useLocation();
     const [footerHeight, setFooterHeight] = useState(0);
+    const { isMobile } = useHelper();
+    const navigate = useNavigate();
 
     useLayoutEffect(() => {
         const footer = document.getElementById('Footer');
@@ -14,6 +16,16 @@ function Router() {
             setFooterHeight(footer.clientHeight);
         }
     }, []);
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirect = urlParams.get('redirect');
+        if (redirect) {
+            navigate(redirect, { replace: true });
+        }
+    }, [navigate]);
+
+    const renderRoutes = routes.filter(({ path }) => path && notShowOnMobile.includes(path) ? !isMobile : true);
 
     return (
         <div style={{ overflowX: 'hidden', paddingBottom: footerHeight }}>
@@ -23,11 +35,13 @@ function Router() {
                     classNames="fade"
                     timeout={300}
                 >
-                    <Routes location={location}>
-                        {routes.map(({ path, element }) => (
-                            <Route key={path} path={path} element={element} />
-                        ))}
-                    </Routes>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Routes location={location}>
+                            {renderRoutes.map(({ path, element }) => (
+                                <Route key={path} path={path} element={element} />
+                            ))}
+                        </Routes>
+                    </Suspense>
                 </CSSTransition>
             </SwitchTransition>
         </div>

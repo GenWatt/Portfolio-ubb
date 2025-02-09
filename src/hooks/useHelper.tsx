@@ -1,8 +1,21 @@
 import { useTheme } from "@mui/material"
+import { useEffect, useState } from "react"
 
 function useHelper() {
     const theme = useTheme()
-    const isMobile = window.innerWidth < theme.breakpoints.values.sm
+    const [isMobile, setIsMobile] = useState(window.innerWidth < theme.breakpoints.values.sm)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < theme.breakpoints.values.sm)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [theme.breakpoints.values.sm])
 
     function getViewHeight() {
         const appBarEl = document.getElementById('AppBar')
@@ -24,7 +37,7 @@ function useHelper() {
         return window.innerWidth - drawerWidth - mainPaddingX - 1
     }
 
-    return { getViewHeight, getViewWidth }
+    return { getViewHeight, getViewWidth, isMobile }
 }
 
 export default useHelper

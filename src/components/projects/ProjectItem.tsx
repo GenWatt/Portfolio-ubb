@@ -1,6 +1,5 @@
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
@@ -10,38 +9,38 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import { Repository } from '../../types';
 import { useTheme } from '@mui/material/styles';
-import Carousel from 'react-material-ui-carousel';
 import { Box, Button, Chip, Grid, Tooltip } from '@mui/material';
 import useFormat from '../../hooks/useFormat';
 import { GitHub } from '@mui/icons-material';
 import { useSnackbar } from 'notistack';
 import useTranslation from '../../hooks/useTranslation';
+import MediaCarousel from './MediaCarousel';
 
 export interface ProjectItemProps {
-    repo: Repository
+    repo: Repository;
 }
 
 export default function ProjectItem({ repo }: ProjectItemProps) {
-    const theme = useTheme()
-    const snakbar = useSnackbar()
-    const { formatDate } = useFormat()
-    const { t } = useTranslation()
+    const theme = useTheme();
+    const snakbar = useSnackbar();
+    const { formatDate } = useFormat();
+    const { t } = useTranslation();
 
     const share = () => {
-        navigator.clipboard.writeText(repo.html_url)
-        snakbar.enqueueSnackbar(t('repositoryLinkCopiedToClipboard'), { variant: 'success' })
-    }
+        navigator.clipboard.writeText(repo.html_url);
+        snakbar.enqueueSnackbar(t('repositoryLinkCopiedToClipboard'), { variant: 'success' });
+    };
 
     const styles = {
         backgroundColor: theme.palette.primary.dark,
         padding: theme.spacing(1),
         margin: theme.spacing(1),
         borderRadius: theme.spacing(.1),
-        color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit'
-    }
+        color: theme.palette.mode === 'light' ? theme.palette.text.secondary : 'inherit',
+    };
 
     return (
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item>
             <Card>
                 <Tooltip title={<div>
                     <Typography component={'span'} variant='subtitle2'>{t('seeUserOnGithub')}</Typography>
@@ -59,17 +58,8 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                         />
                     </a>
                 </Tooltip>
-                {repo.project.images.length ? <Carousel>
-                    {repo.project.images.map((image) => (
-                        <CardMedia
-                            key={image}
-                            component="img"
-                            height="194"
-                            image={image}
-                            alt="app screenshot"
-                        />
-                    ))}
-                </Carousel> : null}
+
+                <MediaCarousel videos={repo.project.videos} images={repo.project.images} />
 
                 <div style={{ ...styles }}>
                     <Typography variant='subtitle2'>{t('createdAt')}: {formatDate(repo.created_at)}</Typography>

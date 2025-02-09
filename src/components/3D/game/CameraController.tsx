@@ -1,5 +1,5 @@
 import { useThree, useFrame } from '@react-three/fiber'
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 import * as THREE from 'three'
 
 function CameraController() {
@@ -34,7 +34,7 @@ function CameraController() {
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.addEventListener('keydown', handleKeyDown)
         return () => {
             window.removeEventListener('keydown', handleKeyDown)

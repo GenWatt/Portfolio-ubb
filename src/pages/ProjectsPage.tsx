@@ -9,24 +9,74 @@ import ProjectItemSkeleton from '../components/projects/ProjectItemSkeleton'
 import GithubUsers from '../components/githubUsers/GithubUsers'
 import useTranslation from '../hooks/useTranslation'
 import { animated, useTrail } from 'react-spring'
+import RTSVideo from '../assets/videos/RTS.mp4'
 
 const projects: Project[] = [
     {
         username: 'GenWatt',
         repoName: 'AdrianAuthClient',
         images: [RegisterImage, ConfirmEmailImage],
-        tags: ['React', 'Typescript', 'Tanstack Query']
+        videos: [],
+        tags: ['React', 'Typescript', 'Tanstack Query', 'Docker']
     },
     {
         username: 'GenWatt',
         repoName: 'AdrianAuthServer',
         images: [],
-        tags: ['Node', 'JWT', 'MongoDb']
+        videos: [],
+        tags: ['Node', 'JWT', 'MongoDb', 'Docker']
+    },
+    {
+        username: 'GenWatt',
+        repoName: 'TerrainGames',
+        images: [],
+        videos: [],
+        tags: ['React Native', 'Typescript', 'Node', 'MongoDb', 'CQRS', 'mapbox']
+    }, {
+        username: 'GenWattStudent',
+        repoName: 'RTS_SINGLE_PLAYER',
+        images: [],
+        videos: [RTSVideo],
+        tags: ['Unity', 'C#', 'Multiplayer', 'RTS', 'Lobby', 'Unity Relay']
+    },
+    {
+        username: 'GenWatt',
+        repoName: 'AdrianTube2',
+        images: [],
+        videos: [],
+        tags: ['Blazor Server', 'C#', 'MongoDb']
+    },
+    {
+        username: 'GenWatt',
+        repoName: 'Adriantify',
+        images: [],
+        videos: [],
+        tags: ['Vue 3', 'Typescript', 'Node', 'MongoDb', 'Docker']
+    },
+    {
+        username: 'GenWattStudent',
+        repoName: 'Grafy',
+        images: [],
+        videos: [],
+        tags: ['Python', 'Tkinter', 'Graphs']
+    },
+    {
+        username: 'GenWattStudent',
+        repoName: 'Todo',
+        images: [],
+        videos: [],
+        tags: ['React', 'Nginx', 'Node', 'MongoDb', 'Docker', 'Typescript', 'Material UI', 'Docker Compose', 'Redux Toolkit']
+    },
+    {
+        username: 'GenWattStudent',
+        repoName: 'Wycieczki---ASP.NET',
+        images: [],
+        videos: [],
+        tags: ['ASP.NET MVC', 'C#', 'MVC', 'Entity Framework', 'SQL Server', 'Bootstrap', 'JQuery', 'JavaScript', 'Redis', 'Azure', 'Three.js']
     }
 ]
 
 const usernames = ['GenWatt', 'GenWattStudent']
-const MAX_TIME_LOADING = 100
 
 function ProjectsPage() {
     const { getRepos, getOwners } = useGithub()
@@ -39,14 +89,13 @@ function ProjectsPage() {
     });
 
     const [isLoading, setIsLoading] = useState(true)
-    const [isLoadingTooLong, setIsLoadingTooLong] = useState(false)
 
     const [repos, setRepos] = useState<Repository[]>([])
     const [users, setUsers] = useState<Owner[]>([])
 
     async function getRepositores() {
         const repos = await getRepos(projects)
-
+        console.log(repos)
         if (!repos) return
         setRepos(repos)
     }
@@ -59,29 +108,20 @@ function ProjectsPage() {
     }
 
     async function init() {
-        const time0 = performance.now()
-
         setIsLoading(true)
         await getUsers()
         await getRepositores()
         setIsLoading(false)
-
-        const time1 = performance.now()
-
-        if (time1 - time0 > MAX_TIME_LOADING) {
-            setIsLoadingTooLong(true)
-        }
     }
 
     useEffect(() => {
         init()
-    }, [])
+    }, [projects])
 
     const AnimatedGrid = animated(Grid)
 
     return (
         <Grid container>
-            {isLoadingTooLong && <Typography gutterBottom color={'error'}>{t('loadingIsTakingTooLong') + " "} {MAX_TIME_LOADING}ms</Typography>}
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Typography variant='h4'>{t('myAccounts')}</Typography>
@@ -96,11 +136,15 @@ function ProjectsPage() {
 
                 {isLoading && (new Array(7).fill(0).map((_, index) => (<ProjectItemSkeleton key={index} />)))}
 
-                {!isLoading && trail.map((animation, index) => (
-                    <AnimatedGrid item xs={12} sm={6} md={4} lg={3} key={index} style={animation}>
-                        <ProjectItem key={repos[index].id} repo={repos[index]} />
-                    </AnimatedGrid>
-                ))}
+                {!isLoading && trail.map((animation, index) => {
+                    if (!repos[index]) return null
+
+                    return (
+                        <AnimatedGrid item xs={12} sm={6} md={4} lg={3} key={index} style={animation}>
+                            <ProjectItem key={repos[index].id} repo={repos[index]} />
+                        </AnimatedGrid>
+                    )
+                })}
             </Grid>
         </Grid>
     )

@@ -28,8 +28,8 @@ function ResumeMobile({ resume, numPages, onDocumentLoadSuccess, onLoadStart, on
     const animateCanvasPixels = (canvas: HTMLCanvasElement) => {
         const ctx = canvas.getContext('2d');
         const { width, height } = canvas;
-        const gridWidth = 15;
-        const gridHeight = 15;
+        const gridWidth = 10;
+        const gridHeight = 10;
         const cellWidth = Math.floor(width / gridWidth);
         const cellHeight = Math.floor(height / gridHeight);
 

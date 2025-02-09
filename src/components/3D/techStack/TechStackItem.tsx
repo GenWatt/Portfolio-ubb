@@ -67,6 +67,7 @@ function TechStackItem({ tech, index, positions, radius, onItemEnter }: TechStac
                         sx={{
                             backgroundColor: theme.palette.background.paper, borderRadius: .2, transform: `scale(${hovered ? 1.4 : 1})`,
                             transition: 'transform .3s ease-in-out',
+                            zIndex: theme.zIndex.drawer - 1,
                         }}>
                         <Grid item p={4}>
                             <img src={tech.image} alt={tech.name} style={{ width: 100, height: 100 }} />

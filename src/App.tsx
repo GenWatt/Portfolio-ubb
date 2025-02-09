@@ -3,13 +3,30 @@ import './App.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box, IconButton, SelectChangeEvent, Theme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
-
-import SideNav from './components/SideNav';
+import SideNav from './components/sideNav/components/SideNav';
 import { darkThemeBluePink, darkThemeGreenPurple, lightTheme } from './themes'
 import useLocalStorage from './hooks/useLocalStorage'
 import { useLanguage } from './context/LanguageContext'
 import { Mail } from '@mui/icons-material'
 import ModalContact from './components/contact/ModalContact'
+
+import SchoolIcon from '@mui/icons-material/School';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import JavascriptIcon from '@mui/icons-material/Javascript';
+// import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import HandymanIcon from '@mui/icons-material/Handyman';
+import Person2Icon from '@mui/icons-material/Person2';
+import PhoneIcon from '@mui/icons-material/Phone';
+
+const navRoutes = [
+  { text: 'Profile', path: '/profile', icon: <Person2Icon /> },
+  { text: 'Contact', path: '/contact', icon: <PhoneIcon /> },
+  { text: 'Projects', path: '/projects', icon: <HandymanIcon /> },
+  { text: 'Education', path: '/education', icon: <SchoolIcon /> },
+  { text: 'Resume', path: '/resume', icon: <PictureAsPdfIcon /> },
+  { text: 'TechStack', path: '/stack', icon: <JavascriptIcon /> },
+  // { text: 'Game', path: '/game', icon: <SportsEsportsIcon />, inProgress: true },
+]
 
 const themes = [
   { label: 'Blue Pink', name: 'darkThemeBluePink', theme: darkThemeBluePink },
@@ -80,7 +97,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <SideNav handleThemeChange={handleThemeChange} currentTheme={currentThemeName} themes={themes} />
+        <SideNav handleThemeChange={handleThemeChange} currentTheme={currentThemeName} themes={themes} navRoutes={navRoutes} />
         <Box component='div' position={'fixed'} right={10} bottom={65} bgcolor={theme.palette.primary.main} borderRadius={1}>
           <IconButton onClick={handleClick}>
             <Mail />

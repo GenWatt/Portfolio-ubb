@@ -13,6 +13,7 @@ import { useSnackbar } from 'notistack';
 import ResumeMobile from '../components/resume/ResumeMobile';
 import ResumeDevice from '../components/resume/ResumeDevice';
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
+import useHelper from '../hooks/useHelper';
 
 function ResumePage() {
     const { language } = useLanguage()
@@ -22,6 +23,7 @@ function ResumePage() {
     const [showModel, setShowModel] = useState(false)
     const [isResumeLoading, setIsResumeLoading] = useState(true)
     const [mode, setMode] = useState('2D')
+    const { isMobile } = useHelper()
 
     const { t } = useTranslation()
     const snakbar = useSnackbar()
@@ -75,18 +77,19 @@ function ResumePage() {
         <Grid container>
             {loaded !== total && <LinearProgressWithLabel value={progress} />}
             <Grid container>
-                <Tooltip title={t('seeInNewTabResume')}>
+                {!isMobile && <Tooltip title={t('seeInNewTabResume')}>
                     <IconButton onClick={seeInNewTab} color='primary' size='large'>
                         <VisibilityIcon />
                     </IconButton>
                 </Tooltip>
-
+                }
                 <Tooltip title={t('downloadResume')}>
                     <IconButton onClick={downloadFile} color='primary' size='large'>
                         <FileDownloadIcon />
                     </IconButton>
                 </Tooltip>
-                <ToggleButtonGroup color="primary"
+
+                {!isSmallScreen && <ToggleButtonGroup color="primary"
                     value={mode}
                     exclusive
                     onChange={handleChange}
@@ -96,7 +99,7 @@ function ResumePage() {
                             <ThreeDRotationIcon />
                         </ToggleButton>
                     </Tooltip>
-                </ToggleButtonGroup>
+                </ToggleButtonGroup>}
             </Grid>
 
             {!isSmallScreen && showModel ? <ResumeDevice

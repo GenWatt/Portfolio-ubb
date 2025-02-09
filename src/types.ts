@@ -2,6 +2,7 @@ export interface Project {
     username: string;
     repoName: string;
     images: string[];
+    videos: string[];
     tags: string[];
 }
 
