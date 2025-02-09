@@ -7,7 +7,7 @@ import { SnackbarProvider } from 'notistack'
 import { LanguageProvider } from './context/LanguageContext'
 import { pdfjs } from 'react-pdf';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = `./pdf.worker.min.mjs`;
 
 const isProduction = import.meta.env.MODE === 'production'
 const basename = isProduction ? '/Portfolio-ubb/' : '/'
