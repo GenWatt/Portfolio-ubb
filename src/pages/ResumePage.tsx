@@ -57,7 +57,8 @@ function ResumePage() {
         link.click()
     }
 
-    function onLoadError() {
+    function onLoadError(error: any) {
+        console.error(error)
         snakbar.enqueueSnackbar(t('resumeLoadingError'), { variant: 'error' })
         setIsResumeLoading(false)
     }

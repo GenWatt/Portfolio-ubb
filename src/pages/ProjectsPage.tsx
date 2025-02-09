@@ -95,7 +95,6 @@ function ProjectsPage() {
 
     async function getRepositores() {
         const repos = await getRepos(projects)
-        console.log(repos)
         if (!repos) return
         setRepos(repos)
     }
