@@ -21,6 +21,7 @@
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.6",
     "@react-three/rapier": "^1.4.0",
+    "@tanstack/react-query": "^5.66.0",
     "@types/three": "^0.164.1",
     "axios": "^1.7.2",
     "emailjs-com": "^3.2.0",

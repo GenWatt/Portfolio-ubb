@@ -7,6 +7,17 @@ interface MediaCarouselProps {
     images: string[];
 }
 
+const videoStyles = {
+    position: 'absolute',
+    top: '50%',
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    zIndex: 1,
+    transform: 'translateY(-50%)',
+}
+
 const MediaCarousel: React.FC<MediaCarouselProps> = ({ videos, images }) => {
     const [activeSlide, setActiveSlide] = useState(0);
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -31,16 +42,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ videos, images }) => {
                 }}
             >
                 <CardMedia
-                    sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        zIndex: 1,
-                        transform: 'translateY(-50%)',
-                    }}
+                    sx={videoStyles}
                     component="video"
                     controls
                     src={video}
@@ -54,6 +56,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ videos, images }) => {
                 component="img"
                 height="250"
                 image={image}
+                loading="lazy"
                 sx={{ objectFit: 'contain' }}
                 alt="app screenshot"
             />

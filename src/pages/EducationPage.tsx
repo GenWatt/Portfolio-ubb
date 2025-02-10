@@ -32,7 +32,7 @@ function EducationPage() {
         description: t('technicalSchoolDescription')
     }, {
         schoolName: t('university'),
-        specialization: t('softwareDdeveloper'),
+        specialization: t('softwareDeveloper'),
         start: "2021",
         end: "2025",
         image: UBB,

@@ -1,10 +1,11 @@
 export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy'
     | 'profileDescription' | 'myAccounts' | 'bluePink' | 'lightTheme' | 'author' | 'seeOnGithub' | 'createdAt' | 'lastCommit'
     | 'seeRepositoryOnGithub' | 'seeUserOnGithub' | 'langCode' | 'langName' | 'projects' | 'myProjects'
-    | 'repositoryLinkCopiedToClipboard' | 'langDirection' | 'softwareDdeveloper' | 'openDrawer' | 'closeDrawer' | 'technicalSchool'
+    | 'repositoryLinkCopiedToClipboard' | 'langDirection' | 'softwareDeveloper' | 'openDrawer' | 'closeDrawer' | 'technicalSchool'
     | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO' | 'education' | 'resumeLoadingError'
     | 'showModelIn3D' | 'universitySpecialization' | 'universityStart' | 'universityEnd' | 'mechatronics' | 'technicalSchoolStart'
-    | 'technicalSchoolEnd' | 'loadingIsTakingTooLong' | 'now' | 'technicalSchoolDescription' | 'universityDescription' | 'inProgress';
+    | 'technicalSchoolEnd' | 'loadingIsTakingTooLong' | 'now' | 'technicalSchoolDescription' | 'universityDescription' | 'inProgress'
+    | 'experience' | 'fssDescription' | 'intership' | 'keyProjects' | 'comercialExperience';
 
 export type OptionalTranslationKeys = 'authorName';
 
@@ -34,7 +35,7 @@ export const dictionary: DictionaryType = {
         myProjects: 'Moje projekty',
         lightTheme: 'Jasny motyw',
         createdBy: 'Stworzone przez',
-        profileDescription: 'Jestem absolwentem studiów inżynierskich na kierunku Inżynieria Oprogramowania na Uniwersytecie Bielsko-Biała – dyplom otrzymam w marcu. Posiadam doświadczenie w tworzeniu aplikacji webowych (JavaScript, React, Node.js, Vue.js) oraz desktopowych (C#, WPF, Unity). Pracowałem z różnymi bazami danych (MySQL, SQL Server, MongoDB) oraz narzędziami DevOps (Docker, Azure DevOps). Obecnie szukam pracy na pełny etat, dostępny do rozpoczęcia współpracy od zaraz, aby rozwijać swoje umiejętności i zdobywać doświadczenie zawodowe.',
+        profileDescription: 'Jestem absolwentem studiów inżynierskich na kierunku Inżynieria Oprogramowania na Uniwersytecie Bielsko-Biała – dyplom otrzymam w marcu. Posiadam roczne komercyjne doświadczenie w tworzeniu aplikacji webowych (JavaScript, React, Node.js, Vue.js) oraz desktopowych (C#, WPF, Unity). Pracowałem z różnymi bazami danych (MySQL, SQL Server, MongoDB) oraz narzędziami DevOps (Docker, Azure DevOps). Obecnie szukam pracy na pełny etat, dostępny do rozpoczęcia współpracy od zaraz, aby rozwijać swoje umiejętności i zdobywać doświadczenie zawodowe.',
         myAccounts: 'Moje konta',
         author: 'Adriana Raszka',
         seeOnGithub: 'Zobacz na Githubie',
@@ -43,7 +44,7 @@ export const dictionary: DictionaryType = {
         seeRepositoryOnGithub: 'Zobacz repozytorium na Githubie',
         seeUserOnGithub: 'Zobacz użytkownika na Githubie',
         repositoryLinkCopiedToClipboard: 'Link do repozytorium został skopiowany do schowka',
-        softwareDdeveloper: 'Programista oprogramowania',
+        softwareDeveloper: 'Programista oprogramowania',
         openDrawer: 'Otwórz szufladę',
         closeDrawer: 'Zamknij szufladę',
         technicalSchool: 'Technikum Mechatroniczne',
@@ -66,7 +67,12 @@ export const dictionary: DictionaryType = {
         now: 'teraz',
         technicalSchoolDescription: "Jako absolwent technikum o specjalizacji Mechatronika zdobyłem wszechstronną wiedzę i praktyczne umiejętności z zakresu elektroniki, elektryki oraz programowania sterowników PLC. Program nauczania zapewnił solidne podstawy w tych obszarach, kładąc nacisk na szkolenie praktyczne i zastosowania w rzeczywistości. Edukacja ta wyposażyła mnie w umiejętność rozumienia i rozwiązywania złożonych problemów technicznych, projektowania i programowania sterowników PLC oraz efektywnego działania w dziedzinie mechatroniki.",
         universityDescription: "W trakcie studiów na Uniwersytecie zdobyłem obszerną wiedzę i praktyczne doświadczenie w różnych językach programowania i technologiach. Opanowałem C++ i C#, a także zapoznałem się z technologiami .Net, takimi jak ASP.NET i WPF. Ponadto zgłębiłem programowanie PLC, co dodatkowo poszerzyło moje umiejętności techniczne. Ponadto nauczyłem się tworzyć strony internetowe za pomocą React oraz zarządzać bazami danych SQL. To wszechstronne wykształcenie wyposażyło mnie w różnorodny zestaw umiejętności, umożliwiając mi radzenie sobie z złożonymi wyzwaniami związanymi z rozwojem oprogramowania oraz efektywne działanie w dziedzinie informatyki.",
-        inProgress: 'W trakcie rozwoju'
+        inProgress: 'W trakcie rozwoju',
+        comercialExperience: "+1 rok doświadczenia komercyjnego",
+        fssDescription: 'Podczas mojej pracy jako Frontend Developer pracowałem intensywnie z React, Vue.js, Node.js oraz SQL. Korzystałem z narzędzi do kontroli wersji takich jak GitHub i GitLab oraz zarządzałem zadaniami projektowymi przy pomocy Jira. Jednym z kluczowych projektów, nad którym pracowałem, była aplikacja dla Jachtów. W ramach tego projektu byłem odpowiedzialny za tworzenie interaktywnych map, na których użytkownicy mogli tworzyć i śledzić trasy.Dodatkowo, zintegrowałem dane pogodowe z zewnętrznego API, które były wyświetlane w aplikacji.Zajmowałem się także przepływem danych z czujników: dane z czujników były przesyłane do InfluxDB, z której tworzyłem wykresy w czasie rzeczywistym i wskaźniki, takie jak bieżąca prędkość i inne istotne metryki dla użytkowników na jachcie.',
+        intership: 'Mimo że moje stanowisko było stażem, powierzono mi pracę nad rzeczywistymi projektami i dostarczanie realnych wyników. Zyskałem praktyczne doświadczenie w C# i ASP.NET Core API. Do moich zadań należało pisanie testów jednostkowych, testów integracyjnych oraz zapewnienie kompatybilności projektów z kontenerami Docker do testowania i uruchamiania aplikacji. Jedną z głównych aplikacji, nad którą pracowałem, była aplikacja oparta na WPF, służąca do obsługi skanerów kodów kreskowych.Byłem odpowiedzialny za wprowadzanie zmian, poprawek błędów oraz aktualizowanie wersji aplikacji, by poprawić jej wydajność.Dodatkowo stworzyłem symulatory skanerów, które później były wykorzystywane w fazie testowania, zapewniając, że procesy skanowania zostały dokładnie zwalidowane.',
+        keyProjects: 'Kluczowe projekty',
+        experience: "Doświadczenie",
     },
     us: {
         langCode: 'us',
@@ -80,7 +86,7 @@ export const dictionary: DictionaryType = {
         myProjects: 'My projects',
         lightTheme: 'Light theme',
         createdBy: 'Created by',
-        profileDescription: 'I am a graduate of Software Engineering at the University of Bielsko-Biała – I will receive my diploma in March. I have experience in developing web applications (JavaScript, React, Node.js, Vue.js) and desktop applications (C#, WPF, Unity). I have worked with various databases (MySQL, SQL Server, MongoDB) and DevOps tools (Docker, Azure DevOps). I am currently looking for full-time job, available to start immediately, to further develop my skills and gain professional experience.',
+        profileDescription: 'I am a graduate of Software Engineering at the University of Bielsko-Biała – I will receive my diploma in March. I have one year of commercial experience in developing web applications (JavaScript, React, Node.js, Vue.js) and desktop applications (C#, WPF, Unity). I have worked with various databases (MySQL, SQL Server, MongoDB) and DevOps tools (Docker, Azure DevOps). I am currently looking for full-time job, available to start immediately, to further develop my skills and gain professional experience.',
         myAccounts: 'My accounts',
         author: 'Adrian Raszka',
         seeOnGithub: 'See on Github',
@@ -89,7 +95,7 @@ export const dictionary: DictionaryType = {
         seeRepositoryOnGithub: 'See repository on Github',
         seeUserOnGithub: 'See user on Github',
         repositoryLinkCopiedToClipboard: 'Repository link copied to clipboard',
-        softwareDdeveloper: 'Software developer',
+        softwareDeveloper: 'Software developer',
         openDrawer: 'Open drawer',
         closeDrawer: 'Close drawer',
         technicalSchool: 'Technical Mechatronics School',
@@ -113,7 +119,12 @@ export const dictionary: DictionaryType = {
         now: 'now',
         technicalSchoolDescription: "As a graduate of a technical school specializing in Mechatronics, I have gained comprehensive knowledge and practical skills in electronics, electricity, and Programmable Logic Controller (PLC) programming. The curriculum provided a strong foundation in these areas, emphasizing hands-on training and real-world applications. This education has equipped me with the ability to understand and solve complex technical problems, design and program PLC controllers, and contribute effectively in the field of Mechatronics.",
         universityDescription: "During my studies at the University, I gained extensive knowledge and practical experience in various programming languages and technologies. I mastered C++ and C#, and got acquainted with .Net technologies such as ASP.NET and WPF. I also delved into PLC programming, which further broadened my technical skills. In addition, I learned how to create web pages using React and manage SQL databases. This comprehensive education has equipped me with a diverse set of skills, enabling me to tackle complex software development challenges and contribute effectively in the field of computer science.",
-        inProgress: 'In progress'
+        inProgress: 'In progress',
+        comercialExperience: "+1 year of commercial experience",
+        fssDescription: 'During my time as a Frontend Developer, I worked extensively with React, Vue.js, Node.js, and SQL. I utilized version control tools such as GitHub and GitLab and managed project tasks using Jira. One of my key projects involved developing a Yacht Application. In this project, I was responsible for building interactive maps where users could create and track routes.Additionally, I integrated weather data from an external API, which was displayed within the application.I also worked on the data flow from sensor readings: the sensor data was passed to InfluxDB, from which I created real- time graphs and indicators, such as current speed and other relevant metrics for users on the yacht.',
+        intership: 'Even though my role was an internship, I was entrusted with working on real-world projects and delivering meaningful results. I gained hands-on experience in C# and ASP.NET Core API development. My tasks included writing unit tests, integration tests, and ensuring the compatibility of the projects with Docker containers for both testing and running the application. One of the major applications I worked on was a WPF- based application used for handling barcode scanners.I was responsible for implementing various changes, bug fixes, and version updates to improve its performance.Additionally, I developed scanner simulators that were later used in the testing phase, ensuring that the scanning processes were thoroughly validated.',
+        keyProjects: 'Key projects',
+        experience: "Experience",
     },
     sp: {
         langCode: 'sp',
@@ -136,7 +147,7 @@ export const dictionary: DictionaryType = {
         seeRepositoryOnGithub: 'Ver repositorio en Github',
         seeUserOnGithub: 'Ver usuario en Github',
         repositoryLinkCopiedToClipboard: 'Enlace del repositorio copiado al portapapeles',
-        softwareDdeveloper: 'Desarrollador de software',
+        softwareDeveloper: 'Desarrollador de software',
         closeDrawer: 'Cerrar cajón',
         openDrawer: 'Abrir cajón',
         technicalSchool: 'Escuela Técnica de Mecatrónica',
@@ -159,7 +170,12 @@ export const dictionary: DictionaryType = {
         now: 'ahora',
         technicalSchoolDescription: "Como graduado de una escuela técnica especializada en Mecatrónica, he adquirido conocimientos y habilidades prácticas en electrónica, electricidad y programación de controladores lógicos programables (PLC). El plan de estudios proporcionó una sólida base en estas áreas, enfatizando la capacitación práctica y las aplicaciones del mundo real. Esta educación me ha dotado de la capacidad de comprender y resolver problemas técnicos complejos, diseñar y programar controladores PLC y contribuir eficazmente en el campo de la Mecatrónica.",
         universityDescription: "Durante mis estudios en la Universidad, adquirí amplios conocimientos y experiencia práctica en varios lenguajes de programación y tecnologías. Dominé C++ y C#, y me familiaricé con tecnologías .Net como ASP.NET y WPF. También profundicé en la programación de PLC, lo que amplió aún más mis habilidades técnicas. Además, aprendí a crear páginas web con React y a gestionar bases de datos SQL. Esta educación integral me ha dotado de un conjunto diverso de habilidades, lo que me permite abordar desafíos complejos de desarrollo de software y contribuir eficazmente en el campo de la informática.",
-        inProgress: 'En progreso'
+        inProgress: 'En progreso',
+        comercialExperience: "+1 año de experiencia comercial",
+        fssDescription: 'Durante mi tiempo como Desarrollador Frontend, trabajé ampliamente con React, Vue.js, Node.js y SQL. Utilicé herramientas de control de versiones como GitHub y GitLab y gestioné tareas del proyecto usando Jira. Uno de mis proyectos clave fue el desarrollo de una aplicación para yates. En este proyecto, fui responsable de crear mapas interactivos donde los usuarios podían crear y seguir rutas. Además, integré datos meteorológicos de una API externa, que se mostraban dentro de la aplicación. También trabajé en el flujo de datos de sensores: los datos de los sensores se enviaban a InfluxDB, desde donde creaba gráficos en tiempo real e indicadores, como la velocidad actual y otras métricas relevantes para los usuarios en el yate.',
+        intership: 'Aunque mi puesto fue una pasantía, se me confió trabajar en proyectos reales y entregar resultados significativos. Adquirí experiencia práctica en C# y ASP.NET Core API. Mis tareas incluían escribir pruebas unitarias, pruebas de integración y asegurar la compatibilidad de los proyectos con contenedores Docker para pruebas y ejecución de la aplicación. Una de las aplicaciones principales en las que trabajé fue una aplicación basada en WPF utilizada para manejar escáneres de códigos de barras.Fui responsable de implementar varios cambios, corrección de errores y actualizaciones de versiones para mejorar su rendimiento.Además, desarrollé simuladores de escáneres que luego se utilizaron en la fase de prueba para asegurar que los procesos de escaneo fueran validados correctamente.',
+        keyProjects: 'Proyectos clave',
+        experience: "Experiencia",
     },
     sa: {
         langCode: 'sa',
@@ -182,7 +198,7 @@ export const dictionary: DictionaryType = {
         seeRepositoryOnGithub: 'انظر المستودع على Github',
         seeUserOnGithub: 'انظر المستخدم على Github',
         repositoryLinkCopiedToClipboard: 'تم نسخ رابط المستودع إلى الحافظة',
-        softwareDdeveloper: 'مطور برامج',
+        softwareDeveloper: 'مطور برامج',
         closeDrawer: 'إغلاق الدرج',
         openDrawer: 'فتح الدرج',
         technicalSchool: 'المدرسة التقنية للميكاترونيك',
@@ -205,6 +221,11 @@ export const dictionary: DictionaryType = {
         now: 'الآن',
         technicalSchoolDescription: "كخريج من المدرسة التقنية المتخصصة في الميكاترونيك، اكتسبت معرفة شاملة ومهارات عملية في الإلكترونيات والكهرباء وبرمجة المتحكمات المنطقية القابلة للبرمجة (PLC). قدم المنهج الدراسي أساسًا قويًا في هذه المجالات، مع التركيز على التدريب العملي والتطبيقات العملية. هذا التعليم قد زودني بالقدرة على فهم وحل المشاكل التقنية المعقدة، وتصميم وبرمجة متحكمات PLC، والمساهمة بفعالية في مجال الميكاترونيك.",
         universityDescription: "خلال دراستي في الجامعة، اكتسبت معرفة وخبرة عملية واسعة في لغات البرمجة والتقنيات المختلفة. تقنمت في C++ و C#، وتعرفت على تقنيات .Net مثل ASP.NET و WPF. كما تعمقت في برمجة PLC، مما زاد من مهاراتي التقنية. بالإضافة إلى ذلك، تعلمت كيفية إنشاء صفحات ويب باستخدام React وإدارة قواعد بيانات SQL. هذا التعليم الشامل قد زودني بمجموعة متنوعة من المهارات، مما يمكنني من التعامل مع تحديات تطوير البرمجيات المعقدة والمساهمة بفعالية في مجال علوم الكمبيوتر.",
-        inProgress: 'قيد التطوير'
+        inProgress: 'قيد التطوير',
+        comercialExperience: "+1 سنة من الخبرة التجارية",
+        fssDescription: 'خلال عملي كـ مطور واجهة أمامية، كنت أعمل بشكل مكثف مع React و Vue.js و Node.js و SQL. كنت أستخدم أدوات التحكم في الإصدارات مثل GitHub و GitLab وأدير المهام باستخدام Jira. أحد المشاريع الرئيسية التي عملت عليها كان تطبيق لــ اليخوت. في هذا المشروع، كنت مسؤولاً عن إنشاء خرائط تفاعلية حيث يمكن للمستخدمين إنشاء وتتبع المسارات.بالإضافة إلى ذلك، قمت بدمج بيانات الطقس من API خارجي يتم عرضها داخل التطبيق.كما كنت أتعامل مع تدفق البيانات من أجهزة الاستشعار: حيث يتم إرسال بيانات الاستشعار إلى InfluxDB، والتي قمت من خلالها بإنشاء رسوم بيانية حية ومؤشرات، مثل السرعة الحالية وغيرها من القياسات المهمة للمستخدمين على اليخت.',
+        intership: 'على الرغم من أن هذا كان تدريبًا داخليًا، تم تكليفي بالعمل على مشاريع حقيقية وتقديم نتائج حقيقية. حصلت على تجربة عملية في C# و ASP.NET Core API. كانت مهمتي كتابة اختبارات الوحدات و الاختبارات التكاملية وضمان توافق المشاريع مع حاويات Docker للاختبار وتشغيل التطبيق.أحد التطبيقات الرئيسية التي عملت عليها كان تطبيقًا يعتمد على WPF لإدارة ماسحات الباركود.كنت مسؤولاً عن إدخال تغييرات وإصلاح الأخطاء وتحديث الإصدارات لتحسين أدائه.بالإضافة إلى ذلك، قمت بتطوير محاكيات للماسحات الضوئية التي تم استخدامها لاحقًا في مرحلة الاختبار لضمان التحقق الدقيق من عمليات المسح.',
+        keyProjects: 'المشاريع الرئيسية',
+        experience: "الخبرة",
     },
 }

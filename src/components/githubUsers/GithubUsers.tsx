@@ -3,7 +3,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Grid, ListItemAvatar, useTheme } from '@mui/material';
 import { Owner } from '../../types';
-import GithubUserSkeleton from './GithubUserSkeleton';
 import { animated, useTrail } from 'react-spring';
 
 export interface GithubUsersProps {
@@ -11,21 +10,22 @@ export interface GithubUsersProps {
     isLoading: boolean
 }
 
+const trailOptions = {
+    from: { opacity: 0, transform: 'translate(0px,-20px)' },
+    to: { opacity: 1, transform: 'translate(0px,0px)' },
+    config: { duration: 300 },
+    delay: 500
+}
+
 function GithubUsers({ users, isLoading }: GithubUsersProps) {
     const theme = useTheme()
-    const trail = useTrail(users.length, {
-        from: { opacity: 0, transform: 'translate(0px,-20px)' },
-        to: { opacity: 1, transform: 'translate(0px,0px)' },
-        config: { duration: 300 },
-        delay: 500
-    });
+    const trail = useTrail(users.length, trailOptions);
 
     const AnimatedGrid = animated(Grid)
 
     return (
         <Grid item xs={12}>
             <Grid container flexWrap='wrap' spacing={2}>
-                {isLoading && new Array(3).fill(0).map((_, index) => (<GithubUserSkeleton key={index} />))}
                 {!isLoading && trail.map((animation, index) => (
                     <AnimatedGrid item xs={12} md={12} lg={3} key={users[index].id} style={animation}>
                         <ListItem sx={{ p: 0 }} key={users[index].id}>

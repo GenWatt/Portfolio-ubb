@@ -3,7 +3,7 @@ import './App.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box, IconButton, SelectChangeEvent, Theme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
-import SideNav from './components/sideNav/components/SideNav';
+import SideNav from './features/sidenav/components/SideNav';
 import { darkThemeBluePink, darkThemeGreenPurple, lightTheme } from './themes'
 import useLocalStorage from './hooks/useLocalStorage'
 import { useLanguage } from './context/LanguageContext'
@@ -17,6 +17,7 @@ import JavascriptIcon from '@mui/icons-material/Javascript';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import Person2Icon from '@mui/icons-material/Person2';
 import PhoneIcon from '@mui/icons-material/Phone';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const navRoutes = [
   { text: 'Profile', path: '/profile', icon: <Person2Icon /> },
@@ -25,6 +26,7 @@ const navRoutes = [
   { text: 'Education', path: '/education', icon: <SchoolIcon /> },
   { text: 'Resume', path: '/resume', icon: <PictureAsPdfIcon /> },
   { text: 'TechStack', path: '/stack', icon: <JavascriptIcon /> },
+  { text: 'Experience', path: '/experience', icon: <KeyboardArrowUpIcon /> },
   // { text: 'Game', path: '/game', icon: <SportsEsportsIcon />, inProgress: true },
 ]
 

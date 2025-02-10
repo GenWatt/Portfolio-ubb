@@ -1,46 +1,41 @@
-import axios from 'axios'
-import { Owner, Project, Repository } from '../types'
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import { Owner, Project, Repository } from '../types';
 
-const baseUrl = "https://api.github.com"
+const baseUrl = "https://api.github.com";
 
 const axiosInstance = axios.create({
-    baseURL: baseUrl
-})
+    baseURL: baseUrl,
+});
 
-function useGithub() {
-    async function getRepo(project: Project) {
-        try {
-            const response = await axiosInstance.get<Repository>(`/repos/${project.username}/${project.repoName}`)
-
-            response.data.project = project
-            return response.data
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    async function getRepos(projects: Project[]): Promise<Repository[]> {
-        const promises = projects.map(project => getRepo(project))
-        const repositories = await Promise.all(promises)
-        return repositories.filter(repository => repository !== undefined) as Repository[]
-    }
-
-    async function getOwner(username: string) {
-        try {
-            const response = await axiosInstance.get(`/users/${username}`)
-            return response.data
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    async function getOwners(usernames: string[]) {
-        const promises = usernames.map(username => getOwner(username))
-        const owners = await Promise.all(promises)
-        return owners.filter(owner => owner !== undefined) as Owner[]
-    }
-
-    return { getRepo, getRepos, getOwner, getOwners }
+async function fetchRepo(project: Project): Promise<Repository> {
+    console.log('fetching repo', project);
+    const response = await axiosInstance.get<Repository>(`/repos/${project.username}/${project.repoName}`);
+    response.data.project = project;
+    return response.data;
 }
 
-export default useGithub
+async function fetchOwner(username: string): Promise<Owner> {
+    console.log('fetching owner', username);
+    const response = await axiosInstance.get<Owner>(`/users/${username}`);
+    return response.data;
+}
+
+export const reposQueryKey = (projects: Project[]) => ['repos', projects];
+export const ownersQueryKey = (usernames: string[]) => ['owners', usernames];
+
+export function useRepos(projects: Project[]) {
+    return useQuery({
+        queryKey: reposQueryKey(projects),
+        queryFn: () => Promise.all(projects.map(fetchRepo)),
+        enabled: projects.length > 0,
+    });
+}
+
+export function useOwners(usernames: string[]) {
+    return useQuery({
+        queryKey: ownersQueryKey(usernames),
+        queryFn: () => Promise.all(usernames.map(fetchOwner)),
+        enabled: usernames.length > 0,
+    });
+}

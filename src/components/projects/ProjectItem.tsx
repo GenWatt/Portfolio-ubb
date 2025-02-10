@@ -90,7 +90,8 @@ export default function ProjectItem({ repo }: ProjectItemProps) {
                 <CardActions>
                     <a href={repo.html_url} target='blank'>
                         <Button variant='contained'>
-                            <GitHub sx={{ marginRight: 1 }} /> {t('seeOnGithub')}
+                            <GitHub sx={{ marginRight: 1 }} />
+                            {t('seeOnGithub')}
                         </Button>
                     </a>
 

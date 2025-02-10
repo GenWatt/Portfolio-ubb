@@ -8,6 +8,7 @@ const EducationPage = React.lazy(() => import("../pages/EducationPage"));
 const ResumePage = React.lazy(() => import("../pages/ResumePage"));
 const TechStackPage = React.lazy(() => import("../pages/TechStackPage"));
 const GamePage = React.lazy(() => import("../pages/GamePage"));
+const ExperiencePage = React.lazy(() => import("../pages/ExperiencePage"));
 
 export const routes: RouteObject[] = [
     {
@@ -33,6 +34,10 @@ export const routes: RouteObject[] = [
     {
         path: '/stack',
         element: <TechStackPage />
+    },
+    {
+        path: '/experience',
+        element: <ExperiencePage />
     },
     {
         path: '/game',

@@ -3,6 +3,7 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group'
 import { notShowOnMobile, routes } from '../routes/routes';
 import { Suspense, useEffect, useLayoutEffect, useState } from 'react';
 import useHelper from '../hooks/useHelper';
+import Loader from '../features/shared/components/Loader';
 
 function Router() {
     const location = useLocation();
@@ -35,7 +36,7 @@ function Router() {
                     classNames="fade"
                     timeout={300}
                 >
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<Loader />}>
                         <Routes location={location}>
                             {renderRoutes.map(({ path, element }) => (
                                 <Route key={path} path={path} element={element} />
