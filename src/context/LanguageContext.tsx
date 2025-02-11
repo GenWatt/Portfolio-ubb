@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
+import useLocalStorage from '../features/shared/hooks/useLocalStorage';
 import { dictionary } from '../languages';
 
 type LanguageContextType = {

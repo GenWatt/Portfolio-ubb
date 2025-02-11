@@ -1,5 +1,5 @@
 import RegisterImage from '../../../assets/images/adrianAuthClient/Register.png'
-import ConfirmEmailImage from '../../../assets/images/adrianAuthClient/Confirm email.png'
+import ConfirmEmailImage from '../../../assets/images/adrianAuthClient/ConfirmEmail.png'
 import RTSVideo from '../../../assets/videos/RTS.mp4'
 import AdriantifySongsImage from '../../../assets/images/adriantify/Adriantify-songs.png'
 import ListenImage from '../../../assets/images/adriantify/listen.png'

@@ -1,7 +1,7 @@
 import styled from '@mui/material/styles/styled';
 import { Container, Typography, useTheme } from "@mui/material";
 
-import useTranslation from '../hooks/useTranslation';
+import useTranslation from '../features/shared/hooks/useTranslation';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
     padding: theme.spacing(0.5, 0, 0.5, 0),

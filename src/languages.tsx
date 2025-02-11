@@ -5,7 +5,7 @@ export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy
     | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO' | 'education' | 'resumeLoadingError'
     | 'showModelIn3D' | 'universitySpecialization' | 'universityStart' | 'universityEnd' | 'mechatronics' | 'technicalSchoolStart'
     | 'technicalSchoolEnd' | 'loadingIsTakingTooLong' | 'now' | 'technicalSchoolDescription' | 'universityDescription' | 'inProgress'
-    | 'experience' | 'fssDescription' | 'intership' | 'keyProjects' | 'comercialExperience';
+    | 'experience' | 'fssDescription' | 'intership' | 'keyProjects' | 'comercialExperience' | 'errorLoadingUsers' | 'errorLoadingProjects';
 
 export type OptionalTranslationKeys = 'authorName';
 
@@ -73,6 +73,8 @@ export const dictionary: DictionaryType = {
         intership: 'Mimo że moje stanowisko było stażem, powierzono mi pracę nad rzeczywistymi projektami i dostarczanie realnych wyników. Zyskałem praktyczne doświadczenie w C# i ASP.NET Core API. Do moich zadań należało pisanie testów jednostkowych, testów integracyjnych oraz zapewnienie kompatybilności projektów z kontenerami Docker do testowania i uruchamiania aplikacji. Jedną z głównych aplikacji, nad którą pracowałem, była aplikacja oparta na WPF, służąca do obsługi skanerów kodów kreskowych.Byłem odpowiedzialny za wprowadzanie zmian, poprawek błędów oraz aktualizowanie wersji aplikacji, by poprawić jej wydajność.Dodatkowo stworzyłem symulatory skanerów, które później były wykorzystywane w fazie testowania, zapewniając, że procesy skanowania zostały dokładnie zwalidowane.',
         keyProjects: 'Kluczowe projekty',
         experience: "Doświadczenie",
+        errorLoadingProjects: 'Wystąpił błąd podczas ładowania projektów',
+        errorLoadingUsers: 'Wystąpił błąd podczas ładowania użytkowników',
     },
     us: {
         langCode: 'us',
@@ -125,6 +127,8 @@ export const dictionary: DictionaryType = {
         intership: 'Even though my role was an internship, I was entrusted with working on real-world projects and delivering meaningful results. I gained hands-on experience in C# and ASP.NET Core API development. My tasks included writing unit tests, integration tests, and ensuring the compatibility of the projects with Docker containers for both testing and running the application. One of the major applications I worked on was a WPF- based application used for handling barcode scanners.I was responsible for implementing various changes, bug fixes, and version updates to improve its performance.Additionally, I developed scanner simulators that were later used in the testing phase, ensuring that the scanning processes were thoroughly validated.',
         keyProjects: 'Key projects',
         experience: "Experience",
+        errorLoadingProjects: 'An error occurred while loading projects',
+        errorLoadingUsers: 'An error occurred while loading users',
     },
     sp: {
         langCode: 'sp',
@@ -176,6 +180,8 @@ export const dictionary: DictionaryType = {
         intership: 'Aunque mi puesto fue una pasantía, se me confió trabajar en proyectos reales y entregar resultados significativos. Adquirí experiencia práctica en C# y ASP.NET Core API. Mis tareas incluían escribir pruebas unitarias, pruebas de integración y asegurar la compatibilidad de los proyectos con contenedores Docker para pruebas y ejecución de la aplicación. Una de las aplicaciones principales en las que trabajé fue una aplicación basada en WPF utilizada para manejar escáneres de códigos de barras.Fui responsable de implementar varios cambios, corrección de errores y actualizaciones de versiones para mejorar su rendimiento.Además, desarrollé simuladores de escáneres que luego se utilizaron en la fase de prueba para asegurar que los procesos de escaneo fueran validados correctamente.',
         keyProjects: 'Proyectos clave',
         experience: "Experiencia",
+        errorLoadingProjects: 'Se produjo un error al cargar los proyectos',
+        errorLoadingUsers: 'Se produjo un error al cargar los usuarios',
     },
     sa: {
         langCode: 'sa',
@@ -227,5 +233,7 @@ export const dictionary: DictionaryType = {
         intership: 'على الرغم من أن هذا كان تدريبًا داخليًا، تم تكليفي بالعمل على مشاريع حقيقية وتقديم نتائج حقيقية. حصلت على تجربة عملية في C# و ASP.NET Core API. كانت مهمتي كتابة اختبارات الوحدات و الاختبارات التكاملية وضمان توافق المشاريع مع حاويات Docker للاختبار وتشغيل التطبيق.أحد التطبيقات الرئيسية التي عملت عليها كان تطبيقًا يعتمد على WPF لإدارة ماسحات الباركود.كنت مسؤولاً عن إدخال تغييرات وإصلاح الأخطاء وتحديث الإصدارات لتحسين أدائه.بالإضافة إلى ذلك، قمت بتطوير محاكيات للماسحات الضوئية التي تم استخدامها لاحقًا في مرحلة الاختبار لضمان التحقق الدقيق من عمليات المسح.',
         keyProjects: 'المشاريع الرئيسية',
         experience: "الخبرة",
+        errorLoadingProjects: 'حدث خطأ أثناء تحميل المشاريع',
+        errorLoadingUsers: 'حدث خطأ أثناء تحميل المستخدمين',
     },
 }

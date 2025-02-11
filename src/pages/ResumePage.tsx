@@ -8,12 +8,12 @@ import 'react-pdf/dist/Page/TextLayer.css';
 import LinearProgressWithLabel from '../components/LinearProgressWithLabel';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import useTranslation from '../hooks/useTranslation';
+import useTranslation from '../features/shared/hooks/useTranslation';
 import { useSnackbar } from 'notistack';
-import ResumeMobile from '../components/resume/ResumeMobile';
-import ResumeDevice from '../components/resume/ResumeDevice';
+import ResumeMobile from '../features/resume/components/ResumeMobile';
+import ResumeDevice from '../features/resume/components/ResumeDevice';
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
-import useHelper from '../hooks/useHelper';
+import useHelper from '../features/shared/hooks/useHelper';
 
 function ResumePage() {
     const { language } = useLanguage()

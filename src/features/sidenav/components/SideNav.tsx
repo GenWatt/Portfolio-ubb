@@ -14,16 +14,17 @@ import Router from '../../../components/Router';
 import { Backdrop, Grid, SelectChangeEvent, Tooltip } from '@mui/material';
 import Footer from '../../../components/Footer';
 import { useLanguage } from '../../../context/LanguageContext';
-import useTranslation from '../../../hooks/useTranslation';
+import useTranslation from '../../shared/hooks/useTranslation';
 import { TranslationKeys } from '../../../languages';
 import NavLinkDrawer from './NavLinkDrawer';
 import UserPreferences from './UserPreferences';
 import { useEffect, useState } from 'react';
-import useHelper from '../../../hooks/useHelper';
+import useHelper from '../../shared/hooks/useHelper';
 import { notShowOnMobile } from '../../../routes/routes';
 import AppBar from '../styles/Appbar';
 import DrawerHeader from '../styles/DrawerHeader';
 import Drawer from '../styles/Drawer';
+import { useDrawerStore } from '../stores/drawerStore';
 
 export interface SideNavProps {
     handleThemeChange: (event: SelectChangeEvent) => void;
@@ -37,15 +38,13 @@ export default function SideNav({ handleThemeChange, currentTheme, themes, navRo
     const { language } = useLanguage();
     const { t } = useTranslation();
     const { isMobile } = useHelper();
+    const { isOpen, close, open } = useDrawerStore();
 
-    const [open, setOpen] = useState(false);
     // const [isMobile, setIsMobile] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
     const [paddintTop, setPaddingTop] = useState(0);
     const [paddintTop2, setPaddingTop2] = useState(0);
 
-    const handleDrawerOpen = () => setOpen(true);
-    const handleDrawerClose = () => setOpen(false);
 
     const activeText = (path: string) => {
         let text = '';
@@ -69,7 +68,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes, navRo
     }
 
     useEffect(() => {
-        if (isMobile && open) {
+        if (isMobile && isOpen) {
             setIsMobileOpen(true);
         } else {
             setIsMobileOpen(false);
@@ -99,17 +98,17 @@ export default function SideNav({ handleThemeChange, currentTheme, themes, navRo
         <Box component='div' sx={{ display: 'flex' }}>
             <CssBaseline />
 
-            <AppBar id='AppBar' position="fixed" open={open} dir={language.langDirection}>
+            <AppBar id='AppBar' position="fixed" open={isOpen} dir={language.langDirection}>
                 <Toolbar sx={{ width: '100%', p: 1 }}>
                     <Tooltip title={t('openDrawer')} placement='right'>
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
-                            onClick={handleDrawerOpen}
+                            onClick={open}
                             edge="start"
                             sx={{
                                 [language.langDirection === 'rtl' ? 'marginLeft' : 'marginRight']: 5,
-                                ...(open && { display: 'none' }),
+                                ...(isOpen && { display: 'none' }),
                             }}
                         >
                             <MenuIcon />
@@ -119,15 +118,15 @@ export default function SideNav({ handleThemeChange, currentTheme, themes, navRo
                         <Typography color={theme.palette.mode === 'light' ? theme.palette.text.secondary : theme.palette.primary.main} variant="h5" noWrap component="div">
                             {activeText(location.pathname)}
                         </Typography>
-                        {!isMobile && !open && <UserPreferences onFontSizeChange={handleResize} currentTheme={currentTheme} handleThemeChange={handleThemeChange} themes={themes} />}
+                        {!isMobile && !isOpen && <UserPreferences onFontSizeChange={handleResize} currentTheme={currentTheme} handleThemeChange={handleThemeChange} themes={themes} />}
                     </Grid>
                 </Toolbar>
             </AppBar>
 
-            <Drawer id="Drawer" dir={language.langDirection} variant="permanent" open={open} anchor={language.langDirection === 'rtl' ? 'right' : 'left'}>
+            <Drawer id="Drawer" dir={language.langDirection} variant="permanent" open={isOpen} anchor={language.langDirection === 'rtl' ? 'right' : 'left'}>
                 <DrawerHeader paddingTop={`${paddintTop / 2}px`} paddingBottom={`${paddintTop / 2}px`}>
                     <Tooltip title={t('closeDrawer')} placement='right'>
-                        <IconButton id="CloseButton" onClick={handleDrawerClose}>
+                        <IconButton id="CloseButton" onClick={close}>
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
                     </Tooltip>
@@ -136,14 +135,14 @@ export default function SideNav({ handleThemeChange, currentTheme, themes, navRo
                 <Divider />
                 <List sx={{ padding: 0 }}>
                     {renderLinks.map((route) => (
-                        <NavLinkDrawer route={route} key={route.text} handleDrawerClose={handleDrawerClose} open={open} />
+                        <NavLinkDrawer route={route} key={route.text} handleDrawerClose={close} open={isOpen} />
                     ))}
                     {isMobileOpen && <Divider />}
-                    {open && <UserPreferences padding={1} flexDirection={'column'} currentTheme={currentTheme} handleThemeChange={handleThemeChange} themes={themes} />}
+                    {isOpen && <UserPreferences padding={1} flexDirection={'column'} currentTheme={currentTheme} handleThemeChange={close} themes={themes} />}
                 </List>
             </Drawer>
 
-            {isMobileOpen && <Backdrop open={open} onClick={handleDrawerClose} />}
+            {isMobileOpen && <Backdrop open={isOpen} onClick={close} />}
             <Box component="main" sx={{ flexGrow: 1, pointerEvents: isMobileOpen ? 'none' : 'auto', paddingBottom: 5, p: 2 }}>
                 <DrawerHeader paddingTop={`${paddintTop2}px`} />
                 <Router />

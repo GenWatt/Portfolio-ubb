@@ -1,9 +1,9 @@
 import { Settings } from '@mui/icons-material';
 import { ListItemText as MuiListItemText } from '@mui/material';
-import { animated } from 'react-spring';
+import { animated } from '@react-spring/web';
 import { TranslationKeys } from '../../../languages';
-import useHelper from '../../../hooks/useHelper';
-import useTranslation from '../../../hooks/useTranslation';
+import useHelper from '../../shared/hooks/useHelper';
+import useTranslation from '../../shared/hooks/useTranslation';
 import { useLocation } from 'react-router-dom';
 import useDrawerLink from '../hooks/useDrawerLink';
 import { InProgressIcon, ListItemButton, ListItemIcon } from '../styles/OpenNavLinkDrawerStyles';

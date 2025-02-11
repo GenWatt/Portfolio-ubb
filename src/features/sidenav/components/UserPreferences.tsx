@@ -1,8 +1,8 @@
 import { Box, Select, MenuItem, useTheme, SelectChangeEvent, Theme, Grid, GridProps } from '@mui/material'
 import { TranslationKeys } from '../../../languages'
 import { useLanguage } from '../../../context/LanguageContext'
-import useTranslation from '../../../hooks/useTranslation';
-import FontSizeInput from '../../../components/FontSizeInput';
+import useTranslation from '../../shared/hooks/useTranslation';
+import FontSizeInput from '../../shared/components/FontSizeInput';
 
 export interface UserPreferencesProps extends GridProps {
     currentTheme: string;
@@ -25,6 +25,8 @@ function UserPreferences({ currentTheme, handleThemeChange, themes, onLanguageCh
         }
     }
 
+    const getFlagUrl = (langCode: string) => `https://www.worldometers.info//img/flags/small/tn_${langCode}-flag.gif`
+
     return (
         <Grid display={'flex'} gap={1} {...boxProps}>
             <Select sx={{ backgroundColor: theme.palette.background.default }} value={currentTheme} onChange={handleThemeChange}>
@@ -36,16 +38,18 @@ function UserPreferences({ currentTheme, handleThemeChange, themes, onLanguageCh
                         </Box>
                     </MenuItem>))}
             </Select>
+
             <Select sx={{ backgroundColor: theme.palette.background.default }} value={language.langCode} onChange={handleLanguageChange}>
                 {getSupportedLanguages().map(lang => (
                     <MenuItem key={lang.langCode} value={lang.langCode}>
                         <Box component='div' sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <img src={`https://www.worldometers.info//img/flags/small/tn_${lang.langCode}-flag.gif`} alt={lang.langName} style={{ width: 20, height: 20 }} />
+                            <img src={getFlagUrl(lang.langCode)} alt={lang.langName} style={{ width: 20, height: 20 }} />
                             {lang.langName}
                         </Box>
                     </MenuItem>
                 ))}
             </Select>
+
             <FontSizeInput onFontSizeChange={onFontSizeChange} />
         </Grid>
     )

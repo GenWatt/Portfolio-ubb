@@ -1,11 +1,11 @@
 import { Grid, Paper, Typography, Chip, List, ListItem, ListItemIcon, ListItemText, Link } from '@mui/material'
-import { animated } from 'react-spring'
+import { animated } from '@react-spring/web'
 
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 import CodeIcon from '@mui/icons-material/Code';
-import useTranslation from '../../../hooks/useTranslation';
+import useTranslation from '../../shared/hooks/useTranslation';
 
 export interface ExpirenceCardProps {
     exp: {

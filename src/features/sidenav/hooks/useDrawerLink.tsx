@@ -1,4 +1,4 @@
-import { useSpring } from "react-spring";
+import { useSpring } from "@react-spring/web";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material";
 

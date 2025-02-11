@@ -2,7 +2,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
 import { notShowOnMobile, routes } from '../routes/routes';
 import { Suspense, useEffect, useLayoutEffect, useState } from 'react';
-import useHelper from '../hooks/useHelper';
+import useHelper from '../features/shared/hooks/useHelper';
 import Loader from '../features/shared/components/Loader';
 
 function Router() {

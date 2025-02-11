@@ -5,10 +5,10 @@ import { Box, IconButton, SelectChangeEvent, Theme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
 import SideNav from './features/sidenav/components/SideNav';
 import { darkThemeBluePink, darkThemeGreenPurple, lightTheme } from './themes'
-import useLocalStorage from './hooks/useLocalStorage'
+import useLocalStorage from './features/shared/hooks/useLocalStorage'
 import { useLanguage } from './context/LanguageContext'
 import { Mail } from '@mui/icons-material'
-import ModalContact from './components/contact/ModalContact'
+import ModalContact from './features/contact/components/ModalContact'
 
 import SchoolIcon from '@mui/icons-material/School';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';

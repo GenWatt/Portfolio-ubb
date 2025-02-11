@@ -1,9 +1,9 @@
 import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/rapier'
-import Scene from '../components/3D/game/Scene'
+import Scene from '../features/game/3D/Scene'
 
 import { useState, useLayoutEffect } from 'react';
-import useHelper from '../hooks/useHelper';
+import useHelper from '../features/shared/hooks/useHelper';
 
 function GamePage() {
     const { getViewHeight, getViewWidth } = useHelper();
@@ -24,6 +24,7 @@ function GamePage() {
             window.removeEventListener('resize', handleResize)
         }
     }, []);
+
     return (
         <div style={{ width: viewWidth, height: viewHeight }}>
             <Canvas>

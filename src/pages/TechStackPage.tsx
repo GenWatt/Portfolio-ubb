@@ -9,9 +9,9 @@ import UNITY from '../assets/images/unity.png'
 import PYTHON from '../assets/images/python.jpg'
 import CSHARP from '../assets/images/csharp.jpg'
 import DOTNET from '../assets/images/.Net.png'
-import TechStackCanvas from '../components/3D/techStack/TechStackCanvas'
-import useHelper from '../hooks/useHelper'
-import { useLayoutEffect, useRef, useState } from 'react'
+import useHelper from '../features/shared/hooks/useHelper'
+import { useEffect, useRef, useState } from 'react'
+import TechStackCanvas from '../features/techStack/3D/TechStackCanvas'
 
 export interface ITechStackList {
     name: string
@@ -38,31 +38,20 @@ const MAX_SPEED = 0.01;
 const STEP_SPEED = 0.0001;
 
 function TechStackPage() {
-    const { getViewHeight, getViewWidth } = useHelper();
-    const [viewHeight, setViewHeight] = useState(0);
-    const [viewWidth, setViewWidth] = useState(0);
+    const { viewWidth, viewHeight } = useHelper();
+    const [totalHeight, setTotalHeight] = useState(0);
+
     const [speed, setSpeed] = useState(0.001);
     const sliderRef = useRef<HTMLDivElement>(null);
-
-    const handleResize = () => {
-        setViewHeight(getViewHeight() - sliderRef.current!.clientHeight);
-        setViewWidth(getViewWidth());
-    }
 
     const handleValueChange = (_1: Event, value: number | number[], _2: number) => {
         const newValue = Array.isArray(value) ? value[0] : value;
         setSpeed(newValue);
     }
 
-    useLayoutEffect(() => {
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, []);
+    useEffect(() => {
+        setTotalHeight(viewHeight - sliderRef.current!.clientHeight);
+    }, [viewHeight]);
 
     return (
         <Grid container>
@@ -75,10 +64,11 @@ function TechStackPage() {
                     max={MAX_SPEED}
                     step={STEP_SPEED} />
             </Grid>
-            <Grid container height={viewHeight}>
-                <div style={{ width: viewWidth, height: viewHeight }}>
-                    <TechStackCanvas techStack={techStack} speed={speed} />
-                </div>
+            <Grid container>
+                <TechStackCanvas
+                    techStack={techStack}
+                    speed={speed}
+                    containerProps={{ style: { height: totalHeight, width: viewWidth } }} />
             </Grid>
         </Grid>
     );
