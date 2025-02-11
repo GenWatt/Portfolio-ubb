@@ -47,7 +47,7 @@ function TechStackItem({ tech, index, positions, radius, onItemEnter }: TechStac
             </mesh>
             <mesh>
                 <Html position={[0, 0, 0.01]}>
-                    <TechStackItemHtml tech={tech} index={index} onItemEnter={onItemEnter} />
+                    <TechStackItemHtml tech={tech} onItemEnter={onItemEnter} />
                 </Html>
             </mesh>
         </group>
