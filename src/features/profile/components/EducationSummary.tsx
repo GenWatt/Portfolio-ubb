@@ -21,7 +21,7 @@ function EducationSummary() {
         <>
             <Grid container alignItems="center" gap={1}>
                 <SchoolIcon color='primary' />
-                <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                <Typography variant="h5" fontWeight={600}>
                     {t('education')}
                 </Typography>
             </Grid>

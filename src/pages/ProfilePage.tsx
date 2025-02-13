@@ -8,10 +8,12 @@ import AbblityBadges from '../features/shared/components/AbilityBadges'
 import EducationSummary from '../features/profile/components/EducationSummary'
 import ExperienceSummary from '../features/profile/components/ExpirenceSummary'
 import ProfileCanvas from '../features/profile/3D/ProfileCanvas'
+import useData from '../features/shared/hooks/useData'
 
 function ProfilePage() {
     const theme = useTheme()
     const { t } = useTranslation()
+    const { techStack } = useData()
 
     return (
         <Grid container gap={3}>
@@ -52,13 +54,22 @@ function ProfilePage() {
                 </Grid>
             </Grid>
 
-            <Grid item xs={12}>
-                <Typography variant="h4" textAlign="center" sx={{ fontWeight: 700 }} color={'secondary'}>
-                    {t('comercialExperience')}
-                </Typography>
+            <Grid container item xs={12}>
+                <Grid item xs={12} md={6} px={1}>
+                    <Typography variant="h6" textAlign="center" color={'primary'} fontWeight={600}>
+                        {t('comercialExperience')}
+                    </Typography>
+                </Grid>
+
+                <Grid item xs={12} md={6} px={1}>
+                    <Typography variant="h6" textAlign="center" color={'primary'} fontWeight={600}>
+                        {t('noneComersialExperience')}
+                    </Typography>
+                </Grid>
             </Grid>
+
             <Grid item xs={12}>
-                <AbblityBadges />
+                <AbblityBadges data={techStack} />
             </Grid>
             <Grid item xs={12}>
                 <Contact />

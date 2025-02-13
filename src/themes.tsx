@@ -20,15 +20,17 @@ export const darkThemeBluePink = createTheme({
             // secondary: '#90caf9',
         },
     },
+    //@ts-ignore
+    // shadows: ['none', '2px 2px 25px rgba(144, 202, 249, 0.1)', '2px 2px 20px rgba(144, 202, 249, 0.1)', '0 8px 16px 0 rgba(0,0,0,0.2)', '0 16px 32px 0 rgba(0,0,0,0.2)', '0 32px 64px 0 rgba(0,0,0,0.2)'],
     components: {
         MuiCard: {
             styleOverrides: {
                 root: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    backgroundColor: 'rgba(27, 22, 22, 0.5)',
                     backdropFilter: 'blur(10px)',
                     borderRadius: '10px',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    boxShadow: '5px 5px 15px rgba(77, 77, 77, 0.1), -5px -5px 20px rgba(77, 77, 77, 0.15)',
+                    border: '1px solid rgba(144, 202, 249, 0.2)',
+                    boxShadow: '1px 1px 25px rgba(144, 202, 249, 0.1), -1px -1px 25px rgba(144, 202, 249, 0.1)',
                 },
             },
         },
@@ -63,6 +65,8 @@ export const darkThemeGreenPurple = createTheme({
             // secondary: '#90caf9',
         },
     },
+    //@ts-ignore
+    // shadows: ['none', '5px 5px 25px rgba(165, 214, 167, 0.1)', '2px 2px 20px rgba(165, 214, 167, 0.1)', '0 8px 16px 0 rgba(0,0,0,0.2)', '0 16px 32px 0 rgba(0,0,0,0.2)', '0 32px 64px 0 rgba(0,0,0,0.2)'],
     components: {
         MuiCard: {
             styleOverrides: {
@@ -92,7 +96,7 @@ export const lightTheme = createTheme({
         primary: {
             main: '#599cde',
             light: '#7bb4ed',
-            dark: '#3e5f80',
+            dark: '#3399ff',
 
         },
         secondary: {

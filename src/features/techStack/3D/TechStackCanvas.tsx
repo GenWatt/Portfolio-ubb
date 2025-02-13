@@ -1,8 +1,8 @@
 import { Environment, OrbitControls } from '@react-three/drei'
 import { Canvas, Props } from '@react-three/fiber'
-import { ITechStackList } from '../../../pages/TechStackPage'
 import TechStackList from './TechStackList'
 import CanvasWrapper from '../../../features/shared/components/CanvasWrapper'
+import { ITechStackList } from '../../shared/hooks/useData'
 
 export interface TechStackListProps {
     techStack: ITechStackList[]

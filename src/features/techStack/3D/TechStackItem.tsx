@@ -1,9 +1,9 @@
 import { Html } from '@react-three/drei'
-import { ITechStackList } from '../../../pages/TechStackPage'
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import TechStackItemHtml from '../components/TechStackItemHtml'
+import { ITechStackList } from '../../shared/hooks/useData'
 
 export interface TechStackItemProps {
     tech: ITechStackList
@@ -28,12 +28,17 @@ function TechStackItem({ tech, index, positions, radius, onItemEnter }: TechStac
 
     useEffect(() => {
         const textureLoader = new THREE.TextureLoader();
+
+        if (!tech.image) {
+            setLoading(false);
+            return;
+        }
+
         textureLoader.load(tech.image, (texture) => {
             setTexture(texture);
             setLoading(false);
         });
     }, [tech.image]);
-
 
     if (loading) {
         return null;

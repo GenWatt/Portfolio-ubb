@@ -1,10 +1,9 @@
 import { Typography, useTheme } from '@mui/material'
 import { useState } from 'react'
-import { ITechStackList } from '../../../pages/TechStackPage'
-import { animated, useSpring, useTrail } from '@react-spring/web'
-import StarIcon from '@mui/icons-material/Star'
-import { StyledTechCard, ImageContainer, TechName, StarContainer } from '../styles'
-
+import { useSpring } from '@react-spring/web'
+import { StyledTechCard, ImageContainer } from '../styles'
+import { ITechStackList } from '../../shared/hooks/useData'
+import { AbilityBadge } from '../../shared/components/AbilityBadges'
 export interface TechStackItemHtmlProps {
     tech: ITechStackList
     onItemEnter: (isHovered: boolean) => void
@@ -18,12 +17,6 @@ function TechStackItemHtml({ tech, onItemEnter }: TechStackItemHtmlProps) {
         transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
         config: { tension: 300, friction: 10 },
     }))
-
-    const starTrail = useTrail(tech.stars, {
-        opacity: hovered ? 1 : 0.6,
-        transform: `scale(${hovered ? 1.2 : 1})`,
-        config: { mass: 1, tension: 2000, friction: 200 },
-    })
 
     const handleHover = (isHovered: boolean) => {
         setHovered(isHovered)
@@ -47,7 +40,7 @@ function TechStackItemHtml({ tech, onItemEnter }: TechStackItemHtmlProps) {
                 justifyContent: 'space-between',
             }}
         >
-            <ImageContainer>
+            {tech.image && <ImageContainer>
                 <img
                     src={tech.image}
                     alt={tech.name}
@@ -59,30 +52,20 @@ function TechStackItemHtml({ tech, onItemEnter }: TechStackItemHtmlProps) {
                         transition: theme.transitions.create('filter'),
                     }}
                 />
-            </ImageContainer>
-
-            <TechName variant="h6" align="center">
-                {tech.name}
-            </TechName>
+            </ImageContainer>}
 
             <Typography
                 variant="body2"
                 align="center"
                 sx={{
-                    mb: 2,
+                    my: 2,
                     minHeight: 40,
                 }}
             >
                 {tech.description}
             </Typography>
 
-            <StarContainer>
-                {starTrail.map((style, i) => (
-                    <animated.div key={i} style={style}>
-                        <StarIcon sx={{ color: theme.palette.warning.main }} />
-                    </animated.div>
-                ))}
-            </StarContainer>
+            <AbilityBadge data={tech} />
         </StyledTechCard>
     )
 }

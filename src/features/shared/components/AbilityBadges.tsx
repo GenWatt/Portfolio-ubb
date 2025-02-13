@@ -1,15 +1,18 @@
 import { Star, StarHalf, StarOutline } from "@mui/icons-material"
 import { Chip, Tooltip, Box, Typography, useTheme, useMediaQuery } from "@mui/material"
-import useData, { BadgeData } from "../hooks/useData"
 import { animated, useTrail, useSpring, config } from '@react-spring/web'
 import { useState } from "react"
+import { ITechStackList } from "../hooks/useData"
 
-function AbilityBadges() {
-    const { badgesData } = useData()
+export interface AbilityBadgesProps {
+    data: ITechStackList[]
+}
+
+function AbilityBadges({ data }: AbilityBadgesProps) {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-    const trail = useTrail(badgesData.length, {
+    const trail = useTrail(data.length, {
         from: { opacity: 0, transform: 'translateY(20px)' },
         to: { opacity: 1, transform: 'translateY(0)' },
         config: config.wobbly,
@@ -32,14 +35,14 @@ function AbilityBadges() {
         >
             {trail.map((style, index) => (
                 <animated.div key={index} style={{ width: isMobile ? '100%' : 'auto', ...style }}>
-                    <AbilityBadge {...badgesData[index]} />
+                    <AbilityBadge data={data[index]} />
                 </animated.div>
             ))}
         </Box>
     )
 }
 
-function BadgeContent({ data }: { data: BadgeData }) {
+function BadgeContent({ data }: { data: ITechStackList }) {
     const theme = useTheme()
     const level = parseInt(data.level.replace('%', ''), 10)
     const fullStars = Math.floor(level / 20)
@@ -95,13 +98,14 @@ function BadgeContent({ data }: { data: BadgeData }) {
     )
 }
 
-function AbilityBadge(data: BadgeData) {
+export function AbilityBadge({ data }: { data: ITechStackList }) {
     const theme = useTheme()
     const [hovered, setHovered] = useState(false)
 
     const hoverAnim = useSpring({
         transform: hovered ? 'scale(1.05) rotate(1deg)' : 'scale(1) rotate(0deg)',
         boxShadow: hovered ? theme.shadows[6] : theme.shadows[2],
+
         config: config.gentle
     })
 
@@ -110,13 +114,12 @@ function AbilityBadge(data: BadgeData) {
             <animated.div
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                style={hoverAnim}
+                style={{ ...hoverAnim, borderRadius: theme.spacing(2.8) }}
             >
                 <Chip
                     label={<BadgeContent data={data} />}
                     variant="filled"
                     sx={{
-                        borderRadius: 4,
                         border: `2px solid ${theme.palette.primary.main}`,
                         background: `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.action.hover} 100%)`,
                         transition: 'all 0.3s ease',

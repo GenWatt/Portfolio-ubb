@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import TechStackItem from './TechStackItem'
-import { ITechStackList } from '../../../pages/TechStackPage'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
+import { ITechStackList } from '../../shared/hooks/useData'
 
 export interface TechStackListProps {
     techStack: ITechStackList[]

@@ -1,7 +1,21 @@
-
 import useTranslation from './useTranslation'
 import UBB from '../../../assets/images/ubb.jpg'
 import zseeim from '../../..//assets/images/zseeim.jpg'
+import REACT from '../../../assets/images/react.png'
+import VUE from '../../../assets/images/vue.png'
+import NODE from '../../../assets/images/node.png'
+import MONGODB from '../../../assets/images/mongoDb.png'
+import SQL from '../../../assets/images/SQL.png'
+import UNITY from '../../../assets/images/unity.png'
+import PYTHON from '../../../assets/images/python.jpg'
+import DOTNET from '../../../assets/images/.Net.png'
+
+export interface ITechStackList {
+    name: string
+    description: string
+    image?: string | null
+    level: string
+}
 
 export interface EducationData {
     schoolName: string
@@ -185,7 +199,20 @@ function useData() {
         }
     ]
 
-    return { experiences, educationData, badgesData }
+    const techStack: ITechStackList[] = [
+        { name: 'React', description: t('reactDescription'), image: REACT, level: '80%' },
+        { name: 'Vue', description: t('vueDescription'), image: VUE, level: '80%', },
+        { name: 'Node', description: t('nodeDescription'), image: NODE, level: '70%', },
+        { name: 'MongoDB', description: t('mongoDescription'), image: MONGODB, level: '60%', },
+        { name: 'SQL', description: t('sqlDescription'), image: SQL, level: '70%', },
+        { name: 'CI/CD', description: t('cicdDescription'), image: null, level: '40%' },
+        { name: '.NET', description: t('netDescription'), image: DOTNET, level: '80%', },
+        { name: 'Python', description: t('pythonDescription'), image: PYTHON, level: '40%', },
+        { name: 'Unity', description: t('unityDescription'), image: UNITY, level: '60%', },
+        { name: 'Azure', description: t('azureDescription'), image: null, level: '40%', },
+    ];
+
+    return { experiences, educationData, badgesData, techStack }
 }
 
 export default useData

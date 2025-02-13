@@ -5,7 +5,9 @@ export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy
     | 'university' | 'downloadResume' | 'seeInNewTabResume' | 'techStack' | 'resume' | 'langISO' | 'education' | 'resumeLoadingError'
     | 'showModelIn3D' | 'universitySpecialization' | 'universityStart' | 'universityEnd' | 'mechatronics' | 'technicalSchoolStart'
     | 'technicalSchoolEnd' | 'loadingIsTakingTooLong' | 'now' | 'technicalSchoolDescription' | 'universityDescription' | 'inProgress'
-    | 'experience' | 'fssDescription' | 'intership' | 'keyProjects' | 'comercialExperience' | 'errorLoadingUsers' | 'errorLoadingProjects';
+    | 'experience' | 'fssDescription' | 'intership' | 'keyProjects' | 'comercialExperience' | 'errorLoadingUsers' | 'errorLoadingProjects'
+    | 'noneComersialExperience' | 'reactDescription' | 'vueDescription' | 'nodeDescription' | 'sqlDescription' | 'netDescription'
+    | 'cicdDescription' | 'unityDescription' | 'pythonDescription' | 'mongoDescription' | 'azureDescription';
 
 export type OptionalTranslationKeys = 'authorName';
 
@@ -75,6 +77,17 @@ export const dictionary: DictionaryType = {
         experience: "Doświadczenie",
         errorLoadingProjects: 'Wystąpił błąd podczas ładowania projektów',
         errorLoadingUsers: 'Wystąpił błąd podczas ładowania użytkowników',
+        noneComersialExperience: "+5 lata nie komercyjnego doświadczenia",
+        reactDescription: 'Posiadam komercyjne doświadczenie w React, gdzie tworzyłem mini-gry dla nowoczesnej platformy rozrywkowej oraz aplikację dla jachtów. Wykorzystywałem w niej mapy, API, rysowanie na canvasie, przesyłanie zdjęć i obsługę elementów 3D na serwerze. Używałem także Redux do zarządzania stanem oraz Material UI do stylizacji.',
+        vueDescription: 'Pracowałem komercyjnie z Vue 3, gdzie brałem udział w migracji systemu opartego na PHP na Vue + Node.js. Moim głównym zadaniem było tworzenie interfejsu użytkownika, generowanie PDF-ów oraz funkcjonalności do zarządzania załogą. Korzystałem z Pinia do zarządzania stanem oraz Vuetify do komponentów UI.',
+        nodeDescription: 'Tworzyłem prosty serwer backendowy, który komunikował się z bazami danych MySQL i InfluxDB (do przechowywania i odczytu danych z czujników). Implementowałem repozytoria, serwisy i obsługę requestów. Posiadam komercyjne doświadczenie w Node.js.',
+        sqlDescription: 'Komercyjnie używałem SQL, gdzie tworzyłem proste zapytania, joiny i subquery. Na studiach pracowałem z T-SQL w Microsoft SQL Server, gdzie tworzyłem widoki, kursory i zarządzałem bazami danych.',
+        cicdDescription: 'Podczas stażu pracowałem z CI/CD w Azure DevOps, gdzie konfigurowałem pipelines dla aplikacji WPF. Dodatkowo stworzyłem Docker Compose, który uruchamiał bazy danych i serwery dla środowiska deweloperskiego, a także zintegrowałem go z SEQ do logowania. Do testów używaliśmy Docker containers.',
+        netDescription: 'Posiadam komercyjne doświadczenie w .NET, gdzie pisałem testy jednostkowe i integracyjne dla ASP.NET API, dodawałem nowe funkcjonalności i naprawiałem błędy. Pracowałem także z WPF do aplikacji desktopowych, tworząc symulatory skanerów na potrzeby testów, a także wykonywałem drobne poprawki i refaktoryzację kodu.',
+        pythonDescription: 'Napisałem prostą aplikację do obsługi grafów w Pythonie z wykorzystaniem Tkinter, która pozwalała na tworzenie, edytowanie i porównywanie grafów. Był to projekt prywatny, niekomercyjny.',
+        unityDescription: 'Na potrzeby pracy inżynierskiej stworzyłem grę RTS (Real-Time Strategy) w 3D, w której można budować bazę, szkolić jednostki, zarządzać ekonomią i walczyć. Gra posiada tryb multiplayer.',
+        azureDescription: 'Niekomercyjnie wdrożyłem aplikacje na Azure, korzystając z App Service, SQL Database, Redis i Key Vault.',
+        mongoDescription: 'Tworzyłem aplikacje w Node.js z wykorzystaniem MongoDB, używając Mongoose do tworzenia modeli, transakcji i innych operacji na bazie danych. Był to projekt prywatny, niekomercyjny.'
     },
     us: {
         langCode: 'us',
@@ -129,6 +142,17 @@ export const dictionary: DictionaryType = {
         experience: "Experience",
         errorLoadingProjects: 'An error occurred while loading projects',
         errorLoadingUsers: 'An error occurred while loading users',
+        noneComersialExperience: "+5 years of non-commercial experience",
+        reactDescription: 'I have commercial experience with React, where I developed mini-games for a modern entertainment platform and an application for yachts. In this project, I worked with maps, APIs, canvas-based drawing, image uploads, and handling 3D elements on a server. I also utilized Redux for state management and Material UI for styling.',
+        vueDescription: 'I worked with Vue 3 in a commercial project, migrating a PHP-based system to a Vue + Node.js stack. My main responsibilities included UI development, PDF generation, and crew management functionalities. I used Pinia for state management and Vuetify for UI components.',
+        nodeDescription: 'I developed a simple backend server that interacted with MySQL and InfluxDB (for sensor data storage and retrieval). I implemented repositories, services, and handled API requests. I have commercial experience with Node.js.',
+        sqlDescription: 'I have used SQL commercially, creating simple queries, joins, and subqueries. During my studies, I worked with T-SQL in Microsoft SQL Server, creating views, cursors, and managing databases.',
+        azureDescription: 'I deployed applications on Azure non-commercially, using App Service, SQL Database, Redis, and Key Vault.',
+        cicdDescription: 'I worked with CI/CD in Azure DevOps during my internship, configuring pipelines for WPF applications. I also created a Docker Compose that launched databases and servers for the development environment, and integrated it with SEQ for logging. We used Docker containers for testing.',
+        mongoDescription: 'I developed applications in Node.js using MongoDB non-commercially, using Mongoose for creating models, transactions, and other database operations.',
+        netDescription: 'I have commercial experience with .NET, writing unit and integration tests for ASP.NET APIs, adding new features, and fixing bugs. I also worked with WPF for desktop applications, creating scanner simulators for testing purposes, and performing minor code fixes and refactoring.',
+        pythonDescription: 'I developed a simple graph application in Python using Tkinter, allowing users to create, edit, and compare graphs. This was a private, non-commercial project.',
+        unityDescription: 'For my diploma, I created a 3D Real-Time Strategy (RTS) game where players could build a base, train units, manage economy, and fight. The game features a multiplayer mode.',
     },
     sp: {
         langCode: 'sp',
@@ -182,6 +206,17 @@ export const dictionary: DictionaryType = {
         experience: "Experiencia",
         errorLoadingProjects: 'Se produjo un error al cargar los proyectos',
         errorLoadingUsers: 'Se produjo un error al cargar los usuarios',
+        noneComersialExperience: "+5 años de experiencia no comercial",
+        azureDescription: 'Implementé aplicaciones en Azure no comercialmente, utilizando App Service, SQL Database, Redis y Key Vault.',
+        cicdDescription: 'Trabajé con CI/CD en Azure DevOps durante mi pasantía, configurando pipelines para aplicaciones WPF. También creé un Docker Compose que lanzaba bases de datos y servidores para el entorno de desarrollo, e integré SEQ para el registro. Utilizamos contenedores Docker para pruebas.',
+        mongoDescription: 'Desarrollé aplicaciones en Node.js utilizando MongoDB no comercialmente, utilizando Mongoose para crear modelos, transacciones y otras operaciones de base de datos.',
+        netDescription: 'Tengo experiencia comercial con .NET, escribiendo pruebas unitarias e integración para APIs ASP.NET, agregando nuevas funcionalidades y corrigiendo errores. También trabajé con WPF para aplicaciones de escritorio, creando simuladores de escáneres para pruebas y realizando correcciones menores y refactorizaciones de código.',
+        pythonDescription: 'Desarrollé una aplicación de gráficos simples en Python con Tkinter, que permitía a los usuarios crear, editar y comparar gráficos. Este fue un proyecto privado, no comercial.',
+        unityDescription: 'Para mi tesis, creé un juego de estrategia en tiempo real (RTS) en 3D donde los jugadores podían construir una base, entrenar unidades, gestionar la economía y luchar. El juego cuenta con un modo multijugador.',
+        reactDescription: 'Tengo experiencia comercial con React, donde desarrollé mini-juegos para una plataforma de entretenimiento moderna y una aplicación para yates. En este proyecto, trabajé con mapas, APIs, dibujo en canvas, carga de imágenes y manejo de elementos 3D en un servidor. También utilicé Redux para la gestión de estado y Material UI para el estilo.',
+        vueDescription: 'Trabajé con Vue 3 en un proyecto comercial, migrando un sistema basado en PHP a una pila Vue + Node.js. Mis principales responsabilidades incluyeron el desarrollo de la interfaz de usuario, la generación de PDF y las funcionalidades de gestión de tripulación. Usé Pinia para la gestión de estado y Vuetify para los componentes de la interfaz de usuario.',
+        nodeDescription: 'Desarrollé un servidor backend simple que interactuaba con MySQL e InfluxDB (para el almacenamiento y recuperación de datos de sensores). Implementé repositorios, servicios y manejé solicitudes de API. Tengo experiencia comercial con Node.js.',
+        sqlDescription: 'He utilizado SQL comercialmente, creando consultas simples, joins y subconsultas. Durante mis estudios, trabajé con T-SQL en Microsoft SQL Server, creando vistas, cursores y gestionando bases de datos.',
     },
     sa: {
         langCode: 'sa',
@@ -235,5 +270,16 @@ export const dictionary: DictionaryType = {
         experience: "الخبرة",
         errorLoadingProjects: 'حدث خطأ أثناء تحميل المشاريع',
         errorLoadingUsers: 'حدث خطأ أثناء تحميل المستخدمين',
+        noneComersialExperience: "+5 سنوات من الخبرة غير التجارية",
+        azureDescription: 'نفذت التطبيقات على Azure غير تجاريًا، باستخدام App Service و SQL Database و Redis و Key Vault.',
+        cicdDescription: 'عملت مع CI/CD في Azure DevOps خلال فترة التدريب، وقمت بتكوين خطوط الأنابيب لتطبيقات WPF. كما قمت بإنشاء Docker Compose الذي يطلق قواعد البيانات والخوادم لبيئة التطوير، وقمت بدمجه مع SEQ لتسجيل الأحداث. استخدمنا حاويات Docker للاختبار.',
+        mongoDescription: 'طورت تطبيقات في Node.js باستخدام MongoDB غير تجاريًا، باستخدام Mongoose لإنشاء نماذج والمعاملات وغيرها من العمليات على قاعدة البيانات.',
+        netDescription: 'لدي خبرة تجارية في .NET، حيث كتبت اختبارات وحدية واختبارات تكاملية لواجهات برمجة التطبيقات ASP.NET، وأضفت ميزات جديدة وأصلحت الأخطاء. كما عملت أيضًا مع WPF لتطبيقات سطح المكتب، وأنشأت محاكيات لماسحات الباركود لأغراض الاختبار، وقمت بإجراء تصحيحات برمجية بسيطة وإعادة تنظيم الكود.',
+        pythonDescription: 'طورت تطبيقًا بسيطًا للرسوم البيانية في Python باستخدام Tkinter، مما يتيح للمستخدمين إنشاء وتحرير ومقارنة الرسوم البيانية. كان هذا مشروعًا خاصًا غير تجاري.',
+        unityDescription: 'لرسالتي، قمت بإنشاء لعبة استراتيجية ثلاثية الأبعاد في الوقت الحقيقي (RTS) حيث يمكن للاعبين بناء قاعدة وتدريب الوحدات وإدارة الاقتصاد والقتال. تتضمن اللعبة وضعًا متعدد اللاعبين.',
+        reactDescription: 'لدي خبرة تجارية مع React، حيث قمت بتطوير ألعاب صغيرة لمنصة ترفيهية حديثة وتطبيق لليخوت. في هذا المشروع، عملت مع الخرائط وواجهات البرمجة التطبيقية والرسم على اللوحة وتحميل الصور ومعالجة العناصر ثلاثية الأبعاد على الخادم. كما استخدمت Redux لإدارة الحالة و Material UI للتصميم.',
+        vueDescription: 'عملت مع Vue 3 في مشروع تجاري، حيث قمت بتحويل نظام مبني على PHP إلى مكدس Vue + Node.js. كانت مسؤولياتي الرئيسية تطوير واجهة المستخدم وإنشاء PDF ووظائف إدارة الطاقم. استخدمت Pinia لإدارة الحالة و Vuetify لمكونات واجهة المستخدم.',
+        nodeDescription: 'طورت خادمًا خلفيًا بسيطًا تفاعل مع MySQL و InfluxDB (لتخزين واسترداد بيانات الاستشعار). نفذت مستودعات وخدمات وأدارت طلبات API. لدي خبرة تجارية في Node.js.',
+        sqlDescription: 'لدي خبرة تجارية في استخدام SQL، حيث أنشأت استعلامات بسيطة وانضمامات واستعلامات فرعية. خلال دراستي، عملت مع T-SQL في Microsoft SQL Server، حيث أنشأت عروضًا ومؤشرات وأدارت قواعد البيانات.',
     },
 }

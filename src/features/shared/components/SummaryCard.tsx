@@ -17,7 +17,18 @@ function SummaryCard({ summary, style }: SummaryCardProps) {
 
     return (
         <animated.div style={style}>
-            <Paper elevation={2} sx={{ mb: 1, p: .5 }}>
+            <Paper
+                elevation={2}
+                sx={{
+                    mb: 1,
+                    p: 0.5,
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    '&:hover': {
+                        transform: 'translateY(-5px)',
+                        boxShadow: theme.shadows[6],
+                    }
+                }}
+            >
                 <ListItem>
                     <ListItemIcon>
                         {summary.type === 'experience' ? <WorkHistoryIcon color="primary" /> : <SchoolIcon color="primary" />}
@@ -39,7 +50,7 @@ function SummaryCard({ summary, style }: SummaryCardProps) {
                             <Typography color={theme.palette.primary.light} variant="body1" component="span">{summary.date}</Typography>
                         </div>
 
-                        <div style={{ marginTop: theme.spacing(.2) }}>
+                        <div style={{ marginTop: theme.spacing(0.2) }}>
                             <LocationOnIcon fontSize="small" sx={{ verticalAlign: 'middle', mr: 0.5 }} />
                             <Typography variant="body1" component="span">{summary.location}</Typography>
                         </div>

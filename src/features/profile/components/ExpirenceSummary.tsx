@@ -21,7 +21,7 @@ function ExperienceSummary() {
         <>
             <Grid container alignItems="center" gap={1}>
                 <WorkIcon color='primary' />
-                <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                <Typography variant="h5" sx={{ fontWeight: 600 }}>
                     {t('experience')}
                 </Typography>
             </Grid>
