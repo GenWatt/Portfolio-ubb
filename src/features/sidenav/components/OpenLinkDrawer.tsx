@@ -1,5 +1,5 @@
 import { Settings } from '@mui/icons-material';
-import { ListItemText as MuiListItemText } from '@mui/material';
+import { ListItemText } from '@mui/material';
 import { animated } from '@react-spring/web';
 import { TranslationKeys } from '../../../languages';
 import useHelper from '../../shared/hooks/useHelper';
@@ -31,7 +31,7 @@ function OpenLinkDrawer({ route, open, handleDrawerClose }: OpenLinkDrawerProps)
                 {icon}
             </ListItemIcon>
 
-            <MuiListItemText primary={t(text as TranslationKeys)} sx={{ opacity: open ? 1 : 0 }} />
+            <ListItemText primary={t(text as TranslationKeys)} sx={{ opacity: open ? 1 : 0 }} />
             {inProgress && (
                 <InProgressIcon activeColor={activeColor(path)}>
                     <animated.div style={{ ...rotation, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

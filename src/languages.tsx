@@ -7,7 +7,8 @@ export type TranslationKeys = 'contact' | 'profile' | 'greenPurple' | 'createdBy
     | 'technicalSchoolEnd' | 'loadingIsTakingTooLong' | 'now' | 'technicalSchoolDescription' | 'universityDescription' | 'inProgress'
     | 'experience' | 'fssDescription' | 'intership' | 'keyProjects' | 'comercialExperience' | 'errorLoadingUsers' | 'errorLoadingProjects'
     | 'noneComersialExperience' | 'reactDescription' | 'vueDescription' | 'nodeDescription' | 'sqlDescription' | 'netDescription'
-    | 'cicdDescription' | 'unityDescription' | 'pythonDescription' | 'mongoDescription' | 'azureDescription';
+    | 'cicdDescription' | 'unityDescription' | 'pythonDescription' | 'mongoDescription' | 'azureDescription' | 'technicalTitle'
+    | 'universityTitle';
 
 export type OptionalTranslationKeys = 'authorName';
 
@@ -37,7 +38,7 @@ export const dictionary: DictionaryType = {
         myProjects: 'Moje projekty',
         lightTheme: 'Jasny motyw',
         createdBy: 'Stworzone przez',
-        profileDescription: 'Jestem absolwentem studiów inżynierskich na kierunku Inżynieria Oprogramowania na Uniwersytecie Bielsko-Biała – dyplom otrzymam w marcu. Posiadam roczne komercyjne doświadczenie w tworzeniu aplikacji webowych (JavaScript, React, Node.js, Vue.js) oraz desktopowych (C#, WPF, Unity). Pracowałem z różnymi bazami danych (MySQL, SQL Server, MongoDB) oraz narzędziami DevOps (Docker, Azure DevOps). Obecnie szukam pracy na pełny etat, dostępny do rozpoczęcia współpracy od zaraz, aby rozwijać swoje umiejętności i zdobywać doświadczenie zawodowe.',
+        profileDescription: 'Jestem absolwentem studiów inżynierskich na kierunku Inżynieria Oprogramowania na Uniwersytecie Bielsko-Biała. Charakteryzuję się zaangażowaniem i sumiennością. Posiadam komercyjne doświadczenie w pracy z .NET (WPF, web api) oraz JavaScript (node, react, vue) oraz sqlem. Samodzielnie zdobyłem podstawy w Pythonie, a moją pracę inżynierską realizowałem z wykorzystaniem Unity.Mam również niewielkie doświadczenie w obszarze DevOps na platformie Azure.Jestem otwarty na naukę nowych technologii.',
         myAccounts: 'Moje konta',
         author: 'Adriana Raszka',
         seeOnGithub: 'Zobacz na Githubie',
@@ -49,7 +50,7 @@ export const dictionary: DictionaryType = {
         softwareDeveloper: 'Programista oprogramowania',
         openDrawer: 'Otwórz szufladę',
         closeDrawer: 'Zamknij szufladę',
-        technicalSchool: 'Technikum Mechatroniczne',
+        technicalSchool: 'Zespół Szkół Elektronicznych Elektrycznych i Mechanicznych w Bielsku-Białej',
         university: 'Uniwersytet Bielsko-Biała',
         downloadResume: 'Pobierz CV',
         seeInNewTabResume: 'Zobacz CV w nowej karcie',
@@ -77,7 +78,7 @@ export const dictionary: DictionaryType = {
         experience: "Doświadczenie",
         errorLoadingProjects: 'Wystąpił błąd podczas ładowania projektów',
         errorLoadingUsers: 'Wystąpił błąd podczas ładowania użytkowników',
-        noneComersialExperience: "+5 lata nie komercyjnego doświadczenia",
+        noneComersialExperience: "+4 lata uczenia się programowania",
         reactDescription: 'Posiadam komercyjne doświadczenie w React, gdzie tworzyłem mini-gry dla nowoczesnej platformy rozrywkowej oraz aplikację dla jachtów. Wykorzystywałem w niej mapy, API, rysowanie na canvasie, przesyłanie zdjęć i obsługę elementów 3D na serwerze. Używałem także Redux do zarządzania stanem oraz Material UI do stylizacji.',
         vueDescription: 'Pracowałem komercyjnie z Vue 3, gdzie brałem udział w migracji systemu opartego na PHP na Vue + Node.js. Moim głównym zadaniem było tworzenie interfejsu użytkownika, generowanie PDF-ów oraz funkcjonalności do zarządzania załogą. Korzystałem z Pinia do zarządzania stanem oraz Vuetify do komponentów UI.',
         nodeDescription: 'Tworzyłem prosty serwer backendowy, który komunikował się z bazami danych MySQL i InfluxDB (do przechowywania i odczytu danych z czujników). Implementowałem repozytoria, serwisy i obsługę requestów. Posiadam komercyjne doświadczenie w Node.js.',
@@ -87,7 +88,9 @@ export const dictionary: DictionaryType = {
         pythonDescription: 'Napisałem prostą aplikację do obsługi grafów w Pythonie z wykorzystaniem Tkinter, która pozwalała na tworzenie, edytowanie i porównywanie grafów. Był to projekt prywatny, niekomercyjny.',
         unityDescription: 'Na potrzeby pracy inżynierskiej stworzyłem grę RTS (Real-Time Strategy) w 3D, w której można budować bazę, szkolić jednostki, zarządzać ekonomią i walczyć. Gra posiada tryb multiplayer.',
         azureDescription: 'Niekomercyjnie wdrożyłem aplikacje na Azure, korzystając z App Service, SQL Database, Redis i Key Vault.',
-        mongoDescription: 'Tworzyłem aplikacje w Node.js z wykorzystaniem MongoDB, używając Mongoose do tworzenia modeli, transakcji i innych operacji na bazie danych. Był to projekt prywatny, niekomercyjny.'
+        mongoDescription: 'Tworzyłem aplikacje w Node.js z wykorzystaniem MongoDB, używając Mongoose do tworzenia modeli, transakcji i innych operacji na bazie danych. Był to projekt prywatny, niekomercyjny.',
+        technicalTitle: 'Technik Mechatronik',
+        universityTitle: 'Inżynier Oprogramowania',
     },
     us: {
         langCode: 'us',
@@ -101,7 +104,7 @@ export const dictionary: DictionaryType = {
         myProjects: 'My projects',
         lightTheme: 'Light theme',
         createdBy: 'Created by',
-        profileDescription: 'I am a graduate of Software Engineering at the University of Bielsko-Biała – I will receive my diploma in March. I have one year of commercial experience in developing web applications (JavaScript, React, Node.js, Vue.js) and desktop applications (C#, WPF, Unity). I have worked with various databases (MySQL, SQL Server, MongoDB) and DevOps tools (Docker, Azure DevOps). I am currently looking for full-time job, available to start immediately, to further develop my skills and gain professional experience.',
+        profileDescription: 'I am a graduate of Software Engineering at the University of Bielsko-Biała. I am characterized by my commitment and diligence. I have commercial experience working with .NET (WPF, Web API) and JavaScript (Node.js, React, Vue), as well as SQL. I have independently learned the basics of Python, and I developed my engineering thesis using Unity. Additionally, I have some experience in DevOps on the Azure platform. I am open to learning new technologies.',
         myAccounts: 'My accounts',
         author: 'Adrian Raszka',
         seeOnGithub: 'See on Github',
@@ -113,7 +116,7 @@ export const dictionary: DictionaryType = {
         softwareDeveloper: 'Software developer',
         openDrawer: 'Open drawer',
         closeDrawer: 'Close drawer',
-        technicalSchool: 'Technical Mechatronics School',
+        technicalSchool: 'Zespół Szkół Elektronicznych Elektrycznych i Mechanicznych in Bielsko-Biała',
         university: 'University of Bielsko-Biała',
         downloadResume: 'Download CV',
         seeInNewTabResume: 'See CV in new tab',
@@ -142,7 +145,7 @@ export const dictionary: DictionaryType = {
         experience: "Experience",
         errorLoadingProjects: 'An error occurred while loading projects',
         errorLoadingUsers: 'An error occurred while loading users',
-        noneComersialExperience: "+5 years of non-commercial experience",
+        noneComersialExperience: "+4 years of learning programming",
         reactDescription: 'I have commercial experience with React, where I developed mini-games for a modern entertainment platform and an application for yachts. In this project, I worked with maps, APIs, canvas-based drawing, image uploads, and handling 3D elements on a server. I also utilized Redux for state management and Material UI for styling.',
         vueDescription: 'I worked with Vue 3 in a commercial project, migrating a PHP-based system to a Vue + Node.js stack. My main responsibilities included UI development, PDF generation, and crew management functionalities. I used Pinia for state management and Vuetify for UI components.',
         nodeDescription: 'I developed a simple backend server that interacted with MySQL and InfluxDB (for sensor data storage and retrieval). I implemented repositories, services, and handled API requests. I have commercial experience with Node.js.',
@@ -153,6 +156,8 @@ export const dictionary: DictionaryType = {
         netDescription: 'I have commercial experience with .NET, writing unit and integration tests for ASP.NET APIs, adding new features, and fixing bugs. I also worked with WPF for desktop applications, creating scanner simulators for testing purposes, and performing minor code fixes and refactoring.',
         pythonDescription: 'I developed a simple graph application in Python using Tkinter, allowing users to create, edit, and compare graphs. This was a private, non-commercial project.',
         unityDescription: 'For my diploma, I created a 3D Real-Time Strategy (RTS) game where players could build a base, train units, manage economy, and fight. The game features a multiplayer mode.',
+        technicalTitle: 'Mechatronics Technician',
+        universityTitle: 'Software Engineer',
     },
     sp: {
         langCode: 'sp',
@@ -166,7 +171,7 @@ export const dictionary: DictionaryType = {
         myProjects: 'Mis proyectos',
         lightTheme: 'Tema claro',
         createdBy: 'Creado por',
-        profileDescription: 'Estudiante de 7º año a tiempo completo del programa de Ingeniería de Software en la Universidad de Bielsko-Biała. Tengo experiencia en el desarrollo de aplicaciones web (JavaScript, React, Node.js, Vue.js) y aplicaciones de escritorio (C#, WPF, Unity). He trabajado con varias bases de datos (MySQL, SQL Server, MongoDB) y herramientas de DevOps (Docker, Azure DevOps). Busco un trabajo de medio tiempo flexible (a tiempo completo disponible a partir de septiembre) para adquirir experiencia profesional y desarrollar mis habilidades.',
+        profileDescription: 'Soy graduado en Ingeniería de Software en la Universidad de Bielsko-Biała. Me caracterizo por mi compromiso y diligencia. Tengo experiencia comercial trabajando con .NET (WPF, Web API) y JavaScript (Node.js, React, Vue), así como SQL. He aprendido de forma independiente los conceptos básicos de Python, y desarrollé mi tesis de ingeniería utilizando Unity. Además, tengo algo de experiencia en DevOps en la plataforma Azure. Estoy abierto a aprender nuevas tecnologías.',
         myAccounts: 'Mis cuentas',
         author: 'Adrian Raszka',
         seeOnGithub: 'Ver en Github',
@@ -178,7 +183,7 @@ export const dictionary: DictionaryType = {
         softwareDeveloper: 'Desarrollador de software',
         closeDrawer: 'Cerrar cajón',
         openDrawer: 'Abrir cajón',
-        technicalSchool: 'Escuela Técnica de Mecatrónica',
+        technicalSchool: 'Zespół Szkół Elektronicznych Elektrycznych i Mechanicznych en Bielsko-Biała',
         university: 'Universidad de Bielsko-Biała',
         downloadResume: 'Descargar CV',
         seeInNewTabResume: 'Ver CV en nueva pestaña',
@@ -206,7 +211,7 @@ export const dictionary: DictionaryType = {
         experience: "Experiencia",
         errorLoadingProjects: 'Se produjo un error al cargar los proyectos',
         errorLoadingUsers: 'Se produjo un error al cargar los usuarios',
-        noneComersialExperience: "+5 años de experiencia no comercial",
+        noneComersialExperience: "+4 años de experiencia no comercial",
         azureDescription: 'Implementé aplicaciones en Azure no comercialmente, utilizando App Service, SQL Database, Redis y Key Vault.',
         cicdDescription: 'Trabajé con CI/CD en Azure DevOps durante mi pasantía, configurando pipelines para aplicaciones WPF. También creé un Docker Compose que lanzaba bases de datos y servidores para el entorno de desarrollo, e integré SEQ para el registro. Utilizamos contenedores Docker para pruebas.',
         mongoDescription: 'Desarrollé aplicaciones en Node.js utilizando MongoDB no comercialmente, utilizando Mongoose para crear modelos, transacciones y otras operaciones de base de datos.',
@@ -217,6 +222,8 @@ export const dictionary: DictionaryType = {
         vueDescription: 'Trabajé con Vue 3 en un proyecto comercial, migrando un sistema basado en PHP a una pila Vue + Node.js. Mis principales responsabilidades incluyeron el desarrollo de la interfaz de usuario, la generación de PDF y las funcionalidades de gestión de tripulación. Usé Pinia para la gestión de estado y Vuetify para los componentes de la interfaz de usuario.',
         nodeDescription: 'Desarrollé un servidor backend simple que interactuaba con MySQL e InfluxDB (para el almacenamiento y recuperación de datos de sensores). Implementé repositorios, servicios y manejé solicitudes de API. Tengo experiencia comercial con Node.js.',
         sqlDescription: 'He utilizado SQL comercialmente, creando consultas simples, joins y subconsultas. Durante mis estudios, trabajé con T-SQL en Microsoft SQL Server, creando vistas, cursores y gestionando bases de datos.',
+        technicalTitle: 'Técnico en Mecatrónica',
+        universityTitle: 'Ingeniero de Software',
     },
     sa: {
         langCode: 'sa',
@@ -230,7 +237,7 @@ export const dictionary: DictionaryType = {
         myProjects: 'مشاريعي',
         lightTheme: 'موضوع الضوء',
         createdBy: 'أنشئ بواسطة',
-        profileDescription: 'سابع عام في برنامج الهندسة البرمجية بدوام كامل في جامعة بيلسكو-بياوا. لدي خبرة في تطوير تطبيقات الويب (JavaScript، React، Node.js، Vue.js) وتطبيقات سطح المكتب (C#، WPF، Unity). عملت مع قواعد بيانات مختلفة (MySQL، SQL Server، MongoDB) وأدوات DevOps (Docker، Azure DevOps). ابحث عن عمل بدوام جزئي مرن (يمكنني العمل بدوام كامل في سبتمبر) لاكتساب الخبرة المهنية وتطوير مهاراتي.',
+        profileDescription: 'أنا خريج هندسة البرمجيات من جامعة بيلسكو-بيالا. أتميز بالالتزام والدقة. لدي خبرة تجارية في العمل مع .NET (WPF، Web API) و JavaScript (Node.js، React، Vue)، بالإضافة إلى SQL. قمت بتعلم أساسيات Python بشكل مستقل، وقمت بتطوير رسالتي الهندسية باستخدام Unity. بالإضافة إلى ذلك، لدي بعض الخبرة في DevOps على منصة Azure. أنا مفتوح لتعلم التكنولوجيا الجديدة.',
         myAccounts: 'حساباتي',
         author: 'أدريان راسزكا',
         seeOnGithub: 'انظر على Github',
@@ -242,7 +249,7 @@ export const dictionary: DictionaryType = {
         softwareDeveloper: 'مطور برامج',
         closeDrawer: 'إغلاق الدرج',
         openDrawer: 'فتح الدرج',
-        technicalSchool: 'المدرسة التقنية للميكاترونيك',
+        technicalSchool: 'Zespół Szkół Elektronicznych Elektrycznych i Mechanicznych في بيلسكو-بيالا',
         university: 'جامعة بيلسكو-بيالا',
         downloadResume: 'تحميل السيرة الذاتية',
         seeInNewTabResume: 'انظر السيرة الذاتية في علامة تبويب جديدة',
@@ -270,7 +277,7 @@ export const dictionary: DictionaryType = {
         experience: "الخبرة",
         errorLoadingProjects: 'حدث خطأ أثناء تحميل المشاريع',
         errorLoadingUsers: 'حدث خطأ أثناء تحميل المستخدمين',
-        noneComersialExperience: "+5 سنوات من الخبرة غير التجارية",
+        noneComersialExperience: "+4 سنوات من الخبرة غير التجارية",
         azureDescription: 'نفذت التطبيقات على Azure غير تجاريًا، باستخدام App Service و SQL Database و Redis و Key Vault.',
         cicdDescription: 'عملت مع CI/CD في Azure DevOps خلال فترة التدريب، وقمت بتكوين خطوط الأنابيب لتطبيقات WPF. كما قمت بإنشاء Docker Compose الذي يطلق قواعد البيانات والخوادم لبيئة التطوير، وقمت بدمجه مع SEQ لتسجيل الأحداث. استخدمنا حاويات Docker للاختبار.',
         mongoDescription: 'طورت تطبيقات في Node.js باستخدام MongoDB غير تجاريًا، باستخدام Mongoose لإنشاء نماذج والمعاملات وغيرها من العمليات على قاعدة البيانات.',
@@ -281,5 +288,7 @@ export const dictionary: DictionaryType = {
         vueDescription: 'عملت مع Vue 3 في مشروع تجاري، حيث قمت بتحويل نظام مبني على PHP إلى مكدس Vue + Node.js. كانت مسؤولياتي الرئيسية تطوير واجهة المستخدم وإنشاء PDF ووظائف إدارة الطاقم. استخدمت Pinia لإدارة الحالة و Vuetify لمكونات واجهة المستخدم.',
         nodeDescription: 'طورت خادمًا خلفيًا بسيطًا تفاعل مع MySQL و InfluxDB (لتخزين واسترداد بيانات الاستشعار). نفذت مستودعات وخدمات وأدارت طلبات API. لدي خبرة تجارية في Node.js.',
         sqlDescription: 'لدي خبرة تجارية في استخدام SQL، حيث أنشأت استعلامات بسيطة وانضمامات واستعلامات فرعية. خلال دراستي، عملت مع T-SQL في Microsoft SQL Server، حيث أنشأت عروضًا ومؤشرات وأدارت قواعد البيانات.',
+        technicalTitle: 'فني ميكاترونيات',
+        universityTitle: 'مهندس برمجيات',
     },
 }

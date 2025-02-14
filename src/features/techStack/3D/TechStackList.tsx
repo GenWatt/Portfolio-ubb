@@ -21,6 +21,7 @@ function TechStackList({ techStack, speed = 0.001 }: TechStackListProps) {
         const padding = 50;
         const maxRadius = 600;
         const calculatedRadius = Math.min(Math.max(screenWidth / 2, itemWidth + padding), maxRadius);
+
         setRadius(calculatedRadius);
     }
 

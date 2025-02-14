@@ -9,6 +9,8 @@ import SQL from '../../../assets/images/SQL.png'
 import UNITY from '../../../assets/images/unity.png'
 import PYTHON from '../../../assets/images/python.jpg'
 import DOTNET from '../../../assets/images/.Net.png'
+import AZURE from '../../../assets/images/azure.jfif'
+import CICD from '../../../assets/images/ci-cd.png'
 
 export interface ITechStackList {
     name: string
@@ -27,6 +29,7 @@ export interface EducationData {
     description: string
     location: string
     GPA: number
+    title: string
 }
 
 export interface ExperienceData {
@@ -77,6 +80,7 @@ export const createSummaryFromEducation = (edu: EducationData): Summary => ({
 
 function useData() {
     const { t } = useTranslation()
+
     const experiences: ExperienceData[] = [
         {
             company: 'FSS sp. z o.o.',
@@ -98,7 +102,7 @@ function useData() {
             location: 'Wapienica, Poland'
         },
         {
-            company: 'Evatronix',
+            company: 'Evixscan 3D',
             position: 'Software Developer - Intern',
             startDate: '07.2024',
             endDate: '08.2024',
@@ -111,7 +115,7 @@ function useData() {
                 }
             ],
             location: 'Bielsko-Biała, Poland'
-        },
+        }
     ]
 
     const educationData: EducationData[] = [{
@@ -123,7 +127,8 @@ function useData() {
         link: 'https://zseeim.edu.pl/',
         description: t('technicalSchoolDescription'),
         location: 'Bielsko-Biała, Poland',
-        GPA: 4.5
+        GPA: 4.4,
+        title: t('technicalTitle')
     }, {
         schoolName: t('university'),
         specialization: t('softwareDeveloper'),
@@ -133,71 +138,9 @@ function useData() {
         link: 'https://ubb.edu.pl/',
         description: t('universityDescription'),
         location: 'Bielsko-Biała, Poland',
-        GPA: 4.64
+        GPA: 4.64,
+        title: t('universityTitle')
     }]
-
-    const badgesData: BadgeData[] = [
-        {
-            name: 'JavaScript',
-            level: '80%',
-            color: 'primary'
-        },
-        {
-            name: 'React',
-            level: '80%',
-            color: 'secondary'
-        },
-        {
-            name: 'Node.js',
-            level: '70%',
-            color: 'success'
-        },
-        {
-            name: 'MongoDB',
-            level: '60%',
-            color: 'error'
-        },
-        {
-            name: 'Python',
-            level: '40%',
-            color: 'warning'
-        },
-        {
-            name: 'C#',
-            level: '80%',
-            color: 'warning'
-        },
-        {
-            name: 'Docker',
-            level: '60%',
-            color: 'warning'
-        },
-        {
-            name: 'Azure',
-            level: '40%',
-            color: 'warning'
-        },
-        {
-            name: 'CI/CD',
-            level: '50%',
-            color: 'warning'
-        },
-        {
-            name: 'Vue',
-            level: '80%',
-            color: 'warning'
-        },
-        {
-            name: 'mySQL',
-            level: '70%',
-            color: 'warning'
-        },
-        {
-            name: 'WPF',
-            level: '40%',
-            color: 'warning'
-        }
-    ]
 
     const techStack: ITechStackList[] = [
         { name: 'React', description: t('reactDescription'), image: REACT, level: '80%' },
@@ -205,14 +148,14 @@ function useData() {
         { name: 'Node', description: t('nodeDescription'), image: NODE, level: '70%', },
         { name: 'MongoDB', description: t('mongoDescription'), image: MONGODB, level: '60%', },
         { name: 'SQL', description: t('sqlDescription'), image: SQL, level: '70%', },
-        { name: 'CI/CD', description: t('cicdDescription'), image: null, level: '40%' },
+        { name: 'CI/CD', description: t('cicdDescription'), image: CICD, level: '40%' },
         { name: '.NET', description: t('netDescription'), image: DOTNET, level: '80%', },
         { name: 'Python', description: t('pythonDescription'), image: PYTHON, level: '40%', },
         { name: 'Unity', description: t('unityDescription'), image: UNITY, level: '60%', },
-        { name: 'Azure', description: t('azureDescription'), image: null, level: '40%', },
+        { name: 'Azure', description: t('azureDescription'), image: AZURE, level: '40%', }
     ];
 
-    return { experiences, educationData, badgesData, techStack }
+    return { experiences, educationData, techStack }
 }
 
 export default useData

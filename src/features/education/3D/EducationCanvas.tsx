@@ -5,10 +5,11 @@ import CanvasWrapper from '../../shared/components/CanvasWrapper';
 
 export interface EducationCanvasProps {
     containerProps?: React.HTMLProps<HTMLDivElement>;
-    canvasProps?: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLCanvasElement>>
+    canvasProps?: Props & React.RefAttributes<HTMLCanvasElement>
 }
 
 function EducationCanvas({ containerProps, canvasProps }: EducationCanvasProps) {
+
     return (
         <CanvasWrapper {...containerProps}>
             <Canvas camera={{ position: [0, 0, 1] }} {...canvasProps}>

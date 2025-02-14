@@ -40,13 +40,13 @@ html::-webkit-scrollbar-track,
 
 .content {
   width: 334px;
-  height: 216px;
+  height: 219px;
   border-radius: 3px;
   overflow-y: auto;
   background-color: black;
   position: relative;
   left: 9px;
-  top: -15px;
+  top: -5px;
 }
 
 .content::-webkit-scrollbar {

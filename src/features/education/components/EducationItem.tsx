@@ -1,22 +1,23 @@
-import { CardHeader, Typography, useTheme, Grid } from '@mui/material'
+import { CardHeader, Typography, useTheme, Grid, GridProps } from '@mui/material'
 import useTranslation from '../../shared/hooks/useTranslation'
 import { EducationData } from '../../shared/hooks/useData'
 import { AnimatedCard, SchoolLogo, DescriptionContainer, CurrentIndicator } from '../styles'
 import { animated } from '@react-spring/web'
 
-export interface EducationItemProps {
+export interface EducationItemProps extends GridProps {
     education: EducationData
     style: any
 }
 
-function EducationItem({ education, style }: EducationItemProps) {
+function EducationItem({ education, ...rest }: EducationItemProps) {
     const theme = useTheme()
     const { t } = useTranslation()
     const currentYear = new Date().getFullYear()
+    const AnimatedGrid = animated(Grid)
 
     return (
-        <Grid item xs={12} md={6}>
-            <animated.a href={education.link} style={{ textDecoration: 'none', ...style }}>
+        <AnimatedGrid item xs={12} md={6} {...rest}>
+            <a href={education.link} style={{ textDecoration: 'none' }}>
                 <AnimatedCard>
                     <CardHeader
                         title={
@@ -26,7 +27,7 @@ function EducationItem({ education, style }: EducationItemProps) {
                         }
                         subheader={
                             <Typography variant="body2" color="textSecondary">
-                                {education.GPA} GPA
+                                {education.GPA} GPA | {education.title}
                             </Typography>
                         }
                     />
@@ -88,8 +89,8 @@ function EducationItem({ education, style }: EducationItemProps) {
                         </Grid>
                     </Grid>
                 </AnimatedCard>
-            </animated.a>
-        </Grid>
+            </a>
+        </AnimatedGrid>
     )
 }
 
