@@ -40,11 +40,9 @@ export default function SideNav({ handleThemeChange, currentTheme, themes, navRo
     const { isMobile } = useHelper();
     const { isOpen, close, open } = useDrawerStore();
 
-    // const [isMobile, setIsMobile] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
     const [paddintTop, setPaddingTop] = useState(0);
     const [paddintTop2, setPaddingTop2] = useState(0);
-
 
     const activeText = (path: string) => {
         let text = '';
@@ -138,7 +136,7 @@ export default function SideNav({ handleThemeChange, currentTheme, themes, navRo
                         <NavLinkDrawer route={route} key={route.text} handleDrawerClose={close} open={isOpen} />
                     ))}
                     {isMobileOpen && <Divider />}
-                    {isOpen && <UserPreferences padding={1} flexDirection={'column'} currentTheme={currentTheme} handleThemeChange={close} themes={themes} />}
+                    {isOpen && <UserPreferences padding={1} flexDirection={'column'} currentTheme={currentTheme} handleThemeChange={handleThemeChange} themes={themes} />}
                 </List>
             </Drawer>
 

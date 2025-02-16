@@ -14,7 +14,7 @@ export interface TechStackListProps {
 function TechStackCanvas({ techStack, speed, canvasProps, containerProps }: TechStackListProps) {
     return (
         <CanvasWrapper {...containerProps}>
-            <Canvas {...canvasProps}>
+            <Canvas {...canvasProps} style={{ zIndex: 0 }}>
                 <ambientLight intensity={1} />
                 <Environment preset="studio" background />
                 <OrbitControls />

@@ -17,13 +17,13 @@ function EducationPage() {
             </Grid>
 
             <Grid container item>
-                <Typography variant='h4' textAlign={'center'} width="100%" color='primary' >
+                <Typography variant='h4' textAlign={'center'} width="100%" color='primary' fontWeight={600}>
                     {t('noneComersialExperience')}
                 </Typography>
             </Grid>
 
             <Grid item xs={12}>
-                <EducationCanvas containerProps={{ style: { height: 600, width: viewWidth } }} />
+                <EducationCanvas containerProps={{ style: { height: 400, width: viewWidth } }} />
             </Grid>
         </Grid>
     )

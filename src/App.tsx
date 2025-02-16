@@ -13,7 +13,6 @@ import ModalContact from './features/contact/components/ModalContact'
 import SchoolIcon from '@mui/icons-material/School';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import JavascriptIcon from '@mui/icons-material/Javascript';
-// import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import Person2Icon from '@mui/icons-material/Person2';
 import PhoneIcon from '@mui/icons-material/Phone';

@@ -47,7 +47,7 @@ export const dictionary: DictionaryType = {
         seeRepositoryOnGithub: 'Zobacz repozytorium na Githubie',
         seeUserOnGithub: 'Zobacz użytkownika na Githubie',
         repositoryLinkCopiedToClipboard: 'Link do repozytorium został skopiowany do schowka',
-        softwareDeveloper: 'Programista oprogramowania',
+        softwareDeveloper: 'Inżynier oprogramowania',
         openDrawer: 'Otwórz szufladę',
         closeDrawer: 'Zamknij szufladę',
         technicalSchool: 'Zespół Szkół Elektronicznych Elektrycznych i Mechanicznych w Bielsku-Białej',
